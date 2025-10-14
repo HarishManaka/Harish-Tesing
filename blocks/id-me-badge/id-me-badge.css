@@ -1,0 +1,58 @@
+.id-me-badge.block .id-me-badge-container {
+  display: inline-block;
+  background-color: var(--brand-color-highlight, #E9F250);
+  border: 2px solid var(--color-neutral-300);
+  border-color: var(--brand-color-highlight, #E9F250);
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin: 1rem 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100px;
+}
+
+.id-me-badge.block .id-me-badge-container.primary {
+  background-color: var(--brand-color-midnight-sky, #123257);
+  border-color: var(--brand-color-midnight-sky, #123257);
+}
+
+.id-me-badge.block .id-me-badge-container.accent {
+  background-color: var(--brand-color-highlight, #E9F250);
+  border-color: var(--brand-color-highlight, #E9F250);
+}
+
+.id-me-badge-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.id-me-logo {
+  height: 18px;
+  width: auto !important;
+  display: block;
+  max-width: 100%;
+}
+
+/* Responsive adjustments */
+@media (width <= 768px) {
+  .id-me-badge.block .id-me-badge-container {
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+  
+  .id-me-logo {
+    height: 18px;
+  }
+}
+
+@media (width <= 480px) {
+  .id-me-badge.block .id-me-badge-container {
+    padding: 5px 10px;
+    border-radius: 16px;
+  }
+  
+  .id-me-logo {
+    height: 16px;
+  }
+}

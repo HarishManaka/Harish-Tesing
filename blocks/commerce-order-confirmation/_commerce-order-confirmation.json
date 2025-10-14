@@ -1,0 +1,164 @@
+{
+  "definitions": [
+    {
+      "title": "Order Confirmation",
+      "id": "commerce-order-confirmation",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "commerce-order-confirmation",
+              "filter": "commerce-order-confirmation",
+              "model": "commerce-order-confirmation",
+              "key-value": false,
+              "mainHeading": "Order Confirmation",
+              "pageSubtitle": "",
+              "description": "",
+              "nasmOneDetails": "",
+              "otherProductsDescription": "",
+              "coursesDescription": "",
+              "helpLineDescription": "",
+              "finishPurchasingDescription": "",
+              "receiptLabel": "Receipt",
+              "printLabel": "Print",
+              "receiptImageLogo": "",
+              "payTodayLabel": "Pay Today",
+              "payTodayOfferAmount": "$99.00",
+              "info": "<p>Pay only <strong>$99.00 today</strong> and the remaining balance will be charged in installments.</p>",
+              "className": ""
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "commerce-order-confirmation",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "mainHeading",
+          "label": "Page Title",
+          "value": "Order Confirmation",
+          "description": "Main title for the order confirmation page"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "pageSubtitle",
+          "label": "Page Subtitle",
+          "value": "",
+          "description": "Subtitle for the order confirmation page"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "description",
+          "label": "Success Message NASM One",
+          "value": "",
+          "description": "Success message for NASM One subscriptions"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "nasmOneDetails",
+          "label": "NASM One Details",
+          "value": "",
+          "description": "Additional details for NASM One subscriptions"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "otherProductsDescription",
+          "label": "Success Message for Other Products",
+          "value": "",
+          "description": "Success message for other product purchases"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "coursesDescription",
+          "label": "Access Your Course(s)",
+          "value": "",
+          "description": "Information about accessing purchased courses"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "helpLineDescription",
+          "label": "Help Line Section",
+          "value": "",
+          "description": "Help and support information"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "finishPurchasingDescription",
+          "label": "Finish Purchasing Other Items",
+          "value": "",
+          "description": "Information about continuing to shop"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "receiptLabel",
+          "label": "Receipt Label",
+          "value": "Receipt",
+          "description": "Label for the receipt section"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "printLabel",
+          "label": "Print Label",
+          "value": "Print",
+          "description": "Label for the print button"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "receiptImageLogo",
+          "label": "Receipt Image Logo",
+          "value": "",
+          "description": "Logo image for the receipt section"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "payTodayLabel",
+          "label": "Pay Today Label",
+          "value": "Pay Today",
+          "description": "Label for the pay today section"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "payTodayOfferAmount",
+          "label": "Pay Today Offer Amount",
+          "value": "$99.00",
+          "description": "Amount to display for pay today offer"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "info",
+          "label": "Pay Today Info Text",
+          "value": "<p>Pay only <strong>$99.00 today</strong> and the remaining balance will be charged in installments.</p>",
+          "description": "Rich text information about payment terms"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "className",
+          "label": "CSS Class Name",
+          "value": "",
+          "description": "Additional CSS class name for styling"
+        }
+      ]
+    }
+  ],
+  "filters": []
+} 

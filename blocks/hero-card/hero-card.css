@@ -1,0 +1,226 @@
+/* Hero Card Block Styles */
+
+.hero-card {
+  position: relative;
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  align-items: center;
+  min-height: 300px;
+}
+
+/* Theme variations */
+.hero-card.dark {
+  background: linear-gradient(135deg, var(--brand-color-midnight-sky, #123257) 0%, #1e3a5f 100%);
+  color: #fff;
+}
+
+.hero-card.light {
+  background: #fff;
+  color: var(--brand-color-midnight-sky, #123257);
+}
+
+.hero-card.purple {
+  background: var(--brand-color-iris-buzz, #6463C8);
+  color: #fff;
+}
+
+.hero-card .hero-card-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Left column - Image */
+.hero-card .hero-card-image {
+  flex-shrink: 0;
+}
+
+.hero-card .hero-card-image img {
+  display: block;
+  max-width: 200px;
+  height: auto;
+}
+
+/* Image style variations */
+.hero-card .hero-card-image.circular img {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  border: 4px solid rgb(255 255 255 / 20%);
+}
+
+.hero-card .hero-card-image.rounded img {
+  border-radius: 20px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+}
+
+.hero-card .hero-card-image.square img {
+  border-radius: 0;
+  aspect-ratio: 1;
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+}
+
+/* Right column - Content */
+.hero-card .hero-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Heading */
+.hero-card .hero-card-heading {
+  font-family: var(--heading-font-family), sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Description */
+.hero-card .hero-card-description {
+  font-family: var(--body-font-family), sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.hero-card.dark .hero-card-heading,
+.hero-card.dark .hero-card-description,
+.hero-card.purple .hero-card-heading,
+.hero-card.purple .hero-card-description{
+  color: #fff;
+}
+
+/* CTA Button */
+.hero-card .hero-card-cta {
+  display: inline-flex;
+  align-self: flex-start;
+}
+
+.hero-card .hero-card-cta .button {
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-family: var(--body-font-family), sans-serif;
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* Button style variations */
+.hero-card .hero-card-cta .button.accent {
+  background: #E91C1C;
+  color: #fff;
+  border-color: #E91C1C;
+}
+
+.hero-card .hero-card-cta .button.accent:hover {
+  background: #d11a1a;
+  border-color: #d11a1a;
+  transform: translateY(-2px);
+}
+
+.hero-card .hero-card-cta .button.secondary {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+.hero-card .hero-card-cta .button.secondary:hover {
+  background: #fff;
+  color: var(--brand-color-midnight-sky, #123257);
+}
+
+.hero-card .hero-card-cta .button.default {
+  background: var(--brand-color-citrus-pop, #E8F557);
+  color: var(--brand-color-midnight-sky, #123257);
+  border-color: var(--brand-color-citrus-pop, #E8F557);
+}
+
+.hero-card .hero-card-cta .button.default:hover {
+  background: var(--brand-color-morning-mist, #BEE2E7);
+  border-color: var(--brand-color-morning-mist, #BEE2E7);
+}
+
+/* Responsive styles */
+@media (width < 768px) {
+  .hero-card {
+    padding: 30px 15px;
+    min-height: auto;
+  }
+  
+  .hero-card .hero-card-container {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .hero-card .hero-card-image img {
+    max-width: 150px;
+  }
+  
+  .hero-card .hero-card-image.circular img,
+  .hero-card .hero-card-image.rounded img,
+  .hero-card .hero-card-image.square img {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .hero-card .hero-card-heading {
+    font-size: 28px;
+  }
+  
+  .hero-card .hero-card-description {
+    font-size: 16px;
+  }
+  
+  .hero-card .hero-card-cta {
+    align-self: center;
+  }
+}
+
+@media (width < 480px) {
+  .hero-card .hero-card-heading {
+    font-size: 24px;
+  }
+  
+  .hero-card .hero-card-description {
+    font-size: 14px;
+  }
+  
+  .hero-card .hero-card-cta .button {
+    padding: 10px 24px;
+    font-size: 14px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-card .hero-card-cta .button {
+    transition: none;
+  }
+  
+  .hero-card .hero-card-cta .button:hover {
+    transform: none;
+  }
+}

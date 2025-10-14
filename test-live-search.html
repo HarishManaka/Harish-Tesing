@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Live Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .search-container {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        #search {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+        #search_autocomplete {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            max-height: 300px;
+            overflow-y: auto;
+            width: 100%;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Search Test</h1>
+    <div class="search-container">
+        <input type="search" id="search" placeholder="Search for products..." />
+        <div id="search_autocomplete"></div>
+    </div>
+
+    <div id="console-output">
+        <h2>Console Output:</h2>
+        <pre id="console-log"></pre>
+    </div>
+
+    <script>
+        // Override console methods to capture output
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        const consoleOutput = document.getElementById('console-log');
+
+        function addToConsoleOutput(type, ...args) {
+            const timestamp = new Date().toISOString();
+            const message = args.map(arg => 
+                typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+            ).join(' ');
+            
+            consoleOutput.textContent += `[${timestamp}] ${type.toUpperCase()}: ${message}\n`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            addToConsoleOutput('log', ...args);
+            originalLog.apply(console, args);
+        };
+
+        console.error = function(...args) {
+            addToConsoleOutput('error', ...args);
+            originalError.apply(console, args);
+        };
+
+        console.warn = function(...args) {
+            addToConsoleOutput('warn', ...args);
+            originalWarn.apply(console, args);
+        };
+
+        // Override fetch to capture GraphQL requests
+        const originalFetch = window.fetch;
+        window.fetch = function(...args) {
+            const [url, options] = args;
+
+            if (options && options.body && typeof options.body === 'string') {
+                try {
+                    const body = JSON.parse(options.body);
+                    if (body.query) {
+                        console.log('=== GraphQL Query Intercepted ===');
+                        console.log('URL:', url);
+                        console.log('Query:', body.query);
+                        console.log('Variables:', body.variables);
+                        
+                        // Split query into lines to check line 77
+                        const lines = body.query.split('\n');
+                        console.log('Total lines:', lines.length);
+                        
+                        if (lines.length >= 77) {
+                            console.log('=== Line 77 Context ===');
+                            for (let i = Math.max(0, 74); i < Math.min(lines.length, 80); i++) {
+                                const lineNum = i + 1;
+                                const marker = lineNum === 77 ? '>>> ' : '    ';
+                                console.log(`${marker}${lineNum}: ${lines[i]}`);
+                            }
+                        }
+                        
+                        // Look for image field issues
+                        lines.forEach((line, index) => {
+                            if (line.includes('image') && !line.trim().startsWith('//')) {
+                                console.log(`Image field at line ${index + 1}: ${line.trim()}`);
+                            }
+                        });
+                        
+                        console.log('=== End Query ===');
+                    }
+                } catch (e) {
+                    // Not JSON, ignore
+                }
+            }
+
+            return originalFetch.apply(this, args).then(response => {
+                // Check for GraphQL errors in response
+                if (response.url.includes('graphql')) {
+                    response.clone().json().then(data => {
+                        if (data.errors) {
+                            console.error('=== GraphQL Response Errors ===');
+                            data.errors.forEach((error, index) => {
+                                console.error(`Error ${index + 1}:`, error);
+                            });
+                            console.error('=== End Errors ===');
+                        }
+                    }).catch(() => {
+                        // Ignore JSON parsing errors
+                    });
+                }
+                return response;
+            });
+        };
+
+        console.log('Test page loaded. Open browser dev tools to see network requests.');
+        console.log('Type in the search box to trigger GraphQL queries.');
+    </script>
+
+    <!-- Load AEM scripts -->
+    <script src="/scripts/scripts.js"></script>
+    <script>
+        // Wait for AEM scripts to load then load search
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                console.log('Loading search functionality...');
+                
+                // Import the search functionality
+                const searchModule = await import('/blocks/header/searchbar.js');
+                
+                console.log('Search functionality loaded successfully');
+            } catch (error) {
+                console.error('Failed to load search functionality:', error);
+            }
+        });
+    </script>
+</body>
+</html>

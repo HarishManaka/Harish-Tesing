@@ -1,0 +1,161 @@
+{
+  "definitions": [
+    {
+      "title": "Nav Level 3",
+      "id": "nav-level-3",
+      "plugins": {
+        "xwalk": { 
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Nav Level 3",
+              "model": "nav-level-3",
+              "filter": "nav-level-3"
+            }
+          }
+        }
+      }
+    },
+    
+    {
+      "title": "Nav Rich text",
+      "id": "nav-rich-text",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Nav Rich text",
+              "model": "nav-rich-text",
+              "data-element": "nav-rich-text",
+              "data-testid": "nav-rich-text"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Nav Square",
+      "id": "nav-square",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Nav Square",
+              "model": "nav-square",
+              "data-element": "nav-square",
+              "data-testid": "nav-square"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Nav Title description",
+      "id": "nav-title-description",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Nav Title description",
+              "model": "nav-title-description",
+              "data-element": "nav-title-description",
+              "data-testid": "nav-title-description"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "nav-level-3",
+      "fields": [
+        {
+          "component": "text",
+          "name": "id",
+          "label": "id",
+          "description": "the id to link with the third level navigation",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": "nav-rich-text",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "content",
+          "label": "content",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": "nav-square",
+      "fields": [
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Title",
+          "description": ""
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "label": "description",
+          "description": ""
+        },
+        {
+          "component": "text",
+          "name": "footer-text",
+          "label": "footer text",
+          "description": ""
+        },
+        {
+          "component": "text",
+          "name": "url",
+          "label": "URL",
+          "description": " the url /products/product-name/"
+        }
+      ]
+    },
+    {
+      "id": "nav-title-description",
+      "fields": [
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Title",
+          "description": ""
+        },
+        {
+          "component": "text",
+          "name": "description",
+          "label": "description",
+          "description": ""
+        },
+        {
+          "component": "text",
+          "name": "url",
+          "label": "URL",
+          "description": " the url /nasm"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "nav-level-3",
+      "components": [
+        "nav-rich-text",
+        "nav-square",
+        "nav-title-description"
+      ]
+    }
+  ]
+}
+
+

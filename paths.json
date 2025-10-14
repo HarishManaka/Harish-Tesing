@@ -1,0 +1,24 @@
+{
+  "mappings": [
+    "/content/nasm/:/",
+    "/content/nasm/configuration:/.helix/config.json",
+    "/content/nasm/headers:/.helix/headers.json",
+    "/content/nasm/metadata:/metadata.json",
+    "/content/nasm/placeholders:/placeholders.json",
+    "/content/nasm.resource/enrichment/enrichment.json:/enrichment/enrichment.json",
+    "/content/dam/nasm/documents/:/documents/",
+    "/content/nasm/workout-exercise-guidance/exercises:/workout-exercise-guidance/exercises.json",
+    "/content/nasm/documents/testimonials:/documents/testimonials.json",
+    "/content/nasm/discountpartners/pro-discounts:/discountpartners/pro-discounts.json",
+    "/content/nasm/resource-center/free-wellness-and-fitness-mini-courses/mini-courses:/resource-center/free-wellness-and-fitness-mini-courses/mini-courses.json",
+    "/content/nasm/resource-center/free-wellness-and-fitness-mini-courses:/resource-center/free-wellness-and-fitness-mini-courses.json",
+    "/content/nasm/resource-center/free-health-nutrition-guides/health-nutrition-guides:/resource-center/free-health-nutrition-guides/health-nutrition-guides.json",
+    "/content/nasm/resource-center/free-health-nutrition-guides:/resource-center/free-health-nutrition-guides.json",
+    "/content/nasm/discountpartners/pro-discounts:/discountpartners/pro-discounts.json",
+    "/content/dam/nasm/images/nasmlibraries/testimonials_images/:/testimonials_images/"
+  ],
+  "includes": [
+    "/content/nasm/",
+    "/content/dam/nasm/"
+  ]
+}

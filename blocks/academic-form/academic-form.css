@@ -1,0 +1,825 @@
+/* Academic Form Block Styles */
+
+/* Remove uppercase text transformation for all headings in academic-form */
+.academic-form h1,
+.academic-form h2,
+.academic-form h3,
+.academic-form h4,
+.academic-form h5,
+.academic-form h6 {
+  text-transform: none;
+}
+
+/* Two-Column Academic Layout */
+.academic-two-column-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 0;
+  align-items: start;
+}
+
+/* Left Column - Introduction Text */
+.academic-left-column {
+  padding-right: 20px;
+}
+
+.academic-intro-text {
+  font-family: var(--body-font-family), sans-serif;
+  color: var(--text-color, #333);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.academic-intro-text p {
+  margin: 0 0 16px;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.academic-intro-text h2,
+.academic-intro-text h3 {
+  color: var(--brand-color-midnight-sky, #123257);
+  margin: 24px 0 16px;
+  font-weight: 700;
+}
+
+.academic-intro-text h2 {
+  font-size: 24px;
+}
+
+.academic-intro-text h3 {
+  font-size: 20px;
+}
+
+.academic-intro-text strong {
+  font-weight: 700;
+  color: var(--brand-color-midnight-sky, #123257);
+}
+
+.academic-intro-text a {
+  color: #0503EE !important;
+  text-decoration: underline;
+}
+
+.academic-intro-text a:hover {
+  color: #0503EE;
+  text-decoration: underline;
+}
+
+/* Right Column - Logo, Description, Form */
+.academic-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.academic-school-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.academic-school-logo img {
+  max-width: 200px;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+/* School Description Section */
+.academic-school-description {
+  margin-bottom: 32px;
+  font-family: var(--body-font-family), sans-serif;
+  color: var(--text-color, #333);
+}
+
+.academic-school-description p {
+  margin: 0 0 16px;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.academic-school-description h2,
+.academic-school-description h3 {
+  color: var(--brand-color-midnight-sky, #123257);
+  margin: 24px 0 16px;
+}
+
+.academic-school-description ul,
+.academic-school-description ol {
+  margin: 0 0 16px;
+  padding-left: 24px;
+}
+
+.academic-school-description li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* Responsive for Academic Content */
+@media (width < 768px) {
+  .academic-school-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .academic-school-logo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .academic-school-name {
+    font-size: 24px;
+  }
+  
+  .academic-school-contact {
+    font-size: 14px;
+  }
+  
+  .academic-content-section {
+    margin-bottom: 32px;
+  }
+  
+  .academic-intro-text,
+  .academic-school-description {
+    font-size: 14px;
+  }
+}
+
+/* Styled Template Academic Adjustments */
+.styled.academic-form-loaded .academic-content-section {
+  color: var(--brand-color-white);
+  margin-bottom: 40px;
+}
+
+.styled.academic-form-loaded .academic-intro-text,
+.styled.academic-form-loaded .academic-school-description {
+  color: var(--brand-color-white);
+}
+
+.styled.academic-form-loaded .academic-intro-text p,
+.styled.academic-form-loaded .academic-school-description p {
+  color: var(--brand-color-white);
+  opacity: 0.9;
+}
+
+.styled.academic-form-loaded .academic-school-header {
+  background-color: rgb(255 255 255 / 10%);
+  border: 1px solid rgb(255 255 255 / 20%);
+}
+
+.styled.academic-form-loaded .academic-school-name {
+  color: var(--brand-color-white);
+}
+
+.styled.academic-form-loaded .academic-school-contact {
+  color: var(--brand-color-morning-mist);
+}
+
+.styled.academic-form-loaded .academic-intro-text h2,
+.styled.academic-form-loaded .academic-intro-text h3,
+.styled.academic-form-loaded .academic-school-description h2,
+.styled.academic-form-loaded .academic-school-description h3 {
+  color: var(--brand-color-citrus-pop);
+}
+
+/* Form Section Styling - Blue Header Design */
+.academic-form-section {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+}
+
+/* Blue form header - matches design */
+.academic-form-section .academic-form-heading {
+  background-color: var(--brand-color-midnight-sky, #123257);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* Form section in simple layout (no academic content) */
+.academic-form-loaded > .academic-form-section {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.academic-form-section .academic-form-heading-title {
+  color: white;
+  font-family: var(--heading-font-family), sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+  text-transform: none;
+}
+
+.academic-form-section .academic-form-heading-subtitle {
+  color: white;
+  font-family: var(--body-font-family), sans-serif;
+  font-size: 14px;
+  margin: 8px 0 0;
+  opacity: 0.9;
+}
+
+/* Form wrapper inside the section */
+.academic-form-section .academic-form-container {
+  background-color: white;
+  padding: 2rem;
+  min-height: 400px;
+}
+
+.academic-form-loaded .academic-form-section form {
+  background-color: white;
+  padding: 0 !important;
+}
+
+/* Default form header styling (when not in academic section) */
+
+/* .academic-form-loaded:not(.academic-two-column-container) .academic-form-heading {
+  margin-bottom: 24px;
+}
+
+.academic-form-loaded:not(.academic-two-column-container) .academic-form-heading-title {
+  color: var(--brand-color-midnight-sky, #123257);
+  font-family: var(--heading-font-family), sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.academic-form-loaded:not(.academic-two-column-container) .academic-form-heading-subtitle {
+  color: var(--text-color, #333);
+  font-family: var(--body-font-family), sans-serif;
+  font-size: 16px;
+  margin: 0;
+} */
+
+/* Responsive for Two-Column Layout */
+@media (width < 1024px) {
+  .academic-two-column-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .academic-left-column {
+    padding-right: 0;
+    order: 1;
+  }
+  
+  .academic-right-column {
+    order: 2;
+    gap: 24px;
+  }
+  
+  .academic-school-logo img {
+    max-width: 150px;
+    max-height: 120px;
+  }
+}
+
+@media (width < 768px) {
+  .academic-two-column-container {
+    gap: 32px;
+  }
+  
+  .academic-intro-text {
+    font-size: 14px;
+  }
+  
+  .academic-intro-text h2 {
+    font-size: 20px;
+  }
+  
+  .academic-intro-text h3 {
+    font-size: 18px;
+  }
+  
+  .academic-right-column {
+    gap: 20px;
+  }
+  
+  .academic-school-logo img {
+    max-width: 120px;
+    max-height: 100px;
+  }
+  
+  .academic-form-section .academic-form-heading {
+    padding: 16px;
+  }
+  
+  .academic-form-section .academic-form-heading-title {
+    font-size: 20px;
+  }
+}
+
+/* Global */
+.academic-form-loaded.fluid{
+    width: 100%;
+    max-width: 1440px;
+}
+
+.academic-form-loaded.small{
+    padding: 40px 20px;
+    max-width: 600px;
+}
+
+.academic-form-loaded.medium{
+    max-width: 800px;
+}
+
+.academic-form-loaded.large{
+    max-width: 1200px
+}
+
+/* Default Template */
+
+.default.academic-form {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.academic-form-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Loading State */
+.default.academic-form-loading {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-color, #333);
+}
+
+.default.academic-form-loading p {
+    font-family: var(--body-font-family), sans-serif;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Error State */
+.default.academic-form-error {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    color: #dc2626;
+}
+
+.default .academic-form-error p {
+    font-family: var(--body-font-family), sans-serif;
+    margin: 0 0 8px;
+}
+
+.default .academic-form-error small {
+    opacity: 0.7;
+}
+
+/* HubSpot Form Styling Overrides */
+.default.academic-form-loaded .hbspt-form {
+    font-family: var(--body-font-family), sans-serif;
+}
+
+/* Form Fields */
+.default.academic-form-loaded .hs-form fieldset {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.default.academic-form-loaded .hs-form .hs-form-field {
+    margin-bottom: 20px;
+}
+
+.default.academic-form-loaded .hs-form .hs-form-field>label {
+    font-family: var(--body-font-family), sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color, #333);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.default.academic-form-loaded .hs-form .hs-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 4px;
+    font-family: var(--body-font-family), sans-serif;
+    font-size: 16px;
+    background-color: #fff;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.default.academic-form-loaded .hs-form .hs-input:focus {
+    outline: none;
+    border-color: var(--brand-color-citrus-pop, #E8F557);
+    box-shadow: 0 0 0 3px rgb(232 245 87 / 20%);
+}
+
+/* Select Fields */
+.default.academic-form-loaded .hs-form select.hs-input {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    padding-right: 40px;
+    appearance: none;
+}
+
+/* Textarea */
+.default.academic-form-loaded .hs-form textarea.hs-input {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Checkboxes and Radio Buttons */
+.default.academic-form-loaded .hs-form .hs-form-checkbox,
+.default.academic-form-loaded .hs-form .hs-form-radio {
+    margin-bottom: 12px;
+}
+
+.default.academic-form-loaded .hs-form .hs-form-checkbox label,
+.default.academic-form-loaded .hs-form .hs-form-radio label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.default.academic-form-loaded .hs-form input[type="checkbox"],
+.default.academic-form-loaded .hs-form input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Submit Button */
+.default.academic-form-loaded .hs-form .hs-submit {
+    margin-top: 24px;
+}
+
+.default.academic-form-loaded .hs-form .hs-submit .hs-button {
+    background-color: var(--brand-color-citrus-pop, #E8F557);
+    color: var(--brand-color-midnight-sky, #123257);
+    border: none;
+    padding: 16px 32px;
+    font-family: var(--body-font-family), sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.default.academic-form-loaded .hs-form .hs-submit .hs-button:hover {
+    background-color: #d4e04a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
+}
+
+.default.academic-form-loaded .hs-form .hs-submit .hs-button:active {
+    transform: translateY(0);
+}
+
+/* Error Messages */
+.default.academic-form-loaded .hs-form .hs-error-msgs {
+    margin-top: 8px;
+}
+
+.default.academic-form-loaded .hs-form .hs-error-msg {
+    color: #dc2626;
+    font-size: 14px;
+    margin: 0;
+}
+
+.default.academic-form-loaded .hs-form .hs-input.error {
+    border-color: #dc2626;
+}
+
+/* Success Message */
+.default.academic-form-loaded .submitted-message {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    color: #166534;
+}
+
+/* Responsive Design */
+@media (width < 768px) {
+    .default.academic-form {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .default.academic-form-loaded .hs-form .hs-submit .hs-button {
+        padding: 14px 24px;
+        font-size: 15px;
+    }
+}
+
+/* High Contrast Mode */
+@media (forced-colors: active) {
+    .default.academic-form-loaded .hs-form .hs-input {
+        border: 2px solid ButtonText;
+    }
+
+    .default.academic-form-loaded .hs-form .hs-input:focus {
+        border-color: Highlight;
+    }
+
+    .default.academic-form-loaded .hs-form .hs-submit .hs-button {
+        border: 2px solid ButtonText;
+    }
+}
+
+/* Styled Template */
+
+.styled.academic-form-loaded.academic-form {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--brand-color-midnight-sky);
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.styled.academic-form-loaded.transparent-background {
+    background: color-mix(in srgb, var(--brand-color-midnight-sky) var(--academic-background-opacity), transparent);
+}
+
+.styled.academic-form-loaded .academic-form-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.styled.academic-form-loaded .academic-form-heading-title {
+    color: var(--brand-color-white);
+    font-family: var(--type-base-font-family);
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 40px;
+    margin: 0;
+    text-align: left !important;
+}
+
+.styled.academic-form-loaded .academic-form-heading-subtitle {
+    color: var(--brand-color-white);
+    font-family: var(--type-base-font-family);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.32px;
+    text-align: left;
+}
+
+.styled.academic-form-loaded .hbspt-form {
+    text-align: left;
+    margin-top: 24px;
+    container-type: inline-size;
+}
+
+.styled.academic-form-loaded .hs-form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.styled.academic-form-loaded .hs-form .hs-input {
+    width: 100%;
+    background: rgb(255 255 255 / 20%);
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    color: var(--brand-color-white);
+    font-family: var(--type-base-font-family);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0.48px;
+}
+
+.styled.academic-form-loaded .hs-form .hs-input::placeholder {
+    color: var(--brand-color-white);
+    font-family: var(--type-base-font-family);
+    opacity: 0.75;
+}
+
+.styled.academic-form-loaded .hs-form .hs-input.invalid {
+    border: 1px solid var(--brand-color-sunset-sizzle);
+}
+
+.styled.academic-form-loaded .hs-form .field label:not(.hs-error-msg){
+    display: none;
+}
+
+.styled.academic-form-loaded .hs-form .hs_sms_opt_in,
+.styled.academic-form-loaded .hs-form .legal-consent-container {
+    grid-column: span 2;
+}
+
+.styled.academic-form-loaded .hs-form .hs_sms_opt_in label,
+.styled.academic-form-loaded .hs-form .legal-consent-container label{
+    display: flex !important;
+}
+
+.styled.academic-form-loaded .hs-form .legal-consent-container p {
+    color: var(--brand-color-morning-mist);
+    font-family: var(--type-base-font-family);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.24px;
+}
+
+.styled.academic-form-loaded .hs-form .hs_submit {
+    grid-column: 3 / span 2;
+
+}
+
+.styled.academic-form-loaded .hs-form label {
+    font-family: var(--type-base-font-family);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.32px;
+}
+
+.styled.academic-form-loaded .hs-form .hs_submit [type="submit"] {
+    width: 100%;
+    padding: 9px;
+    border-radius: 5px;
+    background-color: var(--brand-color-citrus-pop);
+    color: var(--brand-color-black);
+    font-family: var(--type-base-font-family);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.styled.academic-form-loaded .hs-form .hs_submit [type="submit"]:hover {
+    background-color: var(--brand-color-aqua-bliss);
+}
+
+/* Checkboxes and Radio Buttons */
+.styled.academic-form-loaded .hs-form .hs-form-booleancheckbox,
+.styled.academic-form-loaded .hs-form .hs-form-radio {
+    margin-bottom: 12px;
+}
+
+.styled.academic-form-loaded .hs-form .hs-form-booleancheckbox label,
+.styled.academic-form-loaded .hs-form .hs-form-radio label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    color: var(--brand-color-white);
+    font-family: var(--type-base-font-family);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.32px;
+}
+
+.styled.academic-form-loaded .hs-form .inputs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.styled.academic-form-loaded .hs-form input[type="checkbox"] {
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.styled.academic-form-loaded .hs-form input[type="checkbox"]:checked {
+    opacity: 1;
+}
+
+.styled.academic-form-loaded .hs-form input[type="checkbox"],
+.styled.academic-form-loaded .hs-form input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Error Messages */
+.styled.academic-form-loaded .hs-form .hs-error-msg {
+    color: var(--brand-color-sunset-sizzle);
+}
+
+/* Responsive */
+
+/* Tablet  */
+@media (width <=900px) {
+    .styled.academic-form-loaded .hs-form {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .styled.academic-form-loaded .hs-form .hs_sms_opt_in,
+    .styled.academic-form-loaded .hs-form .legal-consent-container {
+        grid-column: span 1;
+    }
+
+    .styled.academic-form-loaded .hs-form .hs_submit {
+        grid-column: 2;
+    
+    }
+}
+
+/* Mobile */
+@media (width <= 768px) {
+    .styled.academic-form-loaded .hs-form {
+        grid-template-columns: 1fr;
+    }
+
+    .styled.academic-form-loaded .hs-form .hs_sms_opt_in,
+    .styled.academic-form-loaded .hs-form .legal-consent-container {
+        grid-column: 1;
+    }
+
+    .styled.academic-form-loaded .hs-form .hs_submit {
+        grid-column: 1;
+    
+    }
+}
+
+/* Extra small mobile */
+@media (width <= 450px) {
+    .styled.academic-form-loaded.academic-form {
+        padding: 40px 16px;
+    }
+}
+
+/* Container Queries */
+
+/* Tablet  */
+@container (width <=900px) {
+    .styled.academic-form-loaded .hs-form {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .styled.academic-form-loaded .hs-form .hs_sms_opt_in,
+    .styled.academic-form-loaded .hs-form .legal-consent-container {
+        grid-column: span 1;
+    }
+
+    .styled.academic-form-loaded .hs-form .hs_submit {
+        grid-column: 2;
+    
+    }
+}
+
+/* Mobile */
+@container (width <= 768px) {
+    .styled.academic-form-loaded .hs-form {
+        grid-template-columns: 1fr;
+    }
+
+    .styled.academic-form-loaded .hs-form .hs_sms_opt_in,
+    .styled.academic-form-loaded .hs-form .legal-consent-container {
+        grid-column: 1;
+    }
+
+    .styled.academic-form-loaded .hs-form .hs_submit {
+        grid-column: 1;
+    
+    }
+}
+
+/* Extra small mobile */
+@container (width <= 450px) {
+    .styled.academic-form-loaded.academic-form {
+        padding: 40px 16px;
+    }
+}

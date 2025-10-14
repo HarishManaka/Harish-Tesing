@@ -1,0 +1,60 @@
+const deals = [
+  {
+    id: 1,
+    partner: 'FitStride',
+    logo: '/content/dam/nasm/images/nasmlibraries/pages/discount-partners/old-discount-partners/expertvoice_logo-300x200.png',
+    offerPercent: '25% OFF',
+    description: '<p>Save on performance footwear and apparel. Members-only styles included.</p>',
+    link: '#',
+  },
+  {
+    id: 2,
+    partner: 'IronForge',
+    logo: '/content/dam/nasm/images/nasmlibraries/pages/discount-partners/old-discount-partners/blazepod-discount-listing-logo.png',
+    offerPercent: '15% OFF',
+    description: '<p>Barbells, plates, racks, and more. Outfit your gym for less.</p>',
+    link: '#',
+  },
+  {
+    id: 3,
+    partner: 'Roll&Recover',
+    logo: '/content/dam/nasm/images/nasmlibraries/pages/discount-partners/old-discount-partners/prana_logo-300x200.png',
+    offerPercent: '30% OFF',
+    description: '<p>Foam rollers, massage balls, and recovery tools for every routine.</p>',
+    link: '#',
+  },
+  {
+    id: 4,
+    partner: 'BrandLab',
+    logo: '/content/dam/nasm/images/nasmlibraries/pages/discount-partners/old-discount-partners/fba-logo2075a386f7e041c2a4ac25154ab2832b.png',
+    offerPercent: '20% OFF',
+    description: '<p>Custom-branded training kits for teams and facilities.</p>',
+    link: '#',
+  },
+  {
+    id: 5,
+    partner: 'Allied Fitness',
+    logo: '/content/dam/nasm/images/nasmlibraries/pages/discount-partners/old-discount-partners/everlast_logo-300x200.png',
+    offerPercent: '10% OFF',
+    description: '<p>Accessories, tech, and more—exclusive savings for members.</p>',
+    link: '#',
+  },
+  {
+    id: 6,
+    partner: 'GripPro',
+    logo: '/content/dam/nasm/images/nasmlibraries/pages/discount-partners/old-discount-partners/trifecta-orange-logo.png',
+    offerPercent: 'Up to 40% OFF',
+    description: '<p>Strengthen your grip with pro-grade implements and bundles.</p>',
+    link: '#',
+  },
+  {
+    id: 7,
+    partner: 'FlexWear',
+    logo: '/content/dam/nasm/images/nasmlibraries/pages/discount-partners/old-discount-partners/reebok_one_logo_300x200.png',
+    offerPercent: 'Buy 1 Get 1 50% OFF',
+    description: '<p>Versatile athleisure for training and recovery days.</p>',
+    link: '#',
+  },
+];
+
+export default deals;

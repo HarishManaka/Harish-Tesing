@@ -1,0 +1,113 @@
+[
+  {
+    "createdBy": "browserstack-9894786",
+    "creationDate": 1752506753796,
+    "currentOwner": "browserstack-9894786",
+    "description": "",
+    "extensionRules": [
+      {
+        "action": {
+          "redirect": {
+            "regexSubstitution": "http://localhost:3001/component-\\1.json"
+          },
+          "type": "redirect"
+        },
+        "condition": {
+          "excludedInitiatorDomains": [
+            "requestly.io"
+          ],
+          "excludedRequestDomains": [
+            "requestly.io"
+          ],
+          "isUrlFilterCaseSensitive": true,
+          "regexFilter": ".*?component\\-(filters|models|definition)\\.json$.*"
+        }
+      }
+    ],
+    "groupId": "Group_wm6g0",
+    "id": "Redirect_0gcgo",
+    "isSample": false,
+    "lastModifiedBy": "browserstack-9894786",
+    "modificationDate": 1752511674947,
+    "name": "uae json redirects",
+    "objectType": "rule",
+    "pairs": [
+      {
+        "destination": "http://localhost:3001/component-$1.json",
+        "destinationType": "url",
+        "id": "804fl",
+        "source": {
+          "key": "Url",
+          "operator": "Matches",
+          "value": "/component\\-(filters|models|definition)\\.json$/"
+        }
+      }
+    ],
+    "preserveCookie": false,
+    "ruleType": "Redirect",
+    "schemaVersion": "3.0.0",
+    "status": "Active"
+  },
+  {
+    "createdBy": "browserstack-9894786",
+    "creationDate": 1752511605197,
+    "currentOwner": "browserstack-9894786",
+    "description": "",
+    "extensionRules": [
+      {
+        "action": {
+          "redirect": {
+            "regexSubstitution": "http://localhost:3000/blocks/\\1/\\2.\\3"
+          },
+          "type": "redirect"
+        },
+        "condition": {
+          "excludedInitiatorDomains": [
+            "requestly.io"
+          ],
+          "excludedRequestDomains": [
+            "requestly.io"
+          ],
+          "isUrlFilterCaseSensitive": true,
+          "regexFilter": ".*?blocks/(.*)+/(.*)+\\.(js|css)$.*"
+        }
+      }
+    ],
+    "groupId": "Group_wm6g0",
+    "id": "Redirect_xhatv",
+    "isSample": false,
+    "lastModifiedBy": "browserstack-9894786",
+    "modificationDate": 1752512426354,
+    "name": "blocks redirect",
+    "objectType": "rule",
+    "pairs": [
+      {
+        "destination": "http://localhost:3000/blocks/$1/$2.$3",
+        "destinationType": "url",
+        "id": "v43uv",
+        "source": {
+          "key": "Url",
+          "operator": "Matches",
+          "value": "/blocks/(.*)+/(.*)+\\.(js|css)$/"
+        }
+      }
+    ],
+    "preserveCookie": false,
+    "ruleType": "Redirect",
+    "schemaVersion": "3.0.0",
+    "status": "Active"
+  },
+  {
+    "createdBy": "browserstack-9894786",
+    "creationDate": 1752511529339,
+    "currentOwner": "browserstack-9894786",
+    "description": "",
+    "id": "Group_wm6g0",
+    "lastModifiedBy": "browserstack-9894786",
+    "modificationDate": 1752512426465,
+    "name": "local aue",
+    "objectType": "group",
+    "status": "Active",
+    "children": []
+  }
+]

@@ -1,0 +1,6 @@
+header {
+  grid-row: 1;
+  height: var(--nav-height);
+  position: relative;
+  z-index: 999;
+}

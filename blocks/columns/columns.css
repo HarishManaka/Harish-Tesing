@@ -1,0 +1,82 @@
+.columns > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.columns img {
+  width: 100%;
+}
+
+.columns > div > div {
+  order: 1;
+}
+
+.columns > div > .columns-img-col {
+  order: 0;
+}
+
+.columns > div > .columns-img-col img {
+  display: block;
+}
+
+.columns h2,
+.columns h3{
+  margin-top: 0;
+}
+
+.columns a{
+  color: var(--brand-color-midnight-sky) !important;
+  text-decoration: underline;
+}
+
+/* ID.me trigger button styling */
+.columns a.button.id-me-trigger {
+  position: relative;
+  background-color: var(--brand-color-midnight-sky) !important;
+
+  /* color: var(--brand-color-midnight-sky) !important; */
+  color: #fff !important;
+}
+
+/* .columns a.button.id-me-trigger::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  background-image: url('/icons/idme-logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+} */
+
+@media (width >= 900px) {
+  .columns > div {
+    align-items: center;
+    flex-direction: unset;
+    gap: 24px;
+  }
+
+  .columns > div > div {
+    flex: 1;
+    order: unset;
+  }
+
+  /* Vertical alignment options */
+  .columns.columns-align-top > div {
+    align-items: flex-start;
+  }
+
+  .columns.columns-align-center > div {
+    align-items: center;
+  }
+
+  .columns.columns-align-bottom > div {
+    align-items: flex-end;
+  }
+
+  .columns.columns-align-stretch > div {
+    align-items: stretch;
+  }
+}

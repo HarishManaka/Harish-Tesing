@@ -1,0 +1,73 @@
+.nasm-generic-modal-overlay {
+    font-family: peridot-pe-variable, sans-serif;
+    position: fixed;
+    inset: 0;
+    background: var(--color-background-blur);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .nasm-generic-modal {
+    padding: var(--spacing-40) var(--spacing-12) var(--spacing-40) var(--spacing-13);
+    max-width: 382px;
+    text-align: center;
+    border-radius: var(--shape-border-radius-2);
+    border: 1px solid var(--color-light-grey);
+    background: var(--color-neutral-100);
+  }
+  
+  .generic-modal-open {
+    overflow: hidden;
+  }
+  
+  .nasm-generic-modal__content{
+      padding-inline: var(--spacing-36);
+  }
+  
+  .nasm-generic-modal__title {
+    color: var(--brand-color-midnight-sky);
+    font-size: var(--font-text-h4);
+    font-variation-settings: "wght" 900, "wdth" 60;
+    text-transform: uppercase;
+    line-height: 0.96;
+    letter-spacing: normal;
+    margin-bottom: var(--spacing-16);
+  }
+  
+  .nasm-generic-modal__description {
+      color: var(--brand-color-black);
+      font-size: var(--font-size-16);
+      font-variation-settings: "wght" 500;
+      line-height: 1.5;
+      text-align: center;
+      letter-spacing: 0.48px;
+      margin-bottom: var(--spacing-16);
+  }
+  
+  .nasm-generic-modal__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+    align-items: center;
+  }
+  
+  .nasm-generic-modal__cta-btn {
+    color: var(--ui-color-light);
+    font-size: var(--font-size-14);
+    font-variation-settings: "wght" 500;
+    line-height: 1.5;
+    letter-spacing: 0.42px;
+    text-align: center;
+    background-color: var(--brand-color-midnight-sky);
+    padding: var(--spacing-14) var(--spacing-22);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: var(--brand-color-citrus-pop);
+      color: var(--brand-color-midnight-sky);
+    }
+  }

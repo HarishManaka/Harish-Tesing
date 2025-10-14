@@ -1,0 +1,111 @@
+{
+  "definitions": [
+    {
+      "title": "Quote",
+      "id": "quote",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Quote",
+              "model": "quote",
+              "key-value": true
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "quote",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "sectionLabel",
+          "label": "Section Title",
+          "value": "WHAT EXPERTS ARE SAYING",
+          "description": "Title that appears above the quote section"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "quote",
+          "label": "Quote Text",
+          "value": "",
+          "required": true,
+          "description": "The testimonial/quote text. Use <strong> or <b> tags to highlight text in yellow"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "authorName",
+          "label": "Author Name",
+          "value": "",
+          "required": true
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "authorFirm",
+          "label": "Author Title",
+          "value": "",
+          "description": "Job title or role (e.g., 'Mind Pump Podcast Host')"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "authorCredentials",
+          "label": "Author Credentials",
+          "value": "",
+          "description": "Professional certifications (e.g., 'NASM PES, CES')"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "media",
+          "label": "Media (Image/Video Thumbnail)",
+          "multi": false,
+          "description": "Image or video thumbnail to display on the right"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "mediaAlt",
+          "label": "Media Alt Text",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "videoUrl",
+          "label": "Video URL",
+          "value": "",
+          "description": "If media is a video thumbnail, provide the video URL here"
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "showQuoteIcon",
+          "label": "Show Quote Icon",
+          "value": true,
+          "description": "Display large quotation mark icon"
+        },
+        {
+          "component": "multiselect",
+          "valueType": "string",
+          "name": "classes",
+          "label": "Theme & Options",
+          "value": [],
+          "options": [
+            {"name": "Light Theme", "value": "light-theme"},
+            {"name": "Image Left", "value": "image-left"}
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

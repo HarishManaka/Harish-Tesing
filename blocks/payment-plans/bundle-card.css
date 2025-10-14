@@ -1,0 +1,260 @@
+/* Bundle Card Styles - Based on design mockup */
+.bundle-card-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bundle-pricing-card {
+  position: relative;
+  background: white;
+  border: 2px solid #6366F1;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgb(99 102 241 / 10%);
+}
+
+.bundle-card__badge {
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  background: #EF4444;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.bundle-card__header {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.bundle-card__eyebrow {
+  color: #6366F1;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.bundle-card__title {
+  color: #1F2937;
+  font-size: 1.75rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.bundle-card__pricing {
+  margin-bottom: 1.5rem;
+}
+
+.bundle-card__price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.bundle-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.bundle-card__amount {
+  color: #1F2937;
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.bundle-card__period {
+  color: #6B7280;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bundle-card__discount {
+  background: #EF4444;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.bundle-card__original-price {
+  color: #9CA3AF;
+  font-size: 1.125rem;
+  text-decoration: line-through;
+  font-weight: 600;
+}
+
+.bundle-card__terms {
+  color: #6B7280;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.bundle-card__payment {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.bundle-card__dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F3F4F6;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bundle-card__dropdown:hover {
+  border-color: #6366F1;
+}
+
+.bundle-card__dropdown-text {
+  color: #1F2937;
+  font-weight: 600;
+}
+
+.bundle-card__dropdown-icon {
+  color: #6B7280;
+  transition: transform 0.2s ease;
+}
+
+.bundle-card__options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+  z-index: 10;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.bundle-card__options--open {
+  max-height: 200px;
+}
+
+.bundle-card__options--open .bundle-card__dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.bundle-card__option {
+  padding: 12px 16px;
+  color: #1F2937;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.bundle-card__option:hover {
+  background-color: #F9FAFB;
+}
+
+.bundle-card__option--selected {
+  background-color: #EEF2FF;
+  color: #6366F1;
+  font-weight: 600;
+}
+
+.bundle-card__cta-btn {
+  width: 100%;
+  background: #1F2937;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 1.5rem;
+}
+
+.bundle-card__cta-btn:hover {
+  background: #111827;
+  transform: translateY(-1px);
+}
+
+.bundle-card__features {
+  text-align: left;
+}
+
+.bundle-card__features-title {
+  color: #1F2937;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 1rem;
+}
+
+.bundle-card__features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bundle-card__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.bundle-card__feature-bullet {
+  color: #6366F1;
+  font-weight: 900;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.bundle-card__feature-text {
+  color: #1F2937;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Mobile responsiveness */
+@media (width <= 640px) {
+  .bundle-card-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .bundle-pricing-card {
+    padding: 1.5rem;
+  }
+  
+  .bundle-card__title {
+    font-size: 1.5rem;
+  }
+  
+  .bundle-card__amount {
+    font-size: 2rem;
+  }
+}

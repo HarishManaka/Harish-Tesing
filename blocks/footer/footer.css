@@ -1,0 +1,75 @@
+.section.footer-menu-container {
+    padding-bottom: 10rem;
+}
+
+/* Footer CTA styles moved from lazy-styles.css */
+.footer.block .footer-cta {
+    font-size: 88px;
+    font-style: normal;
+    font-weight: 700;
+    font-variation-settings: "wght" 800, "wdth" 60;
+    line-height: 100%;
+    letter-spacing: 0.04em;
+    opacity: 0.5;
+
+    --gap: 1rem;
+
+    display: flex;
+    overflow: hidden;
+    gap: var(--gap);
+    position: absolute;
+    bottom: -5px;
+}
+
+.footer.block .footer-cta-content {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    gap: var(--gap);
+    min-width: 100%;
+    animation: scroll 200s linear infinite;
+    font-size: 7.5rem;
+    line-height: 7.5rem;
+    color: rgb(245 245 245);
+    font-family: peridot-pe-variable, sans-serif;
+    margin-bottom: 14px;
+    font-style: normal;
+    font-weight: 900;
+    font-variation-settings: "wdth" 60, "wght" 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.footer-menu-subitem-wrapper {
+    font-weight: 400;
+}
+
+.footer.block ul.footer-cta-content {
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.footer.block .footer-cta,
+.footer.block .footer-form-wrapper .small-print {
+    color: var(--ui-color-off-light);
+    text-transform: uppercase;
+}
+
+/* Media query for larger screens */
+@media (width >= 1200px) {
+    .footer.block .footer-cta {
+        font-size: 120px;
+    }
+}
+
+div#ensNotifyBanner{
+    background-color: var(--brand-color-midnight-sky, #123257);
+    font-size: 16px;
+    width: 80%;
+    line-height: 2;
+}
+
+.ensNotifyBanner .ensButtons .button.blue.raised{
+    border-radius: 8px !important;
+    line-height: 1;
+}

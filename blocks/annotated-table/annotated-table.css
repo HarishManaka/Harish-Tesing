@@ -1,0 +1,139 @@
+.table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Annotated table content styling */
+.annotated-table-content {
+  line-height: 1.6;
+}
+
+.annotated-table-content p {
+  margin: 0 0 1rem;
+}
+
+.annotated-table-content p:last-child {
+  margin-bottom: 0;
+}
+
+.annotated-table-content h1,
+.annotated-table-content h2,
+.annotated-table-content h3,
+.annotated-table-content h4,
+.annotated-table-content h5,
+.annotated-table-content h6 {
+  margin: 1.5rem 0 1rem;
+}
+
+.annotated-table-content h1:first-child,
+.annotated-table-content h2:first-child,
+.annotated-table-content h3:first-child,
+.annotated-table-content h4:first-child,
+.annotated-table-content h5:first-child,
+.annotated-table-content h6:first-child,
+.annotated-table-content p:first-child {
+  margin-top: 0;
+}
+
+.annotated-table-content pre {
+  background-color: var(--color-neutral-100);
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+/* Table styles for both legacy and new approach */
+.table table,
+.annotated-table-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--body-font-size-s);
+  margin: 1rem 0;
+  background: white;
+}
+
+.table th,
+.table td,
+.annotated-table-content th,
+.annotated-table-content td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e8e8e8;
+  vertical-align: top;
+}
+
+.table th,
+.annotated-table-content th {
+  background-color: white;
+  font-weight: 700;
+  font-size: var(--body-font-size-s);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #333;
+  color: #333;
+}
+
+/* Right align numeric columns */
+.annotated-table-content td[style*="text-align: right"],
+.annotated-table-content th[style*="text-align: right"] {
+  text-align: right;
+}
+
+.table tbody tr:hover,
+.annotated-table-content tbody tr:hover {
+  background-color: var(--color-neutral-150);
+}
+
+/* Variants */
+.table.no-header th,
+.annotated-table-content.no-header th {
+  background-color: transparent;
+  font-weight: normal;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table.striped tbody tr:nth-child(even),
+.annotated-table-content.striped tbody tr:nth-child(even) {
+  background-color: var(--color-neutral-100);
+}
+
+.table.striped tbody tr:nth-child(even):hover,
+.annotated-table-content.striped tbody tr:nth-child(even):hover {
+  background-color: var(--color-neutral-150);
+}
+
+.table.bordered,
+.annotated-table-content.bordered {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.table.bordered th,
+.table.bordered td,
+.annotated-table-content.bordered th,
+.annotated-table-content.bordered td {
+  border-right: 1px solid #e0e0e0;
+}
+
+.table.bordered th:last-child,
+.table.bordered td:last-child,
+.annotated-table-content.bordered th:last-child,
+.annotated-table-content.bordered td:last-child {
+  border-right: none;
+}
+
+/* Mobile responsiveness */
+@media (width <= 600px) {
+  .table,
+  .annotated-table-content {
+    font-size: var(--body-font-size-xs);
+  }
+  
+  .table th,
+  .table td,
+  .annotated-table-content th,
+  .annotated-table-content td {
+    padding: 6px 8px;
+  }
+}

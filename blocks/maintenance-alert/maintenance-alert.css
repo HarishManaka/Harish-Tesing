@@ -1,0 +1,115 @@
+.maintenance-alert-container {
+  color: white;
+  padding: 12px 20px;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+/* Background color variations using NASM brand colors */
+.maintenance-alert-container.bg-midnight-sky {
+  background-color: var(--brand-color-midnight-sky);
+  color: white;
+}
+
+.maintenance-alert-container.bg-alert {
+  background-color: var(--color-alert-800);
+  color: white;
+}
+
+.maintenance-alert-container.bg-warning {
+  background-color: var(--color-warning-800);
+  color: white;
+}
+
+.maintenance-alert-container.bg-positive {
+  background-color: var(--color-positive-800);
+  color: white;
+}
+
+.maintenance-alert-container.bg-informational {
+  background-color: var(--color-informational-800);
+  color: white;
+}
+
+.maintenance-alert-container.bg-iris-buzz {
+  background-color: var(--brand-color-iris-buzz);
+  color: white;
+}
+
+.maintenance-alert-container.bg-sunset-sizzle {
+  background-color: var(--brand-color-sunset-sizzle);
+  color: white;
+}
+
+.maintenance-alert-container.bg-citrus-pop {
+  background-color: var(--brand-color-citrus-pop);
+  color: var(--brand-color-black);
+}
+
+.maintenance-alert-container.bg-neutral {
+  background-color: var(--color-neutral-800);
+  color: white;
+}
+
+.maintenance-alert-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.maintenance-alert-text {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.maintenance-alert-text p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.maintenance-alert-text a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.maintenance-alert-text a:hover {
+  text-decoration: none;
+}
+
+/* Dark text styling for light backgrounds */
+.maintenance-alert-container.bg-citrus-pop .maintenance-alert-text a {
+  color: var(--brand-color-black);
+  text-decoration: underline;
+}
+
+.maintenance-alert-container.bg-citrus-pop .maintenance-alert-text a:hover {
+  color: var(--brand-color-midnight-sky);
+  text-decoration: none;
+}
+
+
+/* Responsive design */
+@media (width <= 768px) {
+  .maintenance-alert-container {
+    padding: 10px 16px;
+  }
+  
+  .maintenance-alert-text {
+    font-size: 13px;
+  }
+}
+
+@media (width <= 480px) {
+  .maintenance-alert-container {
+    padding: 8px 12px;
+  }
+  
+  .maintenance-alert-text {
+    font-size: 12px;
+  }
+}

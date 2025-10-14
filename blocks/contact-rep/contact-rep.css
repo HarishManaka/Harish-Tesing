@@ -1,0 +1,177 @@
+.contact-rep-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-rep {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 900px;
+}
+
+.contact-rep > div {
+    width: 100%;
+}
+
+.contact-rep > div > div {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+}
+
+/* Left column - "HAVE QUESTIONS?" */
+.contact-rep > div > div > div:first-child {
+    flex-basis: 40%;
+}
+
+/* Right column - content */
+.contact-rep > div > div > div:last-child {
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-rep h3 {
+    font-family: peridot-pe-variable, sans-serif;
+    font-variation-settings: "wght" 900, "wdth" 60;
+    font-size: 45px;
+    line-height: 96%;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    color: var(--brand-color-aqua-bliss, #4ecdc4);
+}
+
+.contact-rep h3 span:first-child {
+    color: white;
+}
+
+.contact-rep h3 span:last-child {
+    color: var(--brand-color-aqua-bliss, #4ecdc4);
+}
+
+.contact-rep h4 {
+    font-family: peridot-pe-variable, sans-serif;
+    font-variation-settings: "wght" 800;
+    font-size: 24px;
+    line-height: 96%;
+    color: white;
+}
+
+.contact-rep p {
+    font-family: peridot-pe-variable, sans-serif;
+    font-variation-settings: "wght" 400;
+    font-size: 18px;
+    line-height: 150%;
+    color: white;
+}
+
+.contact-rep .button-container a:first-child {
+    margin: 0;
+}
+
+.contact-rep .button {
+    display: inline-block;
+    padding: 0 40px;
+    font-family: peridot-pe-variable, sans-serif;
+    font-variation-settings: "wght" 400;
+    font-size: 20px;
+    line-height: 50px;
+    text-decoration: none;
+    border-radius: 25px;
+    background-color: white;
+    color: var(--brand-color-black, #000);
+    transition: all 0.2s ease-out;
+    text-align: center;
+    letter-spacing: 0.32px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Fill right button effect */
+.contact-rep .button::before {
+    content: "";
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--brand-color-citrus-pop, #ffd23f);
+    transition: width 0.3s ease-out;
+    z-index: 0;
+}
+
+.contact-rep .button:hover::before {
+    width: 100%;
+}
+
+.contact-rep .button:hover {
+    text-decoration: none;
+}
+
+.contact-rep .button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Desktop specific styles */
+@media (width >= 768px) {
+    .contact-rep h3 {
+        font-size: 48px;
+    }
+
+    .contact-rep h4 {
+        font-size: 24px;
+    }
+
+    .contact-rep .button {
+        height: 50px;
+    }
+}
+
+@media (width >= 1024px) {
+    .contact-rep > div > div > div:first-child {
+        margin-bottom: 0;
+    }
+
+    .contact-rep h3 {
+        font-size: 64px;
+    }
+}
+
+/* Mobile styles */
+@media (width <= 767px) {
+    .contact-rep > div > div {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .contact-rep > div > div > div:first-child {
+        margin-bottom: 0;
+        width: 94%;
+    }
+
+    .contact-rep > div > div > div:last-child {
+        width: 94%;
+    }
+
+    .contact-rep h3 {
+        font-size: 45px;
+    }
+
+    .contact-rep h4 {
+        font-size: 20px;
+    }
+
+    .contact-rep p {
+        font-size: 16px;
+    }
+
+    .contact-rep .button {
+        width: 100%;
+    }
+}

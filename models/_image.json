@@ -1,0 +1,57 @@
+{
+  "definitions": [
+    {
+      "title": "Image",
+      "id": "image",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/image/v1/image",
+            "template": {}
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "image",
+      "fields": [
+        {
+          "component": "reference",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "name": "imageAlt",
+          "label": "Alt Text"
+        },
+        {
+          "component": "multiselect",
+          "name": "style",
+          "label": "Style",
+          "options": [
+            {
+              "name": "Hide On: Mobile",
+              "value": "hide-on-mobile"
+            },
+            {
+              "name": "Hide On: Tablet",
+              "value": "hide-on-tablet"
+            },
+            {
+              "name": "Hide On: Desktop",
+              "value": "hide-on-desktop"
+            },
+            {
+              "name": "Rounded",
+              "value": "rounded"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

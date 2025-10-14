@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Display Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+        .info {
+            color: blue;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #results {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            min-height: 100px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Search Display Test</h1>
+    
+    <div class="test-section">
+        <h2>Test Controls</h2>
+        <button onclick="testSearch()">Test Search for "bun"</button>
+        <button onclick="checkDOMElements()">Check DOM Elements</button>
+        <button onclick="clearResults()">Clear Results</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const resultsDiv = document.getElementById('results');
+        
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error' : type === 'success' ? 'success' : 'info';
+            resultsDiv.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+        }
+        
+        function clearResults() {
+            resultsDiv.innerHTML = '';
+            log('Results cleared');
+        }
+        
+        async function testSearch() {
+            log('Starting search test...');
+            
+            try {
+                // Open localhost in iframe to test
+                const iframe = document.createElement('iframe');
+                iframe.src = 'http://localhost:3000/nasm';
+                iframe.style.width = '100%';
+                iframe.style.height = '600px';
+                iframe.style.border = '1px solid #ddd';
+                iframe.style.marginTop = '20px';
+                
+                resultsDiv.appendChild(iframe);
+                
+                iframe.onload = async function() {
+                    log('Page loaded successfully', 'success');
+                    
+                    // Wait for page to fully load
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    try {
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        
+                        // Check for search button
+                        const searchButton = iframeDoc.querySelector('.nav-search-button');
+                        if (searchButton) {
+                            log('Search button found', 'success');
+                            
+                            // Click search button
+                            searchButton.click();
+                            log('Search button clicked');
+                            
+                            // Wait for search panel to open
+                            await new Promise(resolve => setTimeout(resolve, 500));
+                            
+                            // Find search input
+                            const searchInput = iframeDoc.querySelector('#search, input[type="search"]');
+                            if (searchInput) {
+                                log('Search input found', 'success');
+                                
+                                // Type in search input
+                                searchInput.value = 'bun';
+                                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+                                log('Typed "bun" in search input');
+                                
+                                // Wait for results
+                                await new Promise(resolve => setTimeout(resolve, 2000));
+                                
+                                // Check for dropdown
+                                const dropdown = iframeDoc.querySelector('.search-results-dropdown');
+                                if (dropdown) {
+                                    log('Search dropdown found!', 'success');
+                                    
+                                    // Check for product cards
+                                    const productCards = dropdown.querySelectorAll('.search-product-card');
+                                    log(`Found ${productCards.length} product cards`, productCards.length > 0 ? 'success' : 'error');
+                                    
+                                    productCards.forEach((card, index) => {
+                                        const name = card.querySelector('.search-product-name');
+                                        const price = card.querySelector('.search-product-price');
+                                        if (name) {
+                                            log(`Product ${index + 1}: ${name.textContent} - ${price ? price.textContent : 'No price'}`);
+                                        }
+                                    });
+                                    
+                                    // Check for View All link
+                                    const viewAll = dropdown.querySelector('.search-view-all');
+                                    if (viewAll) {
+                                        log(`View All link found: ${viewAll.href}`, 'success');
+                                    }
+                                } else {
+                                    log('Search dropdown not found', 'error');
+                                    
+                                    // Check for autocomplete container
+                                    const autocomplete = iframeDoc.querySelector('#search_autocomplete, .search-autocomplete');
+                                    if (autocomplete) {
+                                        log('Autocomplete container exists but dropdown not rendered', 'error');
+                                        log('Container HTML: ' + autocomplete.innerHTML.substring(0, 200));
+                                    }
+                                }
+                            } else {
+                                log('Search input not found', 'error');
+                            }
+                        } else {
+                            log('Search button not found', 'error');
+                        }
+                        
+                        // Check console for errors
+                        const scripts = iframeDoc.querySelectorAll('script[src*="searchbar"]');
+                        log(`Found ${scripts.length} searchbar scripts loaded`);
+                        
+                    } catch (e) {
+                        log('Error accessing iframe content: ' + e.message, 'error');
+                    }
+                };
+                
+            } catch (error) {
+                log('Test error: ' + error.message, 'error');
+            }
+        }
+        
+        function checkDOMElements() {
+            log('Checking DOM elements on localhost...');
+            
+            const iframe = document.createElement('iframe');
+            iframe.src = 'http://localhost:3000/nasm';
+            iframe.style.width = '100%';
+            iframe.style.height = '400px';
+            iframe.style.border = '1px solid #ddd';
+            iframe.style.marginTop = '20px';
+            
+            resultsDiv.appendChild(iframe);
+            
+            iframe.onload = function() {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    
+                    // Check for key elements
+                    const elements = {
+                        'Search Button': '.nav-search-button',
+                        'Search Input': '#search, input[type="search"]',
+                        'Autocomplete Container': '#search_autocomplete, .search-autocomplete',
+                        'Header': 'header',
+                        'Nav': 'nav, .nav',
+                    };
+                    
+                    for (const [name, selector] of Object.entries(elements)) {
+                        const element = iframeDoc.querySelector(selector);
+                        if (element) {
+                            log(`✓ ${name} found: ${selector}`, 'success');
+                        } else {
+                            log(`✗ ${name} not found: ${selector}`, 'error');
+                        }
+                    }
+                    
+                    // Check for searchbar.js
+                    const scripts = Array.from(iframeDoc.querySelectorAll('script')).filter(s => 
+                        s.src.includes('searchbar') || s.textContent.includes('searchbar')
+                    );
+                    log(`Found ${scripts.length} searchbar-related scripts`);
+                    
+                    // Check for CSS
+                    const styles = Array.from(iframeDoc.querySelectorAll('link[rel="stylesheet"], style')).filter(s => 
+                        (s.href && s.href.includes('searchbar')) || (s.textContent && s.textContent.includes('search-results-dropdown'))
+                    );
+                    log(`Found ${styles.length} search-related stylesheets`);
+                    
+                } catch (e) {
+                    log('Error checking DOM: ' + e.message, 'error');
+                }
+            };
+        }
+    </script>
+</body>
+</html>

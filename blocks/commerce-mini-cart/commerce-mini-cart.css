@@ -1,0 +1,76 @@
+/* Product badge styles for mini cart footer slot */
+.mini-cart-item-footer {
+  margin: var(--spacing-xsmall) 0;
+}
+
+/* Override absolute positioning from nav.css - only for mini cart and larger devices */
+@media (width >= 900px) {
+  .commerce-mini-cart .dropin-cart-item__wrapper {
+    position: relative !important;
+    min-height: 130px !important; /* Increase minimum height to prevent overlap */
+  }
+
+  /* Ensure configurations and footer are positioned correctly in mini cart */
+  .commerce-mini-cart .dropin-cart-item__configurations {
+    position: absolute !important;
+    top: 40px !important; /* Move down to avoid title overlap */
+    left: 104px !important;
+    width: 66% !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+  }
+
+  /* Position footer slot below configurations in mini cart */
+  .commerce-mini-cart .dropin-cart-item__wrapper [data-slot="Footer"] {
+    position: absolute !important;
+    top: 65px !important; /* Move down accordingly */
+    left: 104px !important;
+    width: 66% !important;
+    display: block !important;
+  }
+
+  /* Adjust price position to be below footer in mini cart */
+  .commerce-mini-cart .dropin-cart-item__price {
+    top: 95px !important; /* Move down to accommodate everything */
+  }
+}
+
+.mini-cart-item-footer .badge-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-xxsmall);
+}
+
+.mini-cart-item-footer .shippable-item-badge,
+.mini-cart-item-footer .membership-item-badge {
+  color: var(--color-grey-75);
+  font-size: var(--font-text-body-xxs);
+  font-variation-settings: "wght" 500;
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color-purple);
+  background: var(--ui-color-purple);
+  padding: var(--spacing-xxsmall) var(--spacing-xsmall);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xxsmall);
+}
+
+.mini-cart-item-footer .shippable-item-badge::before,
+.mini-cart-item-footer .membership-item-badge::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background: center / contain no-repeat;
+}
+
+.mini-cart-item-footer .shippable-item-badge::before {
+  background-image: url('/icons/shipping.svg');
+}
+
+.mini-cart-item-footer .membership-item-badge::before {
+  background-image: url('/icons/membership.svg');
+}

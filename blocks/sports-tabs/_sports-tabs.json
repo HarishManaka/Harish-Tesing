@@ -1,0 +1,101 @@
+{
+  "definitions": [
+    {
+      "title": "Sports Tabs",
+      "id": "sports-tabs",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Sports Tabs",
+              "filter": "sports-tabs",
+              "model": "sports-tabs",
+              "key-value": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Sports Tab",
+      "id": "sports-tab",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Sports Tab",
+              "model": "sports-tab",
+              "key-value": true
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "sports-tabs",
+      "fields": [
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "colorScheme",
+          "label": "Color Scheme",
+          "value": "light",
+          "options": [
+            {
+              "name": "Light",
+              "value": "light"
+            },
+            {
+              "name": "Dark",
+              "value": "dark"
+            }
+          ],
+          "description": "Select a color scheme based on the background color"
+        }
+      ]
+    },
+    {
+      "id": "sports-tab",
+      "fields": [
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Tab Title",
+          "valueType": "string"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "name": "imageAlt",
+          "label": "Image Alt Text",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "desc",
+          "value": "",
+          "label": "Tab Description",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "sports-tabs",
+      "components": [
+        "sports-tab"
+      ]
+    }
+  ]
+}

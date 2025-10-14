@@ -1,0 +1,60 @@
+
+.securebadge {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--spacing-9);
+    margin-bottom: var(--spacing-15);
+}
+
+.securebadge p {
+    font-size: var(--font-text-body-m);
+    font-variation-settings: "wght" 500;
+    line-height: 1.5;
+    color: var(--color-text-neutral-tertiary);
+    margin: 0;
+    margin-bottom: var(--spacing-6);
+    letter-spacing: 0.03em;
+}
+
+.securebadge > div:first-child {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: var(--spacing-xxsmall);
+}
+
+.securebadge > div:first-child::before {
+    content: url('../../icons/lock.svg');
+    margin-right: var(--spacing-xsmall);
+    display: inline-block;
+}
+
+.secure-badge-images {
+    display: flex;
+    flex-direction: row;
+    column-gap: var(--spacing-13);
+    justify-content: start;
+    align-items: center;
+    margin-left: var(--spacing-small);
+}
+
+.secure-badge-images picture{
+    display: flex;
+}
+
+.secure-badge-images picture img{
+    object-fit: contain;
+    height: 40px;
+}
+
+
+@media (width >= 901px) {
+    .securebadge {
+        margin-left: var(--spacing-11);
+    }
+
+    .secure-badge-images {
+        margin-left: 0;
+    }
+    
+}

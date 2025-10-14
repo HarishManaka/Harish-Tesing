@@ -1,0 +1,32 @@
+{
+  "definitions": [
+    {
+      "title": "Health Nutrition Guides",
+      "id": "health-nutrition-guides",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Health Nutrition Guides",
+              "filter": "health-nutrition-guides",
+              "model": "health-nutrition-guides"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "health-nutrition-guides",
+      "fields": []
+    }
+  ],
+  "filters": [
+    {
+      "id": "health-nutrition-guides",
+      "components": []
+    }
+  ]
+}

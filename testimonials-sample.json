@@ -1,0 +1,56 @@
+{
+  "total": 6,
+  "offset": 0,
+  "limit": 6,
+  "data": [
+    {
+      "PDP TAGGED": "cpt-main-pdp",
+      "Testimonial Name": "Sarah Johnson",
+      "Testimonial Title/Credentials": "NASM-CPT",
+      "Testimonial Quote": "NASM's CPT certification completely transformed my approach to fitness training. The science-based curriculum gave me the confidence to work with diverse clients and achieve real results.",
+      "Testimonial Photo": "/content/dam/nasm/images/nasmlibraries/testimonials-images/sarah-johnson.jpg",
+      "SKUs TAGGED": "cpt-main-pdp,CPT7015055,career-kickstarter-bundle"
+    },
+    {
+      "PDP TAGGED": "cpt-main-pdp",
+      "Testimonial Name": "Mike Rodriguez",
+      "Testimonial Title/Credentials": "Fitness Center Owner",
+      "Testimonial Quote": "After completing my NASM certification, I was able to expand my business and hire additional trainers. The credibility that comes with NASM certification is unmatched in the industry.",
+      "Testimonial Photo": "/content/dam/nasm/images/nasmlibraries/testimonials-images/mike-rodriguez.jpg",
+      "SKUs TAGGED": "cpt-main-pdp,CPT7446K,exclusive-bundle"
+    },
+    {
+      "PDP TAGGED": "cwc-main-pdp",
+      "Testimonial Name": "Jennifer Kim",
+      "Testimonial Title/Credentials": "Corporate Wellness Coordinator",
+      "Testimonial Quote": "The wellness coaching specialization helped me design programs that truly impact employee health and productivity. I've seen amazing transformations in our workplace culture.",
+      "Testimonial Photo": "/content/dam/nasm/images/nasmlibraries/testimonials-images/jennifer-kim.jpg",
+      "SKUs TAGGED": "CWC304K,cwc-main-pdp,wellness-nutrition-coach-bundle"
+    },
+    {
+      "PDP TAGGED": "ces-main-pdp",
+      "Testimonial Name": "David Thompson",
+      "Testimonial Title/Credentials": "NASM-CES",
+      "Testimonial Quote": "Working with clients who have movement dysfunctions requires specialized knowledge. NASM's CES certification gave me the tools to help people move better and live pain-free.",
+      "Testimonial Photo": "/content/dam/nasm/images/nasmlibraries/testimonials-images/david-thompson.jpg",
+      "SKUs TAGGED": "ces-main-pdp,CES290K,CES288K"
+    },
+    {
+      "PDP TAGGED": "CNC301K",
+      "Testimonial Name": "Amanda Williams",
+      "Testimonial Title/Credentials": "NASM-CNC, Nutrition Coach & Influencer",
+      "Testimonial Quote": "The combination of fitness and nutrition knowledge from NASM has allowed me to build a successful online coaching business. My followers trust my evidence-based approach.",
+      "Testimonial Photo": "/content/dam/nasm/images/nasmlibraries/testimonials-images/amanda-williams.jpg",
+      "SKUs TAGGED": "CNC301K,nutrition-fitness-coach-bundle,elite-trainer-bundle-cwc-phone"
+    },
+    {
+      "PDP TAGGED": "pes-main-pdp",
+      "Testimonial Name": "Carlos Martinez",
+      "Testimonial Title/Credentials": "NASM-PES, Youth Sports Performance Coach",
+      "Testimonial Quote": "Training young athletes requires a different approach. NASM's PES certification taught me how to develop age-appropriate programs that enhance performance while prioritizing safety.",
+      "Testimonial Photo": "/content/dam/nasm/images/nasmlibraries/testimonials-images/carlos-martinez.jpg",
+      "SKUs TAGGED": "PES325K,PES326K,pes-main-pdp,sports-performance-nutrition-bundle"
+    }
+  ],
+  ":type": "sheet"
+}

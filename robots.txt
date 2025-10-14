@@ -1,0 +1,5 @@
+# Block all crawling in non-production
+User-agent: *
+Disallow: /
+
+# (Optional) No sitemap reference on non-prod

@@ -1,0 +1,123 @@
+.paytoday-offer *{
+    font-variation-settings: "wght" 700, "wdth" 60;
+    font-family: peridot-pe-variable, sans-serif; 
+}
+
+.paytoday-header {
+    border: 1px solid var(--color-border-seamantic-info-primary);
+    background-color: var(--color-background-seamantic-info-subtle);
+    padding: var(--spacing-14) var(--spacing-small) ;
+    border-radius: 4px;
+}
+
+.paytoday-header h5{
+    font-variation-settings: "wght" 500, "wdth" 100;
+    font-weight: 500;
+    font-size: var(--font-text-body-s);
+    color: var(--color-text-neutral-secondary);
+    line-height: 1.3;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.paytoday-header p {
+    font-variation-settings: "wght" 500, "wdth" 100;
+    font-size: var(--font-text-body-s);
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    color: var(--color-text-neutral-secondary);
+    margin: var(--spacing-2) 0 0;
+    vertical-align: text-bottom;
+}
+
+.paytoday-header p.promotion-label {
+    font-size: var(--font-text-h4);
+    font-variation-settings: "wght" 900, "wdth" 60;
+    line-height: 0.96;
+    letter-spacing: 0;
+    color: var(--brand-color-purple);
+    text-transform: uppercase;
+
+}
+
+.paytoday-order-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: var(--spacing-small) 0;
+}
+
+.paytoday-order-summary h5{
+    color: var(--color-brand-500);
+    font-size: 22px;
+    font-variation-settings: "wght" 800;
+}
+
+.paytoday-order-summary * {
+    font-variation-settings: "wght" 900, "wdth" 60;
+    font-size: var(--font-text-h4);
+    color: var(--brand-color-purple);
+    line-height: 0.96;
+    letter-spacing: 0;
+   text-transform: uppercase;
+
+}
+
+.checkout__steps-loading-spinner.loader-active {
+  position: fixed;
+  inset: 0;
+  background: var(--color-background-blur);
+  backdrop-filter: blur(2px);
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout-notification--error {
+    background-color: #FFF4F0;
+    border: 1px solid var(--color-orange);
+    border-radius: 4px;
+    padding: 16px;
+    margin: 12px 0;
+    align-items: flex-start;  
+  }
+
+    
+  .checkout-notification--error p {
+    color: var(--brand-color-gray);
+    font-family: var(--type-display-1-font);
+    font-size: var(--font-text-body-m);
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  .checkout-notification--error p strong{
+    font-weight: 600; 
+    padding: 0 0 0 5px;
+    font-variation-settings: "wght" 600, "wdth" 100;
+  }
+
+
+.dropin-cart-item__image img {
+    font-size: 11px;
+    line-height: 1;    
+}
+
+.billing-step__continue-btn[disabled] {
+    color: var(--color-light-gray-background)!important;
+    background-color: var(--color-gray-checkbox)!important;
+    pointer-events: none;
+}
+  
+@media (width >= 900px) {
+   .paytoday-header {
+        margin: 0;
+    }
+}
+
+/* Hide Chat Widget In Cart-Checkout */
+.a5-widget-container {
+        display: none;
+}

@@ -1,0 +1,4 @@
+mountpoints:
+  /metadata:
+    url: https://docs.google.com/spreadsheets/d/13v4lbYz9fhJ3xgS8II6YGYYC0oXUVby5sk0FF9aRkKE/edit#gid=0
+    type: metadata

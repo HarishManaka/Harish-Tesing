@@ -1,0 +1,233 @@
+.nasm-order-summary {
+    font-family: peridot-pe-variable, sans-serif;
+    color: var(--brand-color-midnight-sky, #123257);
+}
+
+.nasm-order-summary__accordion {
+    margin-bottom: 0;
+}
+
+.sticky-order-summary {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #fff;
+
+    .nasm-accordion {
+        border: 0;
+        padding: 0;
+        margin-bottom: 0;
+    }
+}
+
+.nasm-order-summary.sticky-order-summary {
+    box-shadow: 0 -37px 10px 0 rgb(0 0 0 / 0%), 0 -24px 9px 0 rgb(0 0 0 / 1%), 0 -13px 8px 0 rgb(0 0 0 / 5%), 0 -6px 6px 0 rgb(0 0 0 / 9%), 0 -1px 3px 0 rgb(0 0 0 / 10%);
+    border-radius: 8px 8px 0 0;
+    border-top: 1px solid var(--color-light-grey);
+    background: var(--color-neutral-100);
+}
+
+.nasm-order-summary__line-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-16);
+    margin-top: var(--spacing-16);
+}
+
+.nasm-order-summary__line-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+    .nasm-order-summary__line-item.nasm-order-summary__shipping {
+    align-items: start;
+    }
+
+
+/* Specific line item styles */
+.nasm-order-summary__subtotal .nasm-order-summary__label {
+    font-size: var(--font-text-body-m);
+    font-variation-settings: "wght" 500;
+    color: var(--brand-color-black);
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+}
+
+.nasm-order-summary__subtotal .nasm-order-summary__label span{
+  font-weight: 500;
+  font-size: var(--font-text-body-s);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+  color: var(--color-text-neutral-secondary);
+  margin-left: var(--spacing-3);
+}
+
+.nasm-order-summary__subtotal .nasm-order-summary__value {
+    font-size: var(--font-text-body-m);
+    font-variation-settings: "wght" 700;
+    color: var(--color-text-neutral-secondary);
+    line-height: 1.5;
+    letter-spacing: 0.48px;
+}
+
+.nasm-order-summary__discount .nasm-order-summary__label,
+.nasm-order-summary__discount .nasm-order-summary__value{
+    font-size: var(--font-text-body-m);
+    font-weight: 700;
+    color: var(--color-text-seamantic-success-primary);
+    line-height: 1.5;
+    letter-spacing: 0.48px;
+}
+
+.nasm-order-summary__shipping .nasm-order-summary__label,
+.nasm-order-summary__shipping .nasm-order-summary__value,
+.nasm-order-summary__tax .nasm-order-summary__label,
+.nasm-order-summary__tax .nasm-order-summary__value{
+    font-size: var(--font-text-body-m);
+    font-variation-settings: "wght" 500;
+    color: var(--brand-color-black);
+    line-height: 1.5;
+    letter-spacing: 0.48px;
+}
+
+.nasm-order-summary__shipping .nasm-order-summary__value,
+.nasm-order-summary__tax .nasm-order-summary__value{
+    color: var(--color-text-neutral-secondary);
+    text-align: right;
+}
+
+
+.nasm-order-summary__total .nasm-order-summary__label,
+.nasm-order-summary__total .nasm-order-summary__value{
+    font-size: var(--font-text-body-l);
+    font-variation-settings: "wght" 700;
+    color: var(--brand-color-midnight-sky);
+    line-height: 1.5;
+    letter-spacing: 0.54px;
+    text-transform: uppercase;
+}
+
+.nasm-order-summary__value span {
+    display: block;
+    font-weight: 500;
+    font-variation-settings: "wght" 500;
+    font-size: var(--font-text-body-xxs);
+    line-height: 1.5;
+    letter-spacing:0.03em;
+    color: var(--color-text-neutral-tertiary);
+    margin-top: var(--spacing-xxsmall);
+}
+
+.nasm-order-summary__total--final {
+    background-color: #f8f9fa;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-top: 0.75rem;
+}
+
+.nasm-order-summary__total--final .nasm-order-summary__label {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.nasm-order-summary__total--final .nasm-order-summary__value {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--brand-color-midnight-sky, #123257);
+}
+
+.nasm-order-summary__discounts {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.sticky-order-summary {
+    .nasm-order-summary__paytoday {
+        padding: var(--spacing-xbig) var(--spacing-medium) 0;
+    }
+
+    .nasm-accordion__content.nasm-accordion__content--expanded {
+        .nasm-order-summary__paytoday {
+            padding: 0 var(--spacing-medium);
+        }
+    }
+
+    .nasm-order-summary__content{
+        padding: 0 var(--spacing-medium);
+    }
+
+    .nasm-order-summary__content {
+        margin-bottom: var(--spacing-16);
+    }
+
+    .nasm-order-summary__line-item {
+        align-items: end;
+    }
+
+    .nasm-order-summary__line-item.nasm-order-summary__shipping {
+        align-items: start;
+    }
+
+    .nasm-accordion__content .nasm-order-summary__total span{
+        font-size: var(--font-text-body-l);
+        font-weight: 700;
+        font-variation-settings: "wght" 700;
+        color: var(--brand-color-midnight-sky);
+        line-height: 1.5;
+        letter-spacing: 0.54px;
+        text-transform: uppercase;
+    }
+
+    .nasm-order-summary__total .nasm-order-summary__label {
+        font-weight: 500;
+        font-variation-settings: "wght" 500;
+        text-transform: capitalize;
+        color: var(--brand-color-black);
+        font-size: var(--font-text-body-m);
+        letter-spacing: 0.42px;
+        line-height: 1.5;
+    }
+
+    .nasm-order-summary__total .nasm-order-summary__label::after {
+        content: ':';
+    }
+
+    .nasm-order-summary__total .nasm-order-summary__value {
+        font-weight: 500;
+        font-variation-settings: "wght" 500;
+        font-size: var(--font-text-body-s);
+        margin-left: var(--spacing-1);
+        color: var(--color-text-neutral-secondary);
+        letter-spacing: 0.36px;
+        line-height: 1.5;
+    }
+
+    .nasm-order-summary__sticky-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        margin-top: var(--spacing-8);
+    }
+
+    .mobile-payment-plan-label {
+        display: inline-block;
+        font-variation-settings: "wght" 500;
+        font-size: var(--font-text-body-s);
+        line-height: 1.5;
+        letter-spacing: 0.36px;
+        color: var(--color-text-neutral-secondary);
+    }
+}
+
+
+@media (width >= 768px) {
+    .nasm-order-summary.sticky-order-summary {
+        display: none;
+    }
+}

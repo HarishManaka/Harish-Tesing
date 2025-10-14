@@ -1,0 +1,456 @@
+/* Login Nav Block Styles - Matching Figma Design */
+.login-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--color-light-gray-background);
+  padding: 20px;
+}
+
+/* Form Container */
+.ua-form-signin {
+  width: 100%;
+  max-width: 430px;
+  background-color: var(--color-neutral-100);
+  padding: 24px 16px 32px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%),
+              0 4px 6px rgb(0 0 0 / 9%),
+              0 10px 8px rgb(0 0 0 / 5%),
+              0 17px 10px rgb(0 0 0 / 1%);
+  border-radius: 4px;
+}
+
+/* Hide horizontal rule */
+.ua-form-signin hr {
+  display: none;
+}
+
+/* Main Title */
+#login-title,
+.login-heading {
+  font-family: 'Peridot PE Variable', sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 0.96;
+  text-transform: uppercase;
+  color: var(--brand-color-midnight-sky);
+  margin: 0 0 32px;
+  letter-spacing: -0.02em;
+}
+
+/* Input Groups */
+.ua-login-username-group,
+.ua-login-password-group {
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Labels */
+.ua-username-label,
+.ua-password-label {
+  font-family: 'Peridot PE Variable', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-neutral-tertiary);
+  letter-spacing: 0.03em;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* Input Fields */
+.form-control.ua-username,
+.form-control.ua-password {
+  width: 100%;
+  height: 45px;
+  padding: 12px 10px;
+  background-color: var(--brand-color-white);
+  border: 1px solid var(--color-border-neutral-primary);
+  border-radius: 4px;
+  font-family: 'Peridot PE Variable', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--brand-color-black);
+  letter-spacing: 0.03em;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-control.ua-username::placeholder,
+.form-control.ua-password::placeholder {
+  color: var(--color-text-neutral-tertiary);
+  opacity: 1;
+}
+
+.form-control.ua-username:focus,
+.form-control.ua-password:focus {
+  outline: none;
+  border-color: var(--brand-color-midnight-sky);
+  box-shadow: 0 0 0 2px rgb(18 50 87 / 10%);
+}
+
+/* Password Container */
+.ua-password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ua-password-container input {
+  padding-right: 40px;
+}
+
+/* Eye Icons */
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-neutral-tertiary);
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.toggle-password svg {
+  width: 16px;
+  height: 16px;
+}
+
+.toggle-password.hide-icon {
+  display: none;
+}
+
+.toggle-password:hover {
+  color: var(--brand-color-midnight-sky);
+}
+
+/* Hide Forgot Username Container */
+.ua-forgetusername-container {
+  display: none;
+}
+
+/* Forgot Password Container */
+.ua-reset-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px !important;
+  margin-bottom: 24px;
+}
+
+/* Modal - Hide by default */
+
+/* .ua-modal-container {
+  display: none !important;
+} */
+
+/* Forgot Password Link */
+.ua-reset-link {
+  font-family: 'Peridot PE Variable', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--brand-color-midnight-sky);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: opacity 0.2s ease;
+}
+
+.ua-reset-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Log In Button */
+.ua-submit {
+  width: 100%;
+  height: 50px;
+  background-color: var(--brand-color-midnight-sky);
+  border: none;
+  border-radius: 4px;
+  color: var(--brand-color-white);
+  font-family: 'Peridot PE Variable', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ua-submit:hover {
+  background-color: var(--color-button-hover);
+  transform: translateY(-1px);
+}
+
+.ua-submit:active {
+  transform: translateY(0);
+}
+
+/* Hide BR element */
+.ua-form-signin br {
+  display: none;
+}
+
+/* Don't have an account heading */
+.ua-form-signin h5.ua-header {
+  font-family: 'Peridot PE Variable', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgb(23 23 20 / 80%);
+  margin: 0 0 4px;
+  letter-spacing: 0.02em;
+}
+
+/* Create Account Button - Added after form dynamically */
+.login-nav .create-account-btn {
+  width: 100%;
+  max-width: 398px;
+  height: 50px;
+  background-color: transparent;
+  border: 1px solid var(--brand-color-midnight-sky);
+  border-radius: 4px;
+  color: var(--brand-color-midnight-sky);
+  font-family: 'Peridot PE Variable', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin-top: 12px;
+  padding: 8px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-nav .create-account-btn:hover {
+  background-color: var(--brand-color-midnight-sky);
+  color: var(--brand-color-white);
+}
+
+/* Responsive adjustments */
+@media (width <= 480px) {
+  .ua-form-signin {
+    padding: 20px 12px 28px;
+  }
+  
+  #login-title,
+  .login-heading {
+    font-size: 26px;
+  }
+  
+  .form-control.ua-username,
+  .form-control.ua-password {
+    font-size: 14px;
+  }
+}
+
+/* Fallback font if Peridot PE Variable is not available */
+.login-nav * {
+  font-family: 'Peridot PE Variable', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+button.btn.btn-lg.btn-primary.btn-block.ua-submit {
+  background-color: var(--brand-color-midnight-sky);
+  border: none;
+  border-radius: 4px;
+  color: var(--brand-color-white);
+  font-family: 'Peridot PE Variable', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.login-nav-widget-container {
+  width: 430px;
+}
+
+
+
+.text-center.m-3.ua-register-button-container {
+  margin: 0 auto;
+  width: calc(430px - 70px);
+}
+
+.ua-card-body {
+  position: relative;
+}
+
+form#uaUserLoginForm {
+  position: absolute;
+  inset: 0;
+
+  /* height: 437px; */
+  height: 100%;
+}
+
+.ua-card-body {
+  position: relative;
+  height: 500px;
+}
+
+ua-user-register {
+  position: absolute;
+  bottom: 0;
+  margin: 0 20px 10px;
+}
+
+h5.text-left.mb-3.ua-header {
+  transform: translateY(22px);
+}
+
+/* ===================================== */
+
+/* Second State: Welcome Screen Styles  */
+
+/* ===================================== */
+
+.ua-welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--color-light-gray-background);
+  padding: 20px;
+}
+
+.ua-welcome-card {
+  width: 100%;
+  max-width: 430px;
+  background-color: var(--color-neutral-100);
+  padding: 32px 24px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%),
+              0 4px 6px rgb(0 0 0 / 9%),
+              0 10px 8px rgb(0 0 0 / 5%),
+              0 17px 10px rgb(0 0 0 / 1%);
+  border-radius: 4px;
+  text-align: left;
+}
+
+/* Welcome Title */
+.ua-welcome-title {
+  font-family: 'Peridot PE Variable', sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 0.96;
+  text-transform: uppercase;
+  color: var(--brand-color-midnight-sky);
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+/* Welcome Message */
+.ua-welcome-message {
+  font-family: 'Peridot PE Variable', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgb(23 23 20 / 80%);
+  margin: 0 0 32px;
+  letter-spacing: 0.02em;
+}
+
+/* Button Container */
+.ua-welcome-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Base Button Styles */
+.ua-btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 4px;
+  font-family: 'Peridot PE Variable', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  letter-spacing: 0.03em;
+}
+
+/* Primary Button - Learning Portal */
+.ua-btn-primary {
+  background-color: var(--brand-color-midnight-sky);
+  color: var(--brand-color-white);
+}
+
+.ua-btn-primary:hover {
+  background-color: var(--color-button-hover);
+  transform: translateY(-1px);
+}
+
+.ua-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Outline Button - Start Shopping */
+.ua-btn-outline {
+  background-color: transparent;
+  color: var(--brand-color-midnight-sky);
+  border: 1px solid var(--brand-color-midnight-sky);
+}
+
+.ua-btn-outline:hover {
+  background-color: var(--brand-color-midnight-sky);
+  color: var(--brand-color-white);
+}
+
+
+/* Hide welcome state by default */
+.login-nav .ua-welcome-container {
+  display: none;
+}
+
+/* Show welcome state when login successful */
+.login-nav.login-success ua-ng-login {
+  display: none;
+}
+
+.login-nav.login-success .ua-form-signin {
+  display: none;
+}
+
+.login-nav.login-success .ua-welcome-container {
+  display: flex;
+}
+
+/* Responsive adjustments for welcome state */
+@media (width <= 480px) {
+  .ua-welcome-card {
+    padding: 24px 16px;
+  }
+  
+  .ua-welcome-title {
+    font-size: 26px;
+  }
+  
+  .ua-welcome-message {
+    font-size: 14px;
+  }
+}

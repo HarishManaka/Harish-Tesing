@@ -1,0 +1,100 @@
+{
+  "definitions": [
+    {
+      "title": "Product Flexible Payment Sticky",
+      "id": "product-flexible-payment-ready",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Product Flexible Payment Sticky",
+              "model": "product-flexible-payment-ready"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "product-flexible-payment-ready",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "pdp-fp-call_text",
+          "label": "Text",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "pdp-ready-cta-heading",
+          "label": "Main Heading",
+          "value": "",
+          "required": true
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "pdp-ready-cta-headingType",
+          "label": "CTA Heading Type",
+          "value": "h4",
+          "options" : [
+            {"name": "h1", "value": "h1"},
+            {"name": "h2", "value": "h2"},
+            {"name": "h3", "value": "h3"},
+            {"name": "h4", "value": "h4"},
+            {"name": "h5", "value": "h5"},
+            {"name": "h6", "value": "h6"}
+          ]
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "hero-content_cta",
+          "label": "CTA",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "hero-content_ctaText",
+          "label": "CTA Text",
+          "value": ""
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "hero-content_ctaType",
+          "label": "CTA Button Type",
+          "value": "Primary",
+          "options" : [
+            {"name": "Primary", "value": "primary"},
+            {"name": "Default", "value": "default"},
+            {"name": "Secondary", "value": "secondary"}
+          ]
+        },
+        {
+          "component": "multiselect",
+          "valueType": "string",
+          "name": "classes",
+          "label": "Theme & Options",
+          "value": [],
+          "options": [
+            {"name": "Red", "value": "red"},
+            {"name": "White", "value": "white"},
+            {"name": "Primary", "value": "brandcolordark"},
+            {"name": "Accent", "value": "brandcolorhighlight"},
+            {"name": "Rounded Corners", "value": "rounded-corners"},
+            {"name": "Center Align", "value": "text-center"},
+            {"name": "Right Align", "value": "text-right"},
+            {"name": "Auto Height", "value": "auto-height"}
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

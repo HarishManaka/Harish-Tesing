@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Search Test Page</h1>
+    
+    <div class="test-section">
+        <h2>Test Instructions</h2>
+        <ol>
+            <li>Click the search button in the header below</li>
+            <li>Type "bun" in the search field</li>
+            <li>Wait for dropdown results to appear</li>
+            <li>Verify product cards are displayed</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>Expected Behavior</h2>
+        <ul>
+            <li>Search dropdown should appear after typing 2+ characters</li>
+            <li>Product cards should display with images, names, and prices</li>
+            <li>Maximum 4 products should be shown</li>
+            <li>"View all" link should appear at the bottom</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Console Log</h2>
+        <div id="console-log" style="max-height: 200px; overflow-y: auto;">
+            <div class="info">Monitoring console for errors...</div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Page</h2>
+        <iframe id="test-frame" src="http://localhost:3000/nasm"></iframe>
+    </div>
+
+    <script>
+        // Monitor iframe console
+        const logDiv = document.getElementById('console-log');
+        const iframe = document.getElementById('test-frame');
+        
+        iframe.onload = function() {
+            try {
+                // Inject monitoring script into iframe
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                const script = iframeDoc.createElement('script');
+                script.textContent = `
+                    // Override console methods to capture logs
+                    const originalLog = console.log;
+                    const originalWarn = console.warn;
+                    const originalError = console.error;
+                    const originalDebug = console.debug;
+                    
+                    console.log = function(...args) {
+                        window.parent.postMessage({
+                            type: 'console',
+                            level: 'log',
+                            message: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ')
+                        }, '*');
+                        originalLog.apply(console, args);
+                    };
+                    
+                    console.warn = function(...args) {
+                        window.parent.postMessage({
+                            type: 'console',
+                            level: 'warn',
+                            message: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ')
+                        }, '*');
+                        originalWarn.apply(console, args);
+                    };
+                    
+                    console.error = function(...args) {
+                        window.parent.postMessage({
+                            type: 'console',
+                            level: 'error',
+                            message: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ')
+                        }, '*');
+                        originalError.apply(console, args);
+                    };
+                    
+                    console.debug = function(...args) {
+                        window.parent.postMessage({
+                            type: 'console',
+                            level: 'debug',
+                            message: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ')
+                        }, '*');
+                        originalDebug.apply(console, args);
+                    };
+                    
+                    // Monitor network errors
+                    window.addEventListener('error', function(e) {
+                        window.parent.postMessage({
+                            type: 'console',
+                            level: 'error',
+                            message: 'Script error: ' + e.message + ' at ' + e.filename + ':' + e.lineno
+                        }, '*');
+                    });
+                    
+                    // Monitor search activity
+                    document.addEventListener('input', function(e) {
+                        if (e.target.id === 'search' || e.target.type === 'search') {
+                            window.parent.postMessage({
+                                type: 'console',
+                                level: 'info',
+                                message: 'Search input: ' + e.target.value
+                            }, '*');
+                        }
+                    });
+                `;
+                iframeDoc.head.appendChild(script);
+                
+                logDiv.innerHTML += '<div class="success">Test page loaded successfully</div>';
+            } catch (e) {
+                logDiv.innerHTML += '<div class="error">Failed to inject monitoring: ' + e.message + '</div>';
+            }
+        };
+        
+        // Listen for messages from iframe
+        window.addEventListener('message', function(e) {
+            if (e.data.type === 'console') {
+                const className = e.data.level === 'error' ? 'error' : 
+                                 e.data.level === 'warn' ? 'info' : 
+                                 'status';
+                logDiv.innerHTML += `<div class="${className}">[${e.data.level.toUpperCase()}] ${e.data.message}</div>`;
+                logDiv.scrollTop = logDiv.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+{
+  "definitions": [
+    {
+      "title": "HubSpot Form",
+      "id": "hubspot-form",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "HubSpot Form",
+              "model": "hubspot-form",
+              "key-value": true
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "hubspot-form",
+      "fields": [
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "formTemplate",
+          "label": "Form Template",
+          "value": "default",
+          "options": [
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Styled",
+              "value": "styled"
+            },
+            {
+              "name": "Outlined",
+              "value": "outlined"
+            },
+            {
+              "name": "Multi Steps",
+              "value": "multi-steps"
+            }
+          ],
+          "description": "Select a form template"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "portalId",
+          "label": "HubSpot Portal ID",
+          "value": "2494739",
+          "required": true,
+          "description": "Your HubSpot Portal ID"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "formId",
+          "label": "HubSpot Form ID",
+          "value": "",
+          "required": true,
+          "description": "The specific form ID from HubSpot"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "target",
+          "label": "Target Container ID",
+          "value": "",
+          "description": "Optional: Custom container ID for the form"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "redirectUrl",
+          "label": "Redirect URL",
+          "value": "",
+          "description": "Optional: URL to redirect to after form submission"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "formHeading",
+          "label": "Form Title",
+          "value": "",
+          "description": "Optional: Form title"
+        },
+        {
+          "component": "select",
+          "name": "formTitleColor",
+          "label": "Form Title Color",
+          "value": "default",
+          "options": [
+            {
+              "name": "Midnight Sky",
+              "value": "--brand-color-midnight-sky"
+            },
+            {
+              "name": "Citrus Pop",
+              "value": "--brand-color-citrus-pop"
+            },
+            {
+              "name": "Morning Mist",
+              "value": "--brand-color-morning-mist"
+            },
+            {
+              "name": "Mist",
+              "value": "--brand-color-mist"
+            },
+            {
+              "name": "Aqua Bliss",
+              "value": "--brand-color-aqua-bliss"
+            },
+            {
+              "name": "Iris Buzz",
+              "value": "--brand-color-iris-buzz"
+            },
+            {
+              "name": "Sunset Sizzle",
+              "value": "--brand-color-sunset-sizzle"
+            },
+            {
+              "name": "Cotton",
+              "value": "--brand-color-cotton"
+            },
+            {
+              "name": "Linen",
+              "value": "--brand-color-linen"
+            },
+            {
+              "name": "Black",
+              "value": "--brand-color-black"
+            },
+            {
+              "name": "Default",
+              "value": "default"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "formHeading-line-2",
+          "label": "Form Title Line 2",
+          "value": "",
+          "description": "Optional: Form title line 2"
+        },
+        {
+          "component": "select",
+          "name": "formTitleLine2Color",
+          "label": "Form Title Line 2 Color",
+          "value": "default",
+          "options": [
+            {
+              "name": "Midnight Sky",
+              "value": "--brand-color-midnight-sky"
+            },
+            {
+              "name": "Citrus Pop",
+              "value": "--brand-color-citrus-pop"
+            },
+            {
+              "name": "Morning Mist",
+              "value": "--brand-color-morning-mist"
+            },
+            {
+              "name": "Mist",
+              "value": "--brand-color-mist"
+            },
+            {
+              "name": "Aqua Bliss",
+              "value": "--brand-color-aqua-bliss"
+            },
+            {
+              "name": "Iris Buzz",
+              "value": "--brand-color-iris-buzz"
+            },
+            {
+              "name": "Sunset Sizzle",
+              "value": "--brand-color-sunset-sizzle"
+            },
+            {
+              "name": "Cotton",
+              "value": "--brand-color-cotton"
+            },
+            {
+              "name": "Linen",
+              "value": "--brand-color-linen"
+            },
+            {
+              "name": "Black",
+              "value": "--brand-color-black"
+            },
+            {
+              "name": "Default",
+              "value": "default"
+            }
+          ]
+        },
+        {
+          "component": "richtext",
+          "name": "formSubtitle",
+          "value": "",
+          "label": "Form Subtitle",
+          "valueType": "string",
+          "description": "Optional: Form subtitle"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "formSize",
+          "label": "Form Size",
+          "value": "fluid",
+          "options": [
+            {
+              "name": "Fluid",
+              "value": "fluid"
+            },
+            {
+              "name": "Small",
+              "value": "small"
+            },
+            {
+              "name": "Medium",
+              "value": "medium"
+            },
+            {
+              "name": "Large",
+              "value": "large"
+            }
+          ],
+          "description": "Select a form size"
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "transparentBackground",
+          "label": "Transparent Background",
+          "value": false,
+          "description": "Show form with transparent background"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "transparentBackgroundOpacity",
+          "label": "Transparent Background Opacity",
+          "value": "85",
+          "options": [
+            {
+              "name": "50%",
+              "value": "50"
+            },
+            {
+              "name": "85%",
+              "value": "85"
+            },
+            {
+              "name": "90%",
+              "value": "90"
+            }
+          ],
+          "description": "Transparent background opacity",
+          "condition": { "===": [{"var" : "transparentBackground"}, true] }
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "inlineMessage",
+          "label": "Show Inline Thank You Message",
+          "value": true,
+          "description": "Show thank you message inline instead of redirecting"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "textColor",
+          "label": "Text Color",
+          "value": "default",
+          "options": [
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "White",
+              "value": "white"
+            }
+          ],
+          "description": "Select a color for the text"
+        },
+        {
+          "component": "richtext",
+          "name": "formFooter",
+          "value": "",
+          "label": "Form Footer",
+          "valueType": "string",
+          "description": "Optional: Form footer"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

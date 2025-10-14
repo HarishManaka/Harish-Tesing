@@ -1,0 +1,70 @@
+{
+  "definitions": [
+    {
+      "title": "Expanded Carousel",
+      "id": "expanded-carousel",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Expanded Carousel",
+              "model": "expanded-carousel",
+              "filter": "expanded-carousel"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Expanded Carousel Item",
+      "id": "expanded-carousel-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Expanded Carousel Item",
+              "model": "expanded-carousel-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "expanded-carousel",
+      "fields": []
+    },
+    {
+      "id": "expanded-carousel-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Title"
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "label": "Description",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "expanded-carousel",
+      "components": ["expanded-carousel-item"]
+    }
+  ]
+}

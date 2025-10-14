@@ -1,0 +1,286 @@
+
+/* Common Aside Block Style */
+
+.common-aside__wrapper .common-aside__container {
+    border-radius: 4px;
+    border: 1px solid var(--color-border-neutral-primary);
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.common-aside__wrapper .common-aside__header {
+    padding: var(--spacing-16);
+    background-color: var(--color-neutral-100);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.common-aside__wrapper .common-aside__title {
+    margin: 0;
+    font-size: var(--font-text-h5);
+    font-variation-settings: "wght" 900, "wdth" 60;
+    font-weight: 900;
+    color: var(--brand-color-midnight-sky);
+    line-height: 0.96;
+    letter-spacing: 0;
+}
+
+.common-aside__wrapper .toggle-expand-collapsible {
+    position: relative;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}
+
+.common-aside__wrapper .toggle-expand-collapsible button {
+    display: block;
+    padding: 0;
+    height: 12px;
+    width: 12px;
+}
+
+.common-aside__wrapper .toggle-expand-collapsible button:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.common-aside__wrapper .common-aside__content--inner {
+    padding: 0
+}
+
+.common-aside__wrapper .common-aside__content {
+    padding: var(--spacing-10) var(--spacing-16);
+    border-top: 1px solid var(--color-border-neutral-primary);
+}
+
+.common-aside__wrapper .toggle-expand-collapsible button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 12px;
+    height: 2px;
+    background-color: var(--color-dark-grey);
+    transform: translateY(-50%);
+}
+
+.common-aside__wrapper .toggle-expand-collapsible button.closed::after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 12px;
+    background-color: var(--color-dark-grey);
+    transform: translateX(-50%);
+}
+
+.common-aside__wrapper .toggle-expand-collapsible .nasm-accordion__header {
+    transition: background-color 0.2s ease;
+}
+
+.common-aside__wrapper .toggle-expand-collapsible .nasm-accordion__content {
+    transition: max-height 0.3s ease, padding 0.3s ease
+}
+
+.nasm-accordion {
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.nasm-accordion__header {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nasm-accordion__title {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.nasm-accordion__content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.nasm-accordion__content--expanded {
+  max-height: 2000px;
+}
+
+.nasm-accordion__content > * {
+  margin: 0;
+  color: var(--brand-color-midnight-sky, #123257);
+}
+
+
+/* Animation for icon rotation */
+.nasm-accordion__content--expanded + .nasm-accordion__header .nasm-accordion__icon {
+  transform: rotate(180deg);
+}
+
+
+/* Variation 2: Bottom Button Accordion */
+.nasm-accordion--bottom-button {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.nasm-accordion--bottom-button .nasm-accordion__content {
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.nasm-accordion--bottom-button .nasm-accordion__content--expanded {
+  max-height: 500px;
+  padding: 0;
+}
+
+.sticky-order-summary .nasm-accordion__content > div{
+    animation: fade-slide-out 0s  linear forwards;
+}
+
+.sticky-order-summary .nasm-accordion__content.nasm-accordion__content--expanded > div{
+    animation: fade-slide-in 0s linear forwards;
+}
+
+
+.nasm-accordion__footer-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding: 0 var(--spacing-medium);
+    background: none;
+    border: none;
+    margin-top: 8px;
+    position: absolute;
+    right: 0;
+    z-index: 999;
+    transition: opacity 0.4s linear, bottom 0.4s linear;
+    pointer-events: auto;
+    bottom: 82px;
+}
+
+.nasm-accordion__footer-button[aria-expanded="false"] + .nasm-order-summary__paytoday:has(.nasm-paytoday__row) .nasm-order-summary__total .nasm-order-summary__label {
+    margin-top: var(--spacing-1);
+}
+
+.nasm-accordion__content.nasm-accordion__content--expanded + .nasm-accordion__footer-button {
+    opacity: 0;
+    bottom: 93px;
+    pointer-events: none;
+    height: 0;
+    margin-top: 0;
+}
+
+.nasm-accordion__footer-button .nasm-accordion__icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    cursor: pointer;
+}
+
+.nasm-accordion__content.nasm-accordion__content--expanded + .nasm-accordion__footer-button .nasm-accordion__icon {
+    display: none;
+}
+
+
+.sticky-nasm-accordion__content__title {
+    padding: var(--spacing-big) var(--spacing-medium) var(--spacing-16);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-border-neutral-primary);
+    margin-bottom: var(--spacing-small);
+}
+
+.sticky-nasm-accordion__content__title .nasm-accordion__title-only {
+    margin: 0;
+    font-size: var(--font-text-h5);
+    font-variation-settings: "wght" 900, "wdth" 60;
+    line-height: 0.96;
+    letter-spacing: 0;
+}
+
+.sticky-nasm-accordion__content__title .toggle-expand-collapsible{
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.sticky-nasm-accordion__content__title .toggle-expand-collapsible button {
+    display: block;
+    padding: 0;
+    height: 12px;
+    width: 12px;
+}
+
+.sticky-nasm-accordion__content__title .toggle-expand-collapsible button:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.sticky-nasm-accordion__content__title .toggle-expand-collapsible button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 12px;
+    height: 2px;
+    background-color: var(--color-dark-grey);
+    transform: translateY(-50%);
+}
+
+.nasm-accordion__footer-button.arrow-down + .nasm-order-summary__paytoday {
+    padding-bottom: var(--spacing-medium);
+    min-height: 119px;
+    box-sizing: border-box;
+}
+
+.nasm-accordion__footer-button.arrow-up + .nasm-order-summary__paytoday {
+    background-color: var(--color-neutral-100);
+    border-top: 1px solid var(--color-light-grey);
+    border-radius: 8px 8px 0 0;
+    padding: var(--spacing-16) var(--spacing-medium) var(--spacing-medium);
+}
+
+
+@media (width >= 768px) {
+    .common-aside__wrapper .common-aside__title {
+        font-size: var(--font-text-h3);
+    }
+}
+
+@keyframes  fade-slide-in {
+    from {
+        max-height: 0;
+    }
+
+    to {
+        max-height: 250px;
+    }
+}
+
+@keyframes fade-slide-out {
+    0% {
+        max-height: 250px;
+    }
+
+    100% {
+        max-height: 0;
+        display: none;
+    }
+}

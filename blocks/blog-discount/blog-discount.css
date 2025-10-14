@@ -1,0 +1,411 @@
+/* Blog Discount Block */
+.blog-discount {
+  background-color: var(--brand-color-midnight-sky, #123257);
+  color: white;
+  padding: 20px 0;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  position: relative;
+  z-index: 100;
+}
+
+/* Sticky behavior when at top of viewport */
+.blog-discount.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  margin-left: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 30%);
+}
+
+/* Placeholder element to maintain layout when sticky */
+.blog-discount-placeholder {
+  background-color: transparent;
+  width: 100%;
+}
+
+.blog-discount-content-container {
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Text Section */
+.blog-discount-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.blog-discount-pretext {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 8px;
+  color: white;
+}
+
+.blog-discount-maintext {
+  font-size: 28px;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  margin: 0;
+  color: #E8F557;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+/* Form Section */
+.blog-discount-form {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.hubspot-form-loading {
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  font-style: italic;
+}
+
+.blog-discount-form-error {
+  background: rgb(255 255 255 / 10%);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.blog-discount-form-error p {
+  margin: 0;
+  color: white;
+}
+
+/* HubSpot Form Styling */
+.blog-discount-hubspot-form {
+  background: transparent !important;
+}
+
+.blog-discount-hubspot-form .hs-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Hide all fieldsets by default */
+.blog-discount-hubspot-form fieldset {
+  display: none !important;
+}
+
+/* Show only the first fieldset (email field) and submit section */
+.blog-discount-hubspot-form fieldset.form-columns-1 {
+  display: flex !important;
+  flex: 1;
+  min-width: 200px;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  align-items: center !important;
+}
+
+.blog-discount-hubspot-form .hs_submit {
+  display: flex !important;
+  flex: 0 0 auto;
+  margin: 0 !important;
+  align-items: center !important;
+}
+
+.blog-discount-hubspot-form .hs_submit .actions {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Target the specific input wrapper and button for perfect alignment */
+.blog-discount-hubspot-form .hs_email .input {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.blog-discount-hubspot-form .hs_email {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.blog-discount-hubspot-form .hs-input {
+  width: 100% !important;
+  padding: 14px 16px !important;
+  border: 2px solid rgb(255 255 255 / 30%) !important;
+  border-radius: 6px !important;
+  background: rgb(255 255 255 / 10%) !important;
+  color: white !important;
+  font-size: 16px !important;
+  font-family: inherit !important;
+  transition: all 0.3s ease !important;
+  height: 52px !important;
+  box-sizing: border-box !important;
+  vertical-align: top !important;
+  margin: 0 !important;
+}
+
+.blog-discount-hubspot-form .hs-input::placeholder {
+  color: rgb(255 255 255 / 70%) !important;
+}
+
+.blog-discount-hubspot-form .hs-input:focus {
+  border-color: #E8F557 !important;
+  background: rgb(255 255 255 / 15%) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgb(232 245 87 / 20%) !important;
+}
+
+.blog-discount-hubspot-form .hs-button {
+  background: white !important;
+  color: var(--brand-color-midnight-sky, #123257) !important;
+  border: none !important;
+  padding: 14px 24px !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  white-space: nowrap !important;
+  min-width: 160px !important;
+  height: 52px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1.2;
+  vertical-align: top !important;
+  margin: 0 !important;
+}
+
+.blog-discount-hubspot-form .hs-button:hover {
+  background: #E8F557 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 20%) !important;
+}
+
+.blog-discount-hubspot-form .hs-button:active {
+  transform: translateY(0) !important;
+}
+
+/* Required field indicator styling */
+.blog-discount-hubspot-form .hs-form-required {
+  color: #E8F557 !important;
+}
+
+/* Error message styling */
+.blog-discount-hubspot-form .hs-error-msgs {
+  margin-top: 8px !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  width: 100% !important;
+  padding: 0;
+}
+
+.blog-discount-hubspot-form .hs-error-msg {
+  color: #ff6b6b !important;
+  font-size: 12px !important;
+  background: rgb(255 107 107 / 10%) !important;
+  padding: 8px 12px !important;
+  border-radius: 4px !important;
+  border-left: 3px solid #ff6b6b !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin: 4px 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure form field containers allow space for error messages */
+.blog-discount-hubspot-form .hs-form-field {
+  margin: 0 !important;
+  position: relative !important;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Make sure input fields don't overlap error messages */
+.blog-discount-hubspot-form .hs-input {
+  margin-bottom: 0 !important;
+}
+
+/* Success message styling */
+.blog-discount-hubspot-form .submitted-message {
+  background: rgb(232 245 87 / 10%) !important;
+  color: #E8F557 !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
+  text-align: center !important;
+  border: 2px solid #E8F557 !important;
+  font-weight: 600 !important;
+}
+
+/* Success state styling for form section */
+.blog-discount-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
+
+.blog-discount-success .submitted-message {
+  background: rgb(232 245 87 / 15%) !important;
+  color: #E8F557 !important;
+  padding: 24px !important;
+  border-radius: 12px !important;
+  text-align: center !important;
+  border: 2px solid #E8F557 !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Fallback success message styling */
+.blog-discount-success-fallback {
+  background: rgb(232 245 87 / 15%);
+  color: #E8F557;
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid #E8F557;
+  max-width: 400px;
+  width: 100%;
+}
+
+.blog-discount-success-fallback h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #E8F557;
+}
+
+.blog-discount-success-fallback p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  opacity: 0.9;
+}
+
+.blog-discount-success-fallback .success-content {
+  font-size: 16px;
+  line-height: 1.4;
+  color: white;
+}
+
+.blog-discount-success-fallback .success-content strong {
+  color: #E8F557;
+  font-weight: 700;
+}
+
+/* Styling for HubSpot inline success messages */
+.blog-discount-hubspot-success {
+  background: rgb(232 245 87 / 15%) !important;
+  border: 2px solid #E8F557 !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  text-align: center !important;
+  max-width: 400px;
+  width: 100%;
+}
+
+.blog-discount-hubspot-success p {
+  margin: 0 !important;
+  color: white !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+}
+
+.blog-discount-hubspot-success span {
+  color: #E8F557 !important;
+  font-weight: 700 !important;
+}
+
+/* Responsive Design */
+@media (width >= 768px) {
+  .blog-discount {
+    padding: 24px 0;
+  }
+
+  .blog-discount-content-container {
+    padding: 0 40px;
+    gap: 60px;
+    flex-wrap: nowrap;
+  }
+
+  .blog-discount-maintext {
+    font-size: 32px;
+  }
+
+  .blog-discount-hubspot-form .hs-form {
+    flex-wrap: nowrap;
+  }
+
+  .blog-discount-hubspot-form .hs-form-field {
+    min-width: 250px;
+  }
+}
+
+@media (width >= 1024px) {
+  .blog-discount {
+    padding: 28px 0;
+  }
+
+  .blog-discount-content-container {
+    padding: 0 60px;
+  }
+
+  .blog-discount-maintext {
+    font-size: 36px;
+  }
+}
+
+/* Mobile adjustments */
+@media (width < 768px) {
+  .blog-discount-content-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .blog-discount-text {
+    order: 1;
+  }
+
+  .blog-discount-form {
+    order: 2;
+    width: 100%;
+  }
+
+  .blog-discount-hubspot-form .hs-form {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .blog-discount-hubspot-form .hs-form-field,
+  .blog-discount-hubspot-form .hs-button {
+    width: 100% !important;
+    min-width: unset !important;
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "definitions": [
+    {
+      "title": "Add to Cart from URL",
+      "id": "add-to-cart-from-url",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "add-to-cart-from-url",
+              "filter": "add-to-cart-from-url",
+              "model": "add-to-cart-from-url",
+              "key-value": true
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "add-to-cart-from-url",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "loadingMessage",
+          "label": "Loading Message",
+          "value": "Please wait while we are redirecting you to the cart...",
+          "description": "Message to display while processing"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "successMessage",
+          "label": "Success Message",
+          "value": "Products added to cart successfully!",
+          "description": "Message to display on successful add to cart"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "errorMessage",
+          "label": "Error Message",
+          "value": "Error adding products to cart. Please try again.",
+          "description": "Message to display on error"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "noParamsMessage",
+          "label": "No Parameters Message",
+          "value": "No products or coupons found in URL. Redirecting to cart...",
+          "description": "Message when no URL parameters or SKUs are found"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

@@ -1,0 +1,306 @@
+.expanded-carousel {
+  background-color: white;
+  width: 100%;
+
+  /* margin: 40px 0; */
+  padding: 20px 0 40px;
+
+  & .carousel {
+    width: 100%;
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+  }
+
+  & .carousel-track {
+    display: flex;
+    width: 100%;
+    gap: 2px;
+    overflow: hidden;
+  }
+
+  & .carousel-item {
+    position: relative;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+
+    & img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    &:hover .carousel-overlay {
+      opacity: 1;
+    }
+  }
+
+  & .carousel-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px 20px;
+    background: linear-gradient(to top, rgb(0 40 60 / 90%), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    text-align: center;
+  }
+
+  & .carousel-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  & .carousel-description {
+    font-size: 14px;
+    opacity: 0.9;
+    color: #fff;
+    line-height: 1.4;
+  }
+
+  & .carousel-dots {
+    display: none;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 32px;
+    padding: 0 20px; 
+  }
+
+  & .dot {
+    width: 12px;
+    height: 12px;
+    background: var(--brand-color-iris-buzz);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    flex-shrink: 0;
+
+    &.active {
+      width: 40px;
+      height: 12px;
+      border-radius: 10px;
+      background: var(--brand-color-midnight-sky);
+      transform: none;
+    }
+  }
+}
+
+/* Desktop styles (default) */
+@media (width >= 1024px) {
+  .expanded-carousel {
+    margin:  0;
+    padding: 40px 40px 52px;
+
+    & .carousel-track {
+      height: 500px;
+    }
+
+    & .carousel-item {
+      flex: 1 1 0;
+      min-width: 0;
+
+      &:hover {
+        flex: 2.5 1 0;
+      }
+    }
+
+    & .carousel-dots {
+      display: none;
+    }
+
+    /* Adjust flex grow based on number of items */
+    & .carousel:has(.carousel-item:nth-child(3):last-child) .carousel-item:hover {
+      flex: 1.4 1 0; /* 3 items - larger expansion */
+    }
+
+    & .carousel:has(.carousel-item:nth-child(4):last-child) .carousel-item:hover {
+      flex: 1.4 1 0; /* 4 items */
+    }
+
+    & .carousel:has(.carousel-item:nth-child(5):last-child) .carousel-item:hover {
+      flex: 1.4 1 0; /* 5 items */
+    }
+
+    & .carousel:has(.carousel-item:nth-child(6):last-child) .carousel-item:hover {
+      flex: 1.4 1 0; /* 6 items - smaller expansion */
+    }
+  }
+}
+
+/* Tablet styles */
+@media (768px <= width < 1024px) {
+  .expanded-carousel {
+    margin:  0;
+    padding: 40px 0;
+
+    & .carousel-track {
+      height: 400px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+      padding: 0 50px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    & .carousel-item {
+      flex: 1 0 auto;
+      width: 15%;
+      scroll-snap-align: center;
+      transition: width 0.5s ease;
+    }
+
+    & .carousel-item.active {
+      width: 35%;
+    }
+
+    & .carousel-item.active .carousel-overlay {
+      opacity: 1;
+    }
+
+    & .carousel-dots {
+      display: flex;
+    }
+
+    & .carousel-overlay {
+      opacity: 0;
+    }
+
+    /* Adjust widths based on number of items for tablet */
+    & .carousel:has(.carousel-item:nth-child(3):last-child) .carousel-item {
+      width: 25%;
+    }
+
+    & .carousel:has(.carousel-item:nth-child(3):last-child) .carousel-item.active {
+      width: 50%;
+    }
+
+    & .carousel:has(.carousel-item:nth-child(6):last-child) .carousel-item {
+      width: 12%;
+    }
+
+    & .carousel:has(.carousel-item:nth-child(6):last-child) .carousel-item.active {
+      width: 35%;
+    }
+  }
+}
+
+/* Mobile styles */
+@media (width < 768px) {
+  .expanded-carousel {
+    /* padding: 0; */
+
+    & .carousel-track {
+      height: 60vh;
+      min-height: 400px;
+      max-height: 600px;
+      overflow: hidden;
+      gap: 2px;
+      padding: 0;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    & .carousel-item {
+      flex: 1 1 0%;
+      min-width: 0;
+      transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    & .carousel-item.active {
+      flex: 2.5 1 0%;
+    }
+
+    & .carousel-item.active .carousel-overlay {
+      opacity: 1;
+    }
+
+    & .carousel-dots {
+      display: flex;
+    }
+
+    & .carousel-overlay {
+      opacity: 0;
+      background: linear-gradient(
+        to top, 
+        rgb(0 40 60 / 95%), 
+        rgb(0 40 60 / 30%) 50%, 
+        transparent
+      );
+      padding: 40px 20px 20px;
+    }
+
+    & .carousel-title {
+      font-size: 20px;
+    }
+
+    & .carousel-description {
+      font-size: 13px;
+    }
+
+    /* Adjust active item size based on number of items */
+    & .carousel:has(.carousel-item:nth-child(3):last-child) .carousel-item.active {
+      flex: 8 1 0%; /* 3 items - larger active item */
+    }
+
+    & .carousel:has(.carousel-item:nth-child(6):last-child) .carousel-item.active {
+      flex: 5 1 0%; /* 6 items - smaller active item */
+    }
+  }
+}
+
+/* Transition improvements */
+@media (prefers-reduced-motion: reduce) {
+  .expanded-carousel {
+    & .carousel-item,
+    & .carousel-overlay,
+    & .dot {
+      transition: none;
+    }
+  }
+}
+
+/* Dark mode support
+@media (prefers-color-scheme: light) {
+  .expanded-carousel {
+    background-color: #f5f5f5;
+
+    & .carousel-item {
+      background-color: #e0e0e0;
+    }
+
+    & .dot {
+      background-color: rgb(0 0 0 / 30%);
+    }
+
+    & .dot.active {
+      background-color: #0080a0;
+    }
+  }
+} */

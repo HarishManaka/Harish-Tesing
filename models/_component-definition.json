@@ -1,0 +1,343 @@
+{
+  "groups": [
+    {
+      "title": "Default Content",
+      "id": "default",
+      "components": [
+        {
+          "...": "./_text.json#/definitions"
+        },
+        {
+          "...": "./_title.json#/definitions"
+        },
+        {
+          "...": "./_image.json#/definitions"
+        },
+        {
+          "...": "./_button.json#/definitions"
+        }
+      ]
+    },
+    {
+      "title": "Sections",
+      "id": "sections",
+      "components": [
+        {
+          "...": "./_section.json#/definitions"
+        }
+      ]
+    },
+    {
+      "title": "Blocks",
+      "id": "blocks",
+      "components": [
+        {
+          "...": "../blocks/academic-form/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/amchart/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/cards/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/card-variants/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/columns/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/fragment/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/featured-card/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/hero/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/id-me-badge/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/id-me-verify-button/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/content-fragment/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/marquee/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/brands/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/footer-menu/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/footer-copyright/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/footer-social/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/contact-rep/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/flexible-payment-cta/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/logo/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/maintenance-alert/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/accordion/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/testimonials/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/table/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/exercise-filter/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/mfe-login/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/exercise-details/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/hero-usp/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/mini-courses/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/health-nutrition-guides/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/securebadge/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/tabs/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/sports-tabs/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/cards-carousel/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/banner-cta/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/banner/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/hero-stats/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/hero-card/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/hero-video/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/story-carousel/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/video/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/payment-plans/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/validate-credentials/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/user-form/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/hero-video-background/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/hs-banner/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/hubspot-form-banner/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/hubspot-form/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/nav-level-3/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/nav/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/facts/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/login-nav/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/countdown-promo/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/expanded-carousel/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/product-description-tabs/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/discount-filter/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/mansory/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/annotated-table/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/nasm-widget/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/carousel-tabs/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/membership-value-table/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/blog-intro/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/quote/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/blog-discount/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/product-faq/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/product-testimonials/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/salary-map/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/blog-post-cta/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/filter-section-cards/_*.json#/definitions"
+        }
+      ]
+    },
+    {
+      "title": "Product",
+      "id": "product",
+      "components": [
+        {
+          "...": "../blocks/product-*/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/enrichment/_*.json#/definitions"
+        }
+      ]
+    },
+    {
+      "title": "Cart",
+      "id": "cart",
+      "components": [
+        {
+          "...": "../blocks/commerce-mini-cart/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-cart/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-checkout/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/add-to-cart-from-url/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/recertification-and-pay/_*.json#/definitions"
+        }
+      ]
+    },
+    {
+      "title": "Order",
+      "id": "order",
+      "components": [
+        {
+          "...": "../blocks/commerce-order-*/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-shipping-status/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-customer-details/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-search-order/_*.json#/definitions"
+        }
+      ]
+    },
+    {
+      "title": "Account",
+      "id": "account",
+      "components": [
+        {
+          "...": "../blocks/commerce-login/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-forgot-password/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-create-account/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-account-sidebar/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-account-header/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-orders-list/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-addresses/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-customer-information/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-returns-list/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-create-password/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-confirm-account/_*.json#/definitions"
+        }
+      ]
+    },
+    {
+      "title": "Return",
+      "id": "return",
+      "components": [
+        {
+          "...": "../blocks/commerce-return-header/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-create-return/_*.json#/definitions"
+        }
+      ]
+    }
+  ]
+}

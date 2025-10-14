@@ -1,0 +1,181 @@
+{
+  "definitions": [
+    {
+      "title": "AMChart",
+      "id": "amchart",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "AMChart",
+              "model": "amchart"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "amchart",
+      "fields": [
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "type",
+          "label": "Chart Type",
+          "value": "column",
+          "options": [
+            { "name": "Column Chart", "value": "column" },
+            { "name": "Pie Chart", "value": "pie" },
+            { "name": "Donut Chart", "value": "donut" },
+            { "name": "Line Chart", "value": "line" }
+          ]
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "layout",
+          "label": "Layout",
+          "value": "chart-only",
+          "options": [
+            { "name": "Chart Only", "value": "chart-only" },
+            { "name": "Text Left / Chart Right", "value": "text-chart" }
+          ],
+          "description": "Choose the layout style for the chart block"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "headline",
+          "label": "Headline",
+          "value": "",
+          "description": "Large headline text (e.g., '1.5 trillion')"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "subheadline",
+          "label": "Subheadline",
+          "value": "",
+          "description": "Subheadline text (e.g., 'WELLNESS MARKET VALUE*')"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "description",
+          "label": "Description",
+          "value": "",
+          "description": "Main description text"
+        },
+        {
+          "component": "multifield",
+          "valueType": "object[]",
+          "name": "bullet-points",
+          "label": "Bullet Points",
+          "fields": [
+            {
+              "component": "richtext",
+              "name": "text",
+              "label": "Bullet Text",
+              "valueType": "string"
+            }
+          ],
+          "description": "List of bullet points to display"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "footnote",
+          "label": "Footnote",
+          "value": "",
+          "description": "Footnote text (e.g., '5%: average growth rate of other industries*')"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Chart Title",
+          "value": "",
+          "description": "Optional title displayed above the chart"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "subtitle",
+          "label": "Chart Subtitle",
+          "value": "",
+          "description": "Optional subtitle displayed below the chart"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "data",
+          "label": "Chart Data (JSON)",
+          "value": "[{\"category\": \"Sample\", \"value\": 100}]",
+          "description": "Chart data in JSON format. Example: [{\"category\": \"Item 1\", \"value\": 50}, {\"category\": \"Item 2\", \"value\": 30}]"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "width",
+          "label": "Width",
+          "value": "",
+          "description": "Chart width (e.g., 100%, 800px). Leave empty for auto width."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "height",
+          "label": "Height",
+          "value": "400px",
+          "description": "Chart height (e.g., 400px, 50vh)"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "colors",
+          "label": "Custom Colors",
+          "value": "",
+          "description": "Comma-separated hex colors (e.g., #123257, #e8f557, #66bfc7). Leave empty for default colors."
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "show-legend",
+          "label": "Show Legend",
+          "value": false,
+          "description": "Display legend for pie and donut charts"
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "show-labels",
+          "label": "Show Labels",
+          "value": true,
+          "description": "Display data labels on chart elements"
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "animation",
+          "label": "Enable Animation",
+          "value": true,
+          "description": "Animate chart on load"
+        },
+        {
+          "component": "multiselect",
+          "valueType": "string",
+          "name": "classes",
+          "label": "Options",
+          "value": [],
+          "options": [
+            { "name": "Full Width", "value": "full-width" }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

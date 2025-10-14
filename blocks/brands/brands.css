@@ -1,0 +1,75 @@
+/* Deployment trigger comment */
+.brands.block {
+  padding: 4.5rem 0;
+}
+
+.brands.block #homepage-brands {
+  padding: 40px 0;
+}
+
+.brands.block .homepage-brands-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.brands.block .homepage-brands-title h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.brands.block .homepage-brands-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.brands.block .logo-grid-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.brands.block .logo-grid-cell.fade-in-place {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brands.block .logo-grid-cell.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brands.block .logo-grid-cell img {
+  max-width: 100%;
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+/* Make sure clickable logos get hover fade */
+.brands.block .logo-grid-cell a {
+  transition: opacity 0.3s ease;
+}
+
+.brands.block .logo-grid-cell a:hover img {
+  opacity: 0.7;
+}
+
+@media (width <= 768px) {
+  .brands.block .homepage-brands-logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .brands.block .homepage-brands-title h3 {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,108 @@
+.nasm-selected-payment-option {
+  margin: 0;
+}
+
+.nasm-selected-payment-option__container {
+  background-color: #fff;
+  padding-bottom: 40px;
+
+}
+
+.nasm-selected-payment-option__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-8);
+  gap: var(--spacing-8);
+}
+
+.nasm-selected-payment-option__row:last-of-type {
+  margin-bottom: 8px;
+}
+
+.nasm-selected-payment-option__row--pay-today {
+  margin-bottom: 16px;
+}
+
+.nasm-selected-payment-option__label,
+.nasm-selected-payment-option__value{
+    font-variation-settings: "wght" 700;
+    font-size: var(--font-text-body-l);
+    color: var(--brand-color-midnight-sky);
+    line-height: 1.5;
+    letter-spacing: 0.54px;
+}
+
+.nasm-selected-payment-option__value span {
+    font-weight: 500;
+}
+
+.nasm-selected-payment-option__label--pay-today {
+  color: #6b46c1; /* Purple color for PAY TODAY */
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nasm-selected-payment-option__label--schedule {
+  color: #1e40af; /* Darker blue for Payment Schedule */
+  font-weight: 500;
+}
+
+
+.nasm-selected-payment-option__value--pay-today {
+  color: #6b46c1; /* Purple color for PAY TODAY amount */
+  font-size: 16px;
+}
+
+.nasm-selected-payment-option__value--schedule {
+  color: #1e40af; /* Darker blue for Payment Schedule amount */
+  font-weight: 600;
+}
+
+.nasm-selected-payment-option__note {
+    font-variation-settings: "wght" 500;
+    font-size: var(--font-size-12);
+    color: var(--brand-color-gray);
+    line-height: 1.5;
+    letter-spacing: 0.42px;
+    text-align: right;
+}
+
+.common-aside__content .nasm-selected-payment-option__note span{
+    display: block;
+}
+
+.sticky-order-summary .nasm-selected-payment-option {
+    margin: var(--spacing-18) 0 var(--spacing-16);
+    padding-bottom: var(--spacing-16);
+}
+
+@media (width >= 768px) {
+    .nasm-selected-payment-option__label,
+    .nasm-selected-payment-option__value {
+        font-size: var(--font-text-body-l);
+    }
+
+    .nasm-selected-payment-option__note {
+        font-size: var(--font-text-body-s);
+    }
+
+    .nasm-order-summary__subtotal .nasm-order-summary__label,
+    .nasm-order-summary__subtotal .nasm-order-summary__value,
+    .nasm-order-summary__discount .nasm-order-summary__label,
+    .nasm-order-summary__discount .nasm-order-summary__value,
+    .nasm-order-summary__shipping .nasm-order-summary__label,
+    .nasm-order-summary__shipping .nasm-order-summary__value,
+    .nasm-order-summary__tax .nasm-order-summary__label,
+    .nasm-order-summary__tax .nasm-order-summary__value{
+        font-size: var(--font-text-body-m);
+    }
+
+    .nasm-order-summary__total .nasm-order-summary__label,
+    .nasm-order-summary__total .nasm-order-summary__value {
+        font-size: var(--font-text-body-l);
+    }
+
+}

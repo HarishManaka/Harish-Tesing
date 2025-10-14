@@ -1,0 +1,89 @@
+/* RIC Certification MFE Styles */
+
+.ric-certification-mfe-container {
+  margin: var(--spacing-medium) 0;
+}
+
+/* Loading Spinner Styles */
+.ric-certification-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-large);
+  min-height: 200px;
+}
+
+/* Loader Active State */
+.loader-active {
+  position: relative;
+  min-height: 100px;
+}
+
+.loader-active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* RIC Certification Loader */
+.ric-certification-loader {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 10px;
+}
+
+/* Fallback Loading Text */
+.loading-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #666;
+  font-size: 14px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* RIC Certification CTA Button */
+.ric-certification-cta-button {
+  margin-top: var(--spacing-medium);
+  width: 100%;
+}
+
+/* RIC Certification Error */
+.ric-certification-error {
+  color: #dc3545;
+  text-align: center;
+  padding: var(--spacing-medium);
+  border: 1px solid #dc3545;
+  border-radius: 4px;
+  background-color: #f8d7da;
+  margin: var(--spacing-medium) 0;
+}
+
+/* RIC Certification Success */
+.ric-certification-success {
+  color: #28a745;
+  text-align: center;
+  padding: var(--spacing-medium);
+  border: 1px solid #28a745;
+  border-radius: 4px;
+  background-color: #d4edda;
+  margin: var(--spacing-medium) 0;
+}

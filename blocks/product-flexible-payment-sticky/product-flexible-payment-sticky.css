@@ -1,0 +1,166 @@
+a.nasm-primary-btn {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: peridot-pe-variable, sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.32px;
+    line-height: 50px;
+    background-color: var(--brand-color-midnight-sky);
+    color: var(--ui-color-light);
+    border-radius: 4px;
+    transition: all 0.2s ease-out;
+}
+
+.nasm-primary-btn:focus, .nasm-primary-btn:hover {
+    background-color: var(--brand-color-highlight);
+    color: var(--brand-color-black);
+}
+
+.pdp-ready-choose a {
+    font-size: 1.25rem;
+    text-transform: capitalize;
+    letter-spacing: 0.6px;
+    line-height: 150%;
+}
+
+.product-flexible-payment-sticky-container {
+    position: sticky;
+    top: 0;
+}
+
+.pdp-flexible-payments-ready {
+    bottom: 0;
+    padding: 16px;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--ui-color-light);
+    z-index: 10;
+}
+
+.pdp-flexible-payments {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--brand-color-midnight-sky);
+    margin: 0 0 15px;
+}
+
+.pdp-fp-call p {
+    font-family: peridot-pe-variable, sans-serif;
+    font-size: 1.25rem;
+    line-height: 150%;
+    letter-spacing: 0.36px;
+}
+
+.pdp-ready-choose {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.pdp-ready-cta {
+    display: none;
+}
+
+.pdp-ready-cta p {
+    font-family: peridot-pe-variable, sans-serif;
+    font-variation-settings: "wght" 900, "wdth" 60;
+    color: var(--brand-color-midnight-sky);
+    font-size: 1.5rem;
+    line-height: 96%;
+    text-transform: uppercase;
+}
+
+@media (width >= 768px) {
+    .pdp-ready-choose {
+        width: unset;
+    }
+
+    .pdp-ready-choose a {
+        color: var(--ui-color-light);
+        background: var(--brand-color-midnight-sky);
+        width: 306px;
+        height: 50px;
+        text-decoration: none;
+        text-transform: capitalize;
+    }
+
+    .pdp-ready-choose a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pdp-flexible-payments {
+        display: flex;
+    }
+
+    .pdp-flexible-payments-ready {
+        top: 0;
+        position: sticky;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 85px 0 15px;
+    }
+
+    .pdp-flexible-payments {
+        flex-direction: row;
+        gap: 59px;
+        padding: 0;
+    }
+
+    .pdp-ready-cta {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (width >= 900px) {
+    .pdp-flexible-payments-ready {
+        padding: 16px;
+    }
+}
+
+@media (width >= 1024px) {
+    .pdp-flexible-payments-ready {
+        background: var(--ui-color-light);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        margin: 0;
+        flex-direction: row;
+        padding: 15px 0;
+        height: auto;
+    }
+
+    .pdp-flexible-payments {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        color: var(--brand-color-midnight-sky);
+        margin: 0;
+    }
+
+    .pdp-fp-call p {
+        font-size: 1rem;
+    }
+
+    .pdp-ready-choose {
+        gap: 10px;
+    }
+}

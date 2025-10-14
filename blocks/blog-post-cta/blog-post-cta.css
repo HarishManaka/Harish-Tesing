@@ -1,0 +1,250 @@
+a.nasm-primary-btn,
+button.nasm-primary-btn {
+    display: block;
+    text-align: center;
+    font-family: peridot-pe-variable, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.32px;
+    line-height: 50px;
+    background-color: var(--ui-color-light);
+    color: var(--brand-color-black);
+    width: 100%;
+    transition: all 0.2s ease-out;
+}
+
+a.nasm-primary-btn-dark,
+button.nasm-primary-btn-dark {
+    display: block;
+    text-align: center;
+    font-family: peridot-pe-variable, sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.32px;
+    line-height: 50px;
+    background: var(--brand-color-midnight-sky);
+    color: var(--ui-color-light);
+    width: 100%;
+    transition: all 0.2s ease-out;
+}
+
+a.fill-right-btn,
+button.fill-right-btn {
+    position: relative;
+}
+
+a.nasm-primary-btn:hover {
+    background: var(--brand-color-citrus-pop);
+    color: var(--brand-color-midnight-sky);
+}
+
+.nasm-blog-post-cta-content .nasm-blog-post-cta-btn {
+    display: block;
+    font-family: prompt, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.32px;
+    line-height: 50px;
+    color: var(--brand-color-black);
+    background-color: var(--ui-color-light);
+    transition: all 0.2s ease-out;
+    width: 100%;
+    max-width: 188px;
+}
+
+a.nasm-primary-btn,
+#pdp-learnmore .hs-button.primary.large {
+    border-radius: 4px;
+}
+
+/* Main block styles */
+.blog-post-cta {
+    display: flex;
+    justify-content: center;
+}
+
+/* Hide the desktop image on mobile by default */
+.blog-post-cta-img-desktop {
+    display: none;
+}
+
+.blog-post-cta-img-mobile {
+    display: block;
+}
+
+.blog-post-cta .nasm-blog-post-cta-theme-a {
+    max-width: 393px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-flow: column-reverse;
+}
+
+.blog-post-cta .nasm-blog-post-cta-theme-a .nasm-blog-post-cta-img img {
+    width: 100%;
+}
+
+.nasm-blog-post-cta-theme-a .nasm-blog-post-cta-content {
+    background-color: var(--color-midnight-sky);
+    padding: 28px 24px;
+}
+
+.nasm-blog-post-cta-theme-a .nasm-blog-post-cta-content h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 900;
+    font-variation-settings: "wght" 900;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: var(--ui-color-light);
+}
+
+.blog-post-cta p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 150%;
+    color: var(--ui-color-light);
+    margin-bottom: 32px;
+}
+
+.nasm-blog-post-cta-theme-a .nasm-blog-post-cta-content p {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    color: var(--ui-color-light);
+    margin-bottom: 15px;
+}
+
+.nasm-blog-post-cta-theme-b {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 24px;
+    margin-bottom: 30px;
+    background-color: var(--brand-color-citrus-pop);
+}
+
+.nasm-blog-post-cta-theme-b .nasm-blog-post-cta-content p {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0.64px;
+    text-transform: uppercase;
+    color: var(--brand-color-midnight-sky);
+    margin-bottom: 5px;
+}
+
+.nasm-blog-post-cta-theme-b .nasm-blog-post-cta-content h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    font-variation-settings: "wght" 800;
+    letter-spacing: 0;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: var(--brand-color-midnight-sky);
+}
+
+.nasm-blog-post-cta-theme-b .nasm-blog-post-cta-content {
+    margin-bottom: 10px;
+}
+
+.nasm-blog-post-cta-theme-b .nasm-blog-post-cta-btn {
+    display: block;
+    font-family: peridot-pe-variable, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.32px;
+    line-height: 50px;
+    color: var(--ui-color-light);
+    background-color: var(--brand-color-midnight-sky);
+    transition: all 0.2s ease-out;
+    width: 100%;
+    max-width: 188px;
+}
+
+.nasm-blog-post-cta-theme-b .nasm-blog-post-cta-btn {
+    display: block;
+    font-family: peridot-pe-variable, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.32px;
+    line-height: 50px;
+    color: var(--ui-color-light);
+    background-color: var(--brand-color-midnight-sky);
+    transition: all 0.2s ease-out;
+    width: 100%;
+    max-width: 188px;
+}
+
+/* On larger screens, swap the visible image */
+@media (width >= 768px) {
+    .blog-post-cta-img-mobile {
+        display: none;
+    }
+
+    .blog-post-cta-img-desktop {
+        display: block;
+    }
+
+    .blog-post-cta .nasm-blog-post-cta-theme-a,
+    .blog-post-cta .nasm-blog-post-cta-theme-b {
+        max-width: 764px;
+        width: 100%;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        flex-direction: row;
+    }
+
+    .nasm-blog-post-cta-theme-a .nasm-blog-post-cta-img {
+        order: 1;
+        width: 37%;
+    }
+
+    .nasm-blog-post-cta-theme-a .nasm-blog-post-cta-content {
+        align-content: center;
+        width: 65.5%;
+        padding: 0 30px;
+    }
+
+    .nasm-blog-post-cta-theme-a .nasm-blog-post-cta-content h4 {
+        font-size: 30px;
+        line-height: 90%;
+        margin-bottom: 5px;
+    }
+
+    .nasm-blog-post-cta-theme-a .nasm-blog-post-cta-content p {
+        font-size: 18px;
+        line-height: 100%;
+        margin-bottom: 10px;
+    }
+
+    .nasm-blog-post-content-container .nasm-blog-post-cta-theme-b {
+        justify-content: space-between;
+    }
+
+    .nasm-blog-post-cta-theme-b .nasm-blog-post-cta-content {
+        margin: 0;
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-flow: column;
+    }
+}
+
+@media (width >= 1024px) {
+    .nasm-blog-post-cta-theme-a .nasm-blog-post-cta-img {
+        width: 274px;
+    }
+
+    .nasm-blog-post-cta-theme-a .nasm-blog-post-cta-content {
+        width: 490px;
+    }
+}

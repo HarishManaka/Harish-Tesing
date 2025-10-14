@@ -1,0 +1,87 @@
+{
+  "title": "THE VALUE OF MEMBERSHIP",
+  "columns": [
+    {
+      "title": "TYPICAL ANNUAL COST",
+      "className": "typical-cost"
+    },
+    {
+      "title": "NASM ONE MEMBERSHIP (MONTHLY PLAN)",
+      "className": "monthly-plan"
+    },
+    {
+      "title": "NASM ONE MEMBERSHIP (ANNUAL PLAN)",
+      "className": "annual-plan",
+      "badge": "Best Value"
+    }
+  ],
+  "rows": [
+    {
+      "service": "CEU COURSES",
+      "values": [
+        "$38-$320 each",
+        "$0",
+        "$0"
+      ]
+    },
+    {
+      "service": "SPECIALIZATION AND ADDITIONAL COURSES",
+      "values": [
+        "$99-$299 each",
+        "$0",
+        "$0"
+      ],
+      "hasDropdown": true
+    },
+    {
+      "service": "RECERTIFICATION/RENEWAL FEE",
+      "values": [
+        "$99 every 2 years",
+        "$0",
+        "$0"
+      ]
+    },
+    {
+      "service": "SUPPORT TOOLS/EXTENSIONS",
+      "values": [
+        "$100+",
+        "$0",
+        "$0"
+      ],
+      "hasDropdown": true
+    },
+    {
+      "service": "CPR/AED COURSE",
+      "values": [
+        "$49.99",
+        "$0",
+        "$0"
+      ]
+    },
+    {
+      "service": "EDGE TRAINER PRO APP",
+      "values": [
+        "$349.99",
+        "$0",
+        "$0"
+      ]
+    },
+    {
+      "service": "NASM ONE MEMBERSHIP",
+      "values": [
+        "N/A",
+        "$420 ($35/month)",
+        "$349 (one-time payment)"
+      ]
+    },
+    {
+      "service": "ANNUAL TOTAL",
+      "values": [
+        "$2,000+",
+        "$420",
+        "$349"
+      ],
+      "isTotal": true
+    }
+  ]
+}

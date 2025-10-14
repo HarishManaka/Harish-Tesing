@@ -1,0 +1,186 @@
+{
+  "definitions": [
+    {
+      "title": "Card Variants",
+      "id": "card-variants",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Card Variants",
+              "model": "card-variants",
+              "filter": "card-variants",
+              "key-value": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Card Variants Item",
+      "id": "card-variants-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Card Variants Item",
+              "model": "card-variants-item",
+              "key-value": true
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "card-variants",
+      "fields": [
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "carousel",
+          "label": "Enable Carousel",
+          "description": "Enable carousel mode with navigation dots",
+          "value": false
+        },
+        {
+          "component": "select",
+          "name": "cardSize",
+          "label": "Card Size",
+          "valueType": "string",
+          "description": "Control the size of the cards",
+          "value": "medium",
+          "options": [
+            {
+              "name": "X-Small",
+              "value": "xsmall"
+            },
+            {
+              "name": "Small",
+              "value": "small"
+            },
+            {
+              "name": "Medium",
+              "value": "medium"
+            },
+            {
+              "name": "Large",
+              "value": "large"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "name": "variant",
+          "label": "Card Variant",
+          "valueType": "string",
+          "description": "Select the card design variant",
+          "value": "variant1",
+          "options": [
+            {
+              "name": "Variant 1 - Image Overlay",
+              "value": "variant1"
+            },
+            {
+              "name": "Variant 2 - Stacked",
+              "value": "variant2"
+            },
+            {
+              "name": "Variant 3 - Contact Card",
+              "value": "variant3"
+            }
+          ]
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "autoplay",
+          "label": "Autoplay",
+          "description": "Enable autoplay for the card variants",
+          "value": true
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "loop",
+          "label": "Loop",
+          "description": "Enable loop for the card variants",
+          "value": true
+        },
+        {
+          "component": "multiselect",
+          "name": "styles",
+          "label": "Card Styles",
+          "valueType": "string",
+          "description": "Select spacing and layout styles for the cards",
+          "value": "default",
+          "options": [
+            {
+              "name": "Default Spacing",
+              "value": "default"
+            },
+            {
+              "name": "Space Between",
+              "value": "space between"
+            },
+            {
+              "name": "Space Evenly",
+              "value": "space evenly"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "card-variants-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "name": "imageAlt",
+          "label": "Image Alt Text",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "value": "",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "badge",
+          "label": "Badge",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "subtitle",
+          "label": "Subtitle",
+          "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "name": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "card-variants",
+      "components": ["card-variants-item"]
+    }
+  ]
+}

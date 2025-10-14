@@ -1,0 +1,38 @@
+{
+  "public": {
+    "default": {
+      "commerce-core-endpoint": "https://na1.api.commerce.adobe.com/EbdCQsw1tX8fZihYvEgPTa/graphql",
+      "commerce-endpoint": "https://edge-sandbox-graph.adobe.io/api/71f5ca31-e9ea-4eff-8303-c484952c085d/graphql",
+      "validate-credentials-endpoint": "https://3641782-675byzantiumlimpet-qa.adobeioruntime.net/api/v1/web/validate-credentials/",
+      "headers": {
+        "all": {
+          "Store": "default"
+        },
+        "cs": {
+          "Magento-Customer-Group": "b6589fc6ab0dc82cf12099d1c2d40ab994e8410c",
+          "Magento-Store-Code": "main_website_store",
+          "Magento-Store-View-Code": "default",
+          "Magento-Website-Code": "base",
+          "x-api-key": "not_used",
+          "Magento-Environment-Id": "EbdCQsw1tX8fZihYvEgPTa"
+        }
+      },
+      "analytics": {
+        "base-currency-code": "USD",
+        "environment": "Production",
+        "store-id": 1,
+        "store-name": "Main Website Store",
+        "store-url": "https://www.aemshop.net",
+        "store-view-id": 1,
+        "store-view-name": "Default Store View",
+        "website-id": 1,
+        "website-name": "Main Website"
+      },
+      "plugins": {
+        "picker": {
+           "rootCategory": "2"
+         }
+      }
+    }
+  }
+}

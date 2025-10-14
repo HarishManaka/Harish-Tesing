@@ -1,0 +1,14 @@
+mountpoints:
+  /:
+    url: "https://author-p154556-e1691202.adobeaemcloud.com/bin/franklin.delivery/sprucetechnology/nasm/main"
+    type: "markup"
+    suffix: ".html"
+
+folders:
+  /products/subscription/: /products/subscription/default
+  /products/bundle/: /products/bundle/default
+  /products/matrix/: /products/matrix/default
+  /products/single/: /products/single/default
+  /products/simple/: /products/simple/default
+  /products/: /products/default
+  /workout-exercise-guidance/: /workout-exercise-guidance/default

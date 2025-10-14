@@ -1,0 +1,83 @@
+{
+  "definitions": [
+    {
+      "title": "Salary Map",
+      "id": "salary-map",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Salary Map",
+              "model": "salary-map"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "salary-map",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title",
+          "description": "Main title displayed above the map",
+          "value": "NASM PROS ACROSS THE USA"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "searchPlaceholder",
+          "label": "Search Placeholder",
+          "description": "Placeholder text for the state search input",
+          "value": "Search By State"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "instructionHeading",
+          "label": "Instruction Title",
+          "description": "Title for the instruction section",
+          "value": "HOVER OVER STATE TO SEE NASM PROS"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "instructionLabel",
+          "label": "Instruction Text",
+          "description": "Descriptive text below the instruction title",
+          "value": "<p>Are you an NASM-certified professional with a story to tell? Share your journey and join the \"NASM in Action\" community. Together, we can inspire the next generation of fitness and wellness leaders.</p>"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "shareStoryLabel",
+          "label": "Share Story Link Text",
+          "description": "Text for the share story link",
+          "value": "Share your story"
+        },
+        {
+          "component": "pathbrowser",
+          "valueType": "string",
+          "name": "shareStoryLink",
+          "label": "Share Story Link URL",
+          "description": "URL for the share story link",
+          "value": "#"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "dataSource",
+          "label": "Data Source",
+          "description": "Path to the JSON file containing state salary data",
+          "value": "/salary-map-data.json"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

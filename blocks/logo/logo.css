@@ -1,0 +1,16 @@
+/* Deployment trigger comment */
+.logo {
+  display: block;
+}
+
+.logo .logo-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.logo .logo-image {
+  display: block;
+  height: auto;
+  max-height: 64px;
+  width: auto;
+}

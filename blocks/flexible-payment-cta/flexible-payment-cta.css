@@ -1,0 +1,255 @@
+/* Flexible Payment CTA Block Styles */
+
+/* Hide on mobile */
+@media (width < 768px) {
+    .flexible-payment-cta-wrapper {
+        display: none;
+    }
+}
+
+@media (width < 1024px) {
+    .pdp-flexible-payments-ready {
+        flex-direction: column;
+    }
+}
+
+/* Container styles */
+.flexible-payment-cta-wrapper {
+    position: relative;
+    transition: none;
+}
+
+.flexible-payment-cta-wrapper.is-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--ui-color-light);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+#pdp-flexible-payments-ready {
+    display: flex;
+    background: var(--ui-color-light);
+    margin: 3rem 0 0;
+    padding: 27.67px 0;
+}
+
+#pdp-flexible-payments-ready,
+.pdp-flexible-payments {
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.pdp-flexible-payments {
+    padding: 27.67px 0 43.97px;
+    display: flex;
+    color: var(--brand-color-midnight-sky);
+    margin: 0 0 15px;
+}
+
+/* Call section styles */
+.pdp-fp-call {
+    font-size: 1.125rem;
+    line-height: 150%;
+    letter-spacing: 0.54px;
+}
+
+.pdp-fp-call p {
+    font-size: 1.25rem;
+}
+
+.pdp-fp-call p,
+.pdp-fp-number a {
+    font-family: peridot-pe-variable, sans-serif;
+    line-height: 150%;
+    letter-spacing: 0.36px;
+}
+
+/* Phone number styles */
+.pdp-fp-number a {
+    font-size: 1.125rem;
+    font-weight: 900;
+    line-height: 100%;
+    letter-spacing: 0.4px;
+    color: var(--brand-color-midnight-sky);
+    font-variation-settings: "wght" 900;
+    text-decoration: none;
+}
+
+.pdp-fp-number a:focus-visible {
+    border: 2px solid var(--brand-color-midnight-sky);
+    border-radius: 0.5rem;
+}
+
+/* Ready/Choose section styles */
+.pdp-ready-choose {
+    display: flex;
+    gap: 16px;
+    padding: 0;
+    align-items: center;
+}
+
+.pdp-ready-cta p {
+    font-family: peridot-pe-variable, sans-serif;
+    font-variation-settings: "wght" 900, "wdth" 60;
+    color: var(--brand-color-midnight-sky);
+    font-size: 1.5rem;
+    line-height: 96%;
+    text-transform: uppercase;
+}
+
+.pdp-choose-button {
+    display: flex;
+    align-items: center;
+}
+
+/* Button styles */
+.pdp-choose-button a {
+    font-size: 1.25rem;
+    text-transform: capitalize;
+    letter-spacing: 0.6px;
+    line-height: 150%;
+}
+
+/* Tablet styles */
+@media (width >= 768px) {
+    #pdp-flexible-payments-ready {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0;
+        padding: 15px 0;
+    }
+
+    .pdp-flexible-payments {
+        flex-direction: row;
+        gap: 59px;
+        padding: 0;
+    }
+
+    .pdp-ready-cta {
+        display: flex;
+        align-items: center;
+    }
+
+    .pdp-ready-cta p {
+        color: var(--brand-color-midnight-sky);
+        font-size: 1.25rem;
+        font-weight: 900;
+        line-height: 100%;
+        letter-spacing: 0.4px;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    .pdp-choose-button a.button {
+        color: var(--ui-color-light);
+        font-size: 1rem;
+        line-height: 16px;
+        letter-spacing: 0.32px;
+        background: var(--brand-color-midnight-sky);
+        text-decoration: none;
+        text-transform: capitalize;
+        margin: 0 !important;
+    }
+
+    .pdp-ready-choose {
+        display: flex;
+        gap: 1rem;
+        padding: 0;
+        align-items: center;
+    }
+
+    .pdp-ready-cta {
+        display: none;
+    }
+
+    #pdp-flexible-payments-ready {
+        justify-content: space-between;
+        background: var(--ui-color-light);
+    }
+
+    .pdp-flexible-payments {
+        flex-direction: row;
+        gap: 59px;
+        padding: 0 0 0 26px;
+    }
+
+    .pdp-ready-choose {
+        display: flex;
+        gap: 63px;
+        padding: 0 23px 0 0;
+    }
+
+    .pdp-ready-cta {
+        display: flex;
+    }
+}
+
+/* Desktop styles */
+@media (width >= 1024px) {
+    #pdp-flexible-payments-ready {
+        background: var(--ui-color-light);
+        margin: 0;
+        flex-direction: row;
+        padding: 15px 0;
+        height: auto;
+    }
+
+    .pdp-flexible-payments {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: baseline;
+        gap: 15px;
+        color: var(--brand-color-midnight-sky);
+        margin: 0;
+    }
+
+    .pdp-fp-call p {
+        font-size: 1rem;
+    }
+
+    .pdp-ready-choose {
+        gap: 10px;
+    }
+
+    .pdp-fp-number a {
+        font-size: 1rem;
+    }
+}
+
+/* Large desktop styles */
+@media (width >= 1440px) {
+    #pdp-flexible-payments-ready {
+        flex-direction: row;
+        justify-content: space-between;
+        background: var(--ui-color-light);
+        padding: 15px 0;
+    }
+
+    .pdp-flexible-payments {
+        flex-direction: row;
+        padding: 0 0 0 26px;
+        margin: 0;
+    }
+
+    .pdp-ready-choose {
+        display: flex;
+        gap: 16px;
+        padding: 0 23px 0 0;
+    }
+
+    .pdp-fp-call p,
+    .pdp-fp-number a {
+        font-size: 1.125rem;
+    }
+
+    .pdp-ready-cta p {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Mobile Search Live Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            max-width: 430px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .instructions h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #1976d2;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+            color: #555;
+        }
+        
+        .instructions li {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        
+        .status {
+            padding: 10px;
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 4px;
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background: #0056b3;
+        }
+        
+        #console-output {
+            background: #000;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+        
+        .log-entry {
+            margin: 2px 0;
+        }
+        
+        .log-entry.error {
+            color: #f00;
+        }
+        
+        .log-entry.warn {
+            color: #ff0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mobile Search Live Test</h1>
+    
+    <div class="instructions">
+        <h2>Test Instructions:</h2>
+        <ol>
+            <li>Click "Load Site" to load localhost:3000 in mobile view</li>
+            <li>Click the hamburger menu (☰) to open mobile navigation</li>
+            <li>Type "cert" in the search field that appears</li>
+            <li>Wait 1-2 seconds for results to appear</li>
+            <li>Check the console output below for any errors</li>
+        </ol>
+    </div>
+    
+    <div class="test-container">
+        <div class="status">
+            Mobile viewport: 430px width (simulating iPhone Pro Max)
+        </div>
+        
+        <button onclick="loadSite()">Load Site</button>
+        <button onclick="clearConsole()">Clear Console</button>
+        <button onclick="checkSearchElements()">Check Search Elements</button>
+        
+        <iframe id="test-frame" src="about:blank"></iframe>
+        
+        <div id="console-output">
+            <div class="log-entry">Console output will appear here...</div>
+        </div>
+    </div>
+    
+    <div class="test-container">
+        <h2 style="font-size: 16px; margin-bottom: 10px;">Quick Element Check</h2>
+        <button onclick="directSearchTest()">Direct Search Test</button>
+        <div id="element-status"></div>
+    </div>
+    
+    <script>
+        const consoleOutput = document.getElementById('console-output');
+        const testFrame = document.getElementById('test-frame');
+        const elementStatus = document.getElementById('element-status');
+        
+        function log(message, type = 'log') {
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            consoleOutput.appendChild(entry);
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+        
+        function clearConsole() {
+            consoleOutput.innerHTML = '<div class="log-entry">Console cleared</div>';
+        }
+        
+        function loadSite() {
+            log('Loading localhost:3000...');
+            testFrame.src = 'http://localhost:3000';
+            
+            testFrame.onload = function() {
+                log('Site loaded successfully');
+                
+                // Try to inject viewport meta tag for mobile
+                try {
+                    const doc = testFrame.contentDocument;
+                    const viewport = doc.querySelector('meta[name="viewport"]');
+                    if (!viewport) {
+                        const meta = doc.createElement('meta');
+                        meta.name = 'viewport';
+                        meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0';
+                        doc.head.appendChild(meta);
+                        log('Added mobile viewport meta tag');
+                    }
+                } catch (e) {
+                    log('Could not modify viewport: ' + e.message, 'warn');
+                }
+            };
+            
+            testFrame.onerror = function(e) {
+                log('Error loading site: ' + e.message, 'error');
+            };
+        }
+        
+        function checkSearchElements() {
+            try {
+                const doc = testFrame.contentDocument;
+                
+                // Check for mobile nav elements
+                const mobileNav = doc.querySelector('nav-root');
+                const mobileHeader = doc.querySelector('nav-mobile-header');
+                const searchInput = doc.querySelector('#mobile-search');
+                const searchAutocomplete = doc.querySelector('#mobile-search-autocomplete');
+                
+                let status = '<h3>Element Check Results:</h3><ul>';
+                
+                status += `<li>nav-root: ${mobileNav ? '✅ Found' : '❌ Not found'}</li>`;
+                status += `<li>nav-mobile-header: ${mobileHeader ? '✅ Found' : '❌ Not found'}</li>`;
+                status += `<li>#mobile-search input: ${searchInput ? '✅ Found' : '❌ Not found'}</li>`;
+                status += `<li>#mobile-search-autocomplete: ${searchAutocomplete ? '✅ Found' : '❌ Not found'}</li>`;
+                
+                // Check if navigation is open
+                if (mobileNav) {
+                    const isOpen = mobileNav.getAttribute('data-open') === 'true';
+                    status += `<li>Navigation state: ${isOpen ? '📂 Open' : '📁 Closed'}</li>`;
+                }
+                
+                // Check if search dropin script is loaded
+                const scripts = Array.from(doc.querySelectorAll('script'));
+                const hasSearchDropin = scripts.some(s => s.src && s.src.includes('mobile-search-dropin'));
+                status += `<li>Search dropin loaded: ${hasSearchDropin ? '✅ Yes' : '❌ No'}</li>`;
+                
+                status += '</ul>';
+                
+                elementStatus.innerHTML = status;
+                log('Element check completed');
+                
+            } catch (e) {
+                log('Error checking elements: ' + e.message, 'error');
+                elementStatus.innerHTML = '<p style="color: red;">Could not access iframe content. Make sure the site is loaded.</p>';
+            }
+        }
+        
+        async function directSearchTest() {
+            log('Starting direct search test...');
+            
+            try {
+                // Test the mobile search dropin directly
+                const response = await fetch('/blocks/nav/mobile-search-dropin.js');
+                if (response.ok) {
+                    log('✅ Mobile search dropin file exists');
+                } else {
+                    log('❌ Mobile search dropin file not found', 'error');
+                    return;
+                }
+                
+                // Check if search API endpoint is configured
+                const configResponse = await fetch('/config.json');
+                if (configResponse.ok) {
+                    const config = await configResponse.json();
+                    if (config['commerce-endpoint']) {
+                        log('✅ Commerce endpoint configured: ' + config['commerce-endpoint'].value);
+                    } else {
+                        log('❌ Commerce endpoint not configured', 'error');
+                    }
+                }
+                
+                // Try to simulate a search
+                log('Attempting to trigger search for "cert"...');
+                
+                const doc = testFrame.contentDocument;
+                if (doc) {
+                    const searchInput = doc.querySelector('#mobile-search');
+                    if (searchInput) {
+                        searchInput.value = 'cert';
+                        searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+                        log('Search input triggered for "cert"');
+                        
+                        // Wait for potential results
+                        setTimeout(() => {
+                            const autocomplete = doc.querySelector('#mobile-search-autocomplete');
+                            if (autocomplete && autocomplete.innerHTML) {
+                                log('✅ Search results container has content');
+                                log('Results HTML length: ' + autocomplete.innerHTML.length);
+                            } else {
+                                log('⚠️ No search results appeared', 'warn');
+                            }
+                        }, 2000);
+                    } else {
+                        log('Search input not found. Open mobile nav first.', 'warn');
+                    }
+                }
+                
+            } catch (e) {
+                log('Error in direct search test: ' + e.message, 'error');
+            }
+        }
+        
+        // Monitor console messages from the iframe
+        window.addEventListener('message', function(e) {
+            if (e.origin === 'http://localhost:3000') {
+                log('Message from iframe: ' + JSON.stringify(e.data));
+            }
+        });
+    </script>
+</body>
+</html>

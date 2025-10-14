@@ -1,0 +1,323 @@
+/* Banner Block Styles */
+
+.banner {
+    position: relative;
+    overflow: hidden;
+}
+
+.banner .banner-container {
+    width: 100%;
+    background: linear-gradient(135deg, #2c4a6b 0%, #1e3a5f 100%);
+    padding: 40px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner .banner-content {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: var(--banner-layout);
+    align-items: var(--content-align);
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Left section with title */
+.banner .banner-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.banner .banner-title {
+    font-family: var(--type-base-font-family);
+    font-weight: 900;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: unset;
+    text-align: var(--text-align);
+    font-variation-settings: 'wght' 900, 'wdth' 60;
+}
+
+.banner .banner-title .small {
+    font-size: 48px;
+    letter-spacing: 0;
+}
+
+.banner .banner-title .medium {
+    font-size: 64px;
+    letter-spacing: -1px;
+}
+
+.banner .banner-title .large {
+    font-size: 80px;
+}
+
+.banner .banner-title .xl-small {
+    font-size: 88px;
+}
+
+.banner .banner-title .xl-large {
+    font-size: 88px;
+    font-variation-settings: 'wght' 900, 'wdth' 125;
+}
+
+.banner .banner-title-line1 {
+    display: inline;
+}
+
+.banner .banner-title-line2 {
+    display: inline;
+}
+
+/* Right section with description */
+.banner .banner-desc-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: var(--content-align);
+}
+
+.banner .banner-description > *{
+    font-family: var(--type-base-font-family);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    margin: 0;
+    opacity: 0.9;
+    text-align: var(--text-align);
+}
+
+.banner .banner-description.bold > *{
+    font-weight: 700;
+    font-variation-settings: normal;
+}
+
+.banner .banner-description.small > *{
+    font-size: 16px;
+}
+
+.banner .banner-description.regular > *{
+    font-size: 18px;
+}
+
+.banner .banner-description.large > *{
+    font-size: 20px;
+}
+
+.banner .banner-description.boxed {
+    max-width: 60%;
+}
+
+.banner .banner-description.full-width {
+    max-width: 100%;
+}
+
+/* Responsive styles */
+@media (width < 768px) {
+    .banner .banner-container {
+        padding: 40px 0;
+    }
+
+    .banner .banner-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    .banner .banner-main {
+        justify-content: center;
+    }
+
+    .banner .banner-title {
+        font-size: 48px;
+        letter-spacing: -1px;
+    }
+
+    .banner .banner-title .small {
+        font-size: 40px;
+    }
+
+    .banner .banner-title .medium {
+        font-size: 48px;
+    }
+
+    .banner .banner-title .large {
+        font-size: 48px;
+    }
+
+    .banner .banner-title .xl-large {
+        font-variation-settings: 'wdth' 100;
+    }
+
+    .banner .banner-title-line2 {
+        display: block;
+        padding-top: 0;
+    }
+
+    .banner .banner-desc-wrapper {
+        align-items: center;
+        text-align: center;
+    }
+
+    .banner .banner-description {
+        font-size: 16px;
+    }
+
+    .banner .banner-description.boxed {
+        max-width: 100%;
+    }
+}
+
+@media (width >=768px) and (width < 1024px) {
+    .banner .banner-title {
+        font-size: 60px;
+    }
+
+    .banner .banner-content {
+        gap: 40px;
+    }
+
+    .banner .banner-description {
+        font-size: 17px;
+    }
+
+    .banner .banner-title-line2 {
+        display: block;
+        padding-top: 1rem;
+    }
+
+    .banner .banner-description.boxed {
+        max-width: 100%;
+    }
+}
+
+@media (width >=1024px) {
+    .banner .banner-title {
+        font-size: 80px;
+    }
+}
+
+/* Background color classes */
+.banner .banner-container.bg-white {
+    background: #fff;
+}
+
+.banner .banner-container.bg-white .banner-description {
+    color: var(--brand-color-midnight-sky, #123257);
+}
+
+.banner .banner-container.bg-gray {
+    background: var(--color-neutral-200, #f5f5f5);
+    color: var(--brand-color-midnight-sky, #123257);
+}
+
+.banner .banner-container.bg-gray .banner-description {
+    color: var(--brand-color-midnight-sky, #123257);
+}
+
+.banner .banner-container.bg-purple {
+    background: var(--brand-color-iris-buzz, #6463C8);
+    color: #fff;
+}
+
+.banner .banner-container.bg-purple .banner-description {
+    color: #fff;
+}
+
+.banner .banner-container.bg-dark-blue {
+    background: var(--brand-color-midnight-sky, #123257);
+    color: #fff;
+}
+
+.banner .banner-container.bg-dark-blue .banner-description {
+    color: #fff;
+}
+
+.banner .banner-container.bg-transparent {
+    background: transparent;
+    color: var(--brand-color-midnight-sky, #123257);
+}
+
+.banner .banner-container.bg-transparent .banner-description {
+    color: var(--brand-color-midnight-sky, #123257);
+}
+
+/* Flexible layout styles */
+.banner .banner-container.flexible-layout .banner-title {
+    line-height: 0.9;
+}
+
+.banner .banner-container.flexible-layout .banner-title-line2 {
+    display: block;
+    margin-top: 0.5rem;
+}
+
+/* Override responsive behavior for flexible layout */
+@media (width >=768px) {
+    .banner .banner-container.flexible-layout .banner-title-line2 {
+        display: block;
+        padding-top: 0;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Color classes for title lines */
+.banner .banner-title-line1.white,
+.banner .banner-title-line2.white {
+    color: var(--brand-color-white, #fff);
+}
+
+.banner .banner-title-line1.yellow,
+.banner .banner-title-line2.yellow {
+    color: var(--brand-color-citrus-pop, #E8F557);
+}
+
+.banner .banner-title-line1.teal,
+.banner .banner-title-line2.teal {
+    color: var(--brand-color-aqua-bliss, #66BFC7);
+}
+
+.banner .banner-title-line1.primary,
+.banner .banner-title-line2.primary {
+    color: var(--brand-color-midnight-sky, #123257);
+}
+
+.banner .banner-title-line1.purple,
+.banner .banner-title-line2.purple {
+    color: var(--brand-color-iris-buzz, #6463C8);
+}
+
+/* Color classes for description */
+.banner .banner-description.white > *{
+    color: var(--brand-color-white, #fff) !important;
+}
+
+.banner .banner-description.yellow > *{
+    color: var(--brand-color-citrus-pop, #E8F557) !important;
+}
+
+.banner .banner-description.teal > *{
+    color: var(--brand-color-aqua-bliss, #66BFC7) !important;
+}
+
+.banner .banner-description.primary > *{
+    color: var(--brand-color-midnight-sky, #123257) !important;
+}
+
+.banner .banner-description.purple > *{
+    color: var(--brand-color-iris-buzz, #6463C8) !important;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .banner .banner-title {
+        animation: none;
+    }
+}

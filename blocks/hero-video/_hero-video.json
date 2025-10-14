@@ -1,0 +1,218 @@
+{
+  "definitions": [
+    {
+      "title": "Hero Video",
+      "id": "hero-video",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Hero Video",
+              "model": "hero-video",
+              "key-value": true
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "hero-video",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "rating",
+          "label": "Star Rating (1-5)",
+          "value": "5"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ratingLabel",
+          "label": "Rating Label",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "supHeading",
+          "label": "Sup Heading",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "mainHeading",
+          "label": "Main Heading",
+          "value": "",
+          "required": true
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "mainHeadingType",
+          "label": "Main Heading Type",
+          "value": "h1",
+          "options": [
+            {
+              "name": "h1",
+              "value": "h1"
+            },
+            {
+              "name": "h2",
+              "value": "h2"
+            },
+            {
+              "name": "h3",
+              "value": "h3"
+            },
+            {
+              "name": "h4",
+              "value": "h4"
+            },
+            {
+              "name": "h5",
+              "value": "h5"
+            },
+            {
+              "name": "h6",
+              "value": "h6"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "titleLine2",
+          "label": "Title Line 2",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "description",
+          "label": "Description",
+          "value": ""
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "ctaLink",
+          "label": "CTA Link",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ctaLinkText",
+          "label": "CTA Button Text",  
+          "value": ""
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "ctaLinkType",
+          "label": "CTA Button Type",
+          "value": "primary",
+          "options": [
+            {
+              "name": "Primary",
+              "value": "primary"
+            },
+            {
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "name": "Secondary",
+              "value": "secondary"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "strikeOutPrice",
+          "label": "Strike Out Price",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "price",
+          "label": "Price",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "priceLabel",
+          "label": "Price Label",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "badge",
+          "label": "Badge Text",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "promotionLabel",
+          "label": "Promotion Label",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "videoUrl",
+          "label": "Video URL",
+          "value": "",
+          "required": true
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "videoPoster",
+          "label": "Video Poster Image",
+          "multi": false
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "theme",
+          "label": "Theme",
+          "value": "",
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Red",
+              "value": "red"
+            },
+            {
+              "name": "White",
+              "value": "white"
+            },
+            {
+              "name": "Primary",
+              "value": "brandcolordark"
+            },
+            {
+              "name": "Accent",
+              "value": "brandcolorhighlight"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

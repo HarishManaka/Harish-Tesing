@@ -1,0 +1,14 @@
+/* stylelint-disable selector-class-pattern */
+.add-to-cart-wrapper {
+    display: grid;
+    place-items: center;
+    padding: var(--spacing-huge) 0;
+  }
+  
+  .add-to-cart-message {
+    font: var(--type-body-2-default-font);
+    letter-spacing: var(--type-body-1-strong-letter-spacing);
+    color: var(--color-brand-700);
+    line-height: 1.6;
+    margin: 0 auto;
+  }

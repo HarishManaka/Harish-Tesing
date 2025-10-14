@@ -1,0 +1,5522 @@
+[
+  {
+    "id": "image",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Alt Text"
+      },
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Hide On: Mobile",
+            "value": "hide-on-mobile"
+          },
+          {
+            "name": "Hide On: Tablet",
+            "value": "hide-on-tablet"
+          },
+          {
+            "name": "Hide On: Desktop",
+            "value": "hide-on-desktop"
+          },
+          {
+            "name": "Rounded",
+            "value": "rounded"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "title",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "titleType",
+        "label": "Title Type",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "button",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "name": "linkTitle",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "linkType",
+        "label": "Type",
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "primary",
+            "value": "primary"
+          },
+          {
+            "name": "secondary",
+            "value": "secondary"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "section",
+    "fields": [
+      {
+        "component": "text",
+        "name": "name",
+        "label": "Section Name",
+        "description": "The label shown for this section in the Content Tree"
+      },
+      {
+        "component": "text",
+        "name": "id",
+        "label": "Section ID",
+        "description": "Unique ID for this section (for anchor links and scrolling). Use lowercase letters, numbers, and hyphens only.",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "marquee",
+        "label": "Marquee Text",
+        "description": "The text shown for this section in a marquee scroller"
+      },
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Full Width",
+            "value": "full-width"
+          },
+          {
+            "name": "Narrow Width",
+            "value": "narrow-width"
+          },
+          {
+            "name": "Blog Width",
+            "value": "blog-width"
+          },
+          {
+            "name": "Padded",
+            "value": "padded-vertical"
+          },
+          {
+            "name": "Center Copy",
+            "value": "center-copy"
+          },
+          {
+            "name": "Two Column",
+            "value": "two-column"
+          },
+          {
+            "name": "rounder borders",
+            "value": "section-rounded-borders"
+          },
+          {
+            "name": "Box Shadow",
+            "value": "section-shadow"
+          },
+          {
+            "name": "Checkmark Lists",
+            "value": "checkmark-lists"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "checkmarkColor",
+        "label": "Checkmark Color",
+        "options": [
+          {
+            "name": "Gray",
+            "value": "gray"
+          },
+          {
+            "name": "Blue (Midnight Sky)",
+            "value": "blue"
+          },
+          {
+            "name": "Brand Color (Citrus Pop)",
+            "value": "brand"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "in": [
+                "checkmark-lists",
+                {
+                  "var": "style"
+                }
+              ]
+            },
+            true
+          ]
+        },
+        "description": "Choose the color for checkmarks when Checkmark Lists style is selected"
+      },
+      {
+        "component": "select",
+        "name": "background",
+        "label": "Background",
+        "options": [
+          {
+            "name": "Midnight Sky",
+            "value": "--brand-color-midnight-sky"
+          },
+          {
+            "name": "Citrus Pop",
+            "value": "--brand-color-citrus-pop"
+          },
+          {
+            "name": "Morning Mist",
+            "value": "--brand-color-morning-mist"
+          },
+          {
+            "name": "Mist",
+            "value": "--brand-color-mist"
+          },
+          {
+            "name": "Aqua Bliss",
+            "value": "--brand-color-aqua-bliss"
+          },
+          {
+            "name": "Iris Buzz",
+            "value": "--brand-color-iris-buzz"
+          },
+          {
+            "name": "Sunset Sizzle",
+            "value": "--brand-color-sunset-sizzle"
+          },
+          {
+            "name": "Cotton",
+            "value": "--brand-color-cotton"
+          },
+          {
+            "name": "Linen",
+            "value": "--brand-color-linen"
+          },
+          {
+            "name": "Black",
+            "value": "--brand-color-black"
+          },
+          {
+            "name": "White",
+            "value": "--brand-color-white"
+          },
+          {
+            "name": "Transparent",
+            "value": "transparent"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "backgroundImage",
+        "label": "Background Image",
+        "multi": false,
+        "description": "Background image for the section"
+      },
+      {
+        "component": "boolean",
+        "name": "backgroundOverlay",
+        "label": "Background Overlay?",
+        "valueType": "boolean",
+        "description": "Enable background overlay"
+      }
+    ]
+  },
+  {
+    "id": "columns-section",
+    "fields": [
+      {
+        "component": "text",
+        "name": "name",
+        "label": "Section Name",
+        "description": "The label shown for this section in the Content Tree"
+      },
+      {
+        "component": "text",
+        "name": "column-width",
+        "label": "Column Width",
+        "value": "50%"
+      },
+      {
+        "component": "select",
+        "name": "gap",
+        "label": "Gap",
+        "options": [
+          {
+            "name": "Big",
+            "value": "Big"
+          },
+          {
+            "name": "Small",
+            "value": "Small"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "academic-form",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "formTemplate",
+        "label": "Form Template",
+        "value": "default",
+        "options": [
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Styled",
+            "value": "styled"
+          }
+        ],
+        "description": "Select a form template"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "portalId",
+        "label": "HubSpot Portal ID",
+        "value": "2494739",
+        "required": true,
+        "description": "Your HubSpot Portal ID"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "formId",
+        "label": "HubSpot Form ID",
+        "value": "",
+        "required": true,
+        "description": "The specific form ID from HubSpot"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "target",
+        "label": "Target Container ID",
+        "value": "",
+        "description": "Optional: Custom container ID for the form"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "redirectUrl",
+        "label": "Redirect URL",
+        "value": "",
+        "description": "Optional: URL to redirect to after form submission"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "formHeading",
+        "label": "Form Title",
+        "value": "",
+        "description": "Optional: Form title"
+      },
+      {
+        "component": "richtext",
+        "name": "formSubtitle",
+        "value": "",
+        "label": "Form Subtitle",
+        "valueType": "string",
+        "description": "Optional: Form subtitle"
+      },
+      {
+        "component": "richtext",
+        "name": "schoolIntro",
+        "value": "",
+        "label": "School Introduction Text",
+        "valueType": "string",
+        "description": "Rich text content to display above the form"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "schoolName",
+        "label": "School Name",
+        "value": "",
+        "description": "Name of the academic institution"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "schoolContact",
+        "label": "School Contact",
+        "value": "",
+        "description": "Contact information for the school"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "schoolLogo",
+        "label": "School Logo",
+        "value": "",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "schoolLogoAlt",
+        "label": "School Logo Alt Text",
+        "value": "",
+        "description": "Alternative text for the school logo (for accessibility)"
+      },
+      {
+        "component": "richtext",
+        "name": "schoolDescription",
+        "value": "",
+        "label": "School Description",
+        "valueType": "string",
+        "description": "Detailed description of the academic institution"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "formSize",
+        "label": "Form Size",
+        "value": "fluid",
+        "options": [
+          {
+            "name": "Fluid",
+            "value": "fluid"
+          },
+          {
+            "name": "Small",
+            "value": "small"
+          },
+          {
+            "name": "Medium",
+            "value": "medium"
+          },
+          {
+            "name": "Large",
+            "value": "large"
+          }
+        ],
+        "description": "Select a form size"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "transparentBackground",
+        "label": "Transparent Background",
+        "value": false,
+        "description": "Show form with transparent background"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "transparentBackgroundOpacity",
+        "label": "Transparent Background Opacity",
+        "value": "85",
+        "options": [
+          {
+            "name": "50%",
+            "value": "50"
+          },
+          {
+            "name": "85%",
+            "value": "85"
+          },
+          {
+            "name": "90%",
+            "value": "90"
+          }
+        ],
+        "description": "Transparent background opacity"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "inlineMessage",
+        "label": "Show Inline Thank You Message",
+        "value": true,
+        "description": "Show thank you message inline instead of redirecting"
+      }
+    ]
+  },
+  {
+    "id": "accordion",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "titleType",
+        "label": "Title Type",
+        "hidden": true
+      },
+      {
+        "component": "richtext",
+        "name": "accordion_footer",
+        "label": "Footer",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_titleType",
+        "label": "Title Type",
+        "hidden": true
+      },
+      {
+        "component": "richtext",
+        "name": "content_text",
+        "label": "Content",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "add-to-cart-from-url",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "loadingMessage",
+        "label": "Loading Message",
+        "value": "Please wait while we are redirecting you to the cart...",
+        "description": "Message to display while processing"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "successMessage",
+        "label": "Success Message",
+        "value": "Products added to cart successfully!",
+        "description": "Message to display on successful add to cart"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "errorMessage",
+        "label": "Error Message",
+        "value": "Error adding products to cart. Please try again.",
+        "description": "Message to display on error"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "noParamsMessage",
+        "label": "No Parameters Message",
+        "value": "No products or coupons found in URL. Redirecting to cart...",
+        "description": "Message when no URL parameters or SKUs are found"
+      }
+    ]
+  },
+  {
+    "id": "amchart",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "type",
+        "label": "Chart Type",
+        "value": "column",
+        "options": [
+          {
+            "name": "Column Chart",
+            "value": "column"
+          },
+          {
+            "name": "Pie Chart",
+            "value": "pie"
+          },
+          {
+            "name": "Donut Chart",
+            "value": "donut"
+          },
+          {
+            "name": "Line Chart",
+            "value": "line"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "layout",
+        "label": "Layout",
+        "value": "chart-only",
+        "options": [
+          {
+            "name": "Chart Only",
+            "value": "chart-only"
+          },
+          {
+            "name": "Text Left / Chart Right",
+            "value": "text-chart"
+          }
+        ],
+        "description": "Choose the layout style for the chart block"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "headline",
+        "label": "Headline",
+        "value": "",
+        "description": "Large headline text (e.g., '1.5 trillion')"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "subheadline",
+        "label": "Subheadline",
+        "value": "",
+        "description": "Subheadline text (e.g., 'WELLNESS MARKET VALUE*')"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "description": "Main description text"
+      },
+      {
+        "component": "multifield",
+        "valueType": "object[]",
+        "name": "bullet-points",
+        "label": "Bullet Points",
+        "fields": [
+          {
+            "component": "richtext",
+            "name": "text",
+            "label": "Bullet Text",
+            "valueType": "string"
+          }
+        ],
+        "description": "List of bullet points to display"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "footnote",
+        "label": "Footnote",
+        "value": "",
+        "description": "Footnote text (e.g., '5%: average growth rate of other industries*')"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Chart Title",
+        "value": "",
+        "description": "Optional title displayed above the chart"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Chart Subtitle",
+        "value": "",
+        "description": "Optional subtitle displayed below the chart"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "data",
+        "label": "Chart Data (JSON)",
+        "value": "[{\"category\": \"Sample\", \"value\": 100}]",
+        "description": "Chart data in JSON format. Example: [{\"category\": \"Item 1\", \"value\": 50}, {\"category\": \"Item 2\", \"value\": 30}]"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "width",
+        "label": "Width",
+        "value": "",
+        "description": "Chart width (e.g., 100%, 800px). Leave empty for auto width."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "height",
+        "label": "Height",
+        "value": "400px",
+        "description": "Chart height (e.g., 400px, 50vh)"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "colors",
+        "label": "Custom Colors",
+        "value": "",
+        "description": "Comma-separated hex colors (e.g., #123257, #e8f557, #66bfc7). Leave empty for default colors."
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "show-legend",
+        "label": "Show Legend",
+        "value": false,
+        "description": "Display legend for pie and donut charts"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "show-labels",
+        "label": "Show Labels",
+        "value": true,
+        "description": "Display data labels on chart elements"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "animation",
+        "label": "Enable Animation",
+        "value": true,
+        "description": "Animate chart on load"
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Options",
+        "value": [],
+        "options": [
+          {
+            "name": "Full Width",
+            "value": "full-width"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "annotated-table",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "tableIntro",
+        "label": "Table Intro",
+        "description": "Rich text content to display before the table",
+        "value": "<p>You can add any rich text content here.</p>"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "tableContent",
+        "label": "Table Content",
+        "description": "Markdown table format. Example:\n| CATEGORY | BMI FROM | BMI TO |\n|----------|----------|--------|\n| Normal   | 18.5     | 25     |\n| Overweight | 25     | 30     |",
+        "value": "| Header 1 | Header 2 | Header 3 |\n|----------|----------|----------|\n| Cell 1   | Cell 2   | Cell 3   |\n| Cell 4   | Cell 5   | Cell 6   |"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "tableOutro",
+        "label": "Table Outro",
+        "description": "Rich text content to display after the table",
+        "value": "<p>More content can follow the table.</p>"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "variant",
+        "label": "Table Style",
+        "value": "default",
+        "options": [
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Striped Rows",
+            "value": "striped"
+          },
+          {
+            "name": "Bordered",
+            "value": "bordered"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "styles",
+        "label": "CSS Styles",
+        "description": "CSS styles to apply to the text and tables (e.g., '.table { border-collapse: collapse; }')",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "banner-cta",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "titleLine1",
+        "label": "Title Line 1",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "titleLine2",
+        "label": "Title Line 2",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Subtitle",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA Link",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLinkText",
+        "label": "CTA Button Text",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "ctaLinkIcon",
+        "label": "CTA Link Icon",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Telephone",
+            "value": "telephone"
+          },
+          {
+            "name": "Email",
+            "value": "email"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "value": "white",
+        "options": [
+          {
+            "name": "White",
+            "value": "white"
+          },
+          {
+            "name": "Gray",
+            "value": "gray"
+          },
+          {
+            "name": "Purple",
+            "value": "purple"
+          },
+          {
+            "name": "Dark Blue",
+            "value": "dark-blue"
+          },
+          {
+            "name": "Morning Mist",
+            "value": "morning-mist"
+          },
+          {
+            "name": "Teal",
+            "value": "teal"
+          },
+          {
+            "name": "Transparent",
+            "value": "transparent"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "layout",
+        "label": "Layout",
+        "value": "full-width",
+        "options": [
+          {
+            "name": "Full Width",
+            "value": "full-width"
+          },
+          {
+            "name": "Boxed",
+            "value": "boxed"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "banner",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "bannerLayout",
+        "label": "Banner Layout",
+        "options": [
+          {
+            "name": "Columns",
+            "value": "column"
+          },
+          {
+            "name": "Rows",
+            "value": "row"
+          }
+        ],
+        "value": "column"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "contentAlign",
+        "label": "Content Alignment",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ],
+        "value": "center"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "textAlign",
+        "label": "Text Alignment",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ],
+        "value": "center"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "titleLine1",
+        "label": "Title Line 1",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "titleLine1Color",
+        "label": "Title Line 1 Color",
+        "options": [
+          {
+            "name": "White",
+            "value": "white"
+          },
+          {
+            "name": "Yellow",
+            "value": "yellow"
+          },
+          {
+            "name": "Teal",
+            "value": "teal"
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Purple",
+            "value": "purple"
+          }
+        ],
+        "value": "white"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "titleLine1Size",
+        "label": "Title Line 1 Size",
+        "options": [
+          {
+            "name": "XL-Large",
+            "value": "xl-large"
+          },
+          {
+            "name": "XL-Small",
+            "value": "xl-small"
+          },
+          {
+            "name": "Large",
+            "value": "large"
+          },
+          {
+            "name": "Medium",
+            "value": "medium"
+          },
+          {
+            "name": "Small",
+            "value": "small"
+          }
+        ],
+        "value": "large"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "titleLine2",
+        "label": "Title Line 2",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "titleLine2Color",
+        "label": "Title Line 2 Color",
+        "options": [
+          {
+            "name": "White",
+            "value": "white"
+          },
+          {
+            "name": "Yellow",
+            "value": "yellow"
+          },
+          {
+            "name": "Teal",
+            "value": "teal"
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Purple",
+            "value": "purple"
+          }
+        ],
+        "value": "teal"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "titleLine2Size",
+        "label": "Title Line 2 Size",
+        "options": [
+          {
+            "name": "XL-Large",
+            "value": "xl-large"
+          },
+          {
+            "name": "XL-Small",
+            "value": "xl-small"
+          },
+          {
+            "name": "Large",
+            "value": "large"
+          },
+          {
+            "name": "Medium",
+            "value": "medium"
+          },
+          {
+            "name": "Small",
+            "value": "small"
+          }
+        ],
+        "value": "large"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "descriptionSize",
+        "label": "Description Size",
+        "options": [
+          {
+            "name": "Large",
+            "value": "large"
+          },
+          {
+            "name": "Regular",
+            "value": "regular"
+          },
+          {
+            "name": "Small",
+            "value": "small"
+          }
+        ],
+        "value": "regular"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "descriptionWeight",
+        "label": "Description Weight",
+        "options": [
+          {
+            "name": "Bold",
+            "value": "bold"
+          },
+          {
+            "name": "Normal",
+            "value": "normal-weight"
+          }
+        ],
+        "value": "normal-weight"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "descriptionColor",
+        "label": "Description Color",
+        "options": [
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "White",
+            "value": "white"
+          },
+          {
+            "name": "Yellow",
+            "value": "yellow"
+          },
+          {
+            "name": "Teal",
+            "value": "teal"
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Purple",
+            "value": "purple"
+          }
+        ],
+        "value": "default"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "descriptionLayout",
+        "label": "Description Layout",
+        "options": [
+          {
+            "name": "Boxed",
+            "value": "boxed"
+          },
+          {
+            "name": "Full Width",
+            "value": "full-width"
+          }
+        ],
+        "value": "full-width"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "value": "white",
+        "options": [
+          {
+            "name": "White",
+            "value": "white"
+          },
+          {
+            "name": "Gray",
+            "value": "gray"
+          },
+          {
+            "name": "Purple",
+            "value": "purple"
+          },
+          {
+            "name": "Dark Blue",
+            "value": "dark-blue"
+          },
+          {
+            "name": "Transparent",
+            "value": "transparent"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "flexibleLayout",
+        "label": "Flexible Layout",
+        "value": false,
+        "description": "Enable to display title lines on separate lines"
+      }
+    ]
+  },
+  {
+    "id": "blog-discount",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "preLabel",
+        "label": "Pre Label",
+        "value": "ENTER YOUR EMAIL",
+        "description": "Text that appears before the main message"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mainLabel",
+        "label": "Main Label",
+        "value": "ACCESS EXCLUSIVE MYSTERY OFFER!",
+        "description": "Main highlighted text message"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "buttonLabel",
+        "label": "Button Label",
+        "value": "Reveal My Discount",
+        "description": "Text for the submit button"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "portalId",
+        "label": "HubSpot Portal ID",
+        "value": "2494739",
+        "required": true,
+        "description": "Your HubSpot Portal ID"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "formId",
+        "label": "HubSpot Form ID",
+        "value": "26081daa-81ba-4c86-aea4-1853f976eefd",
+        "required": true,
+        "description": "The specific form ID from HubSpot"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "redirectUrl",
+        "label": "Redirect URL",
+        "value": "",
+        "description": "Optional: URL to redirect to after form submission"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "successMessage",
+        "label": "Success Message",
+        "value": "<p style=\"font-size: 20px;\"><span style=\"color: #ffffff;\">Use CHECKOUT50 on orders $499+</span></p>",
+        "description": "Message displayed after successful form submission (supports HTML)"
+      }
+    ]
+  },
+  {
+    "id": "blog-intro",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Hero Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "authorImage",
+        "label": "Author Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "authorImageAlt",
+        "label": "Author Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "authorName",
+        "label": "Author Name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "authorRole",
+        "label": "Author Role",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "authorLink",
+        "label": "Author Link",
+        "valueType": "string",
+        "description": "Link to author's profile or bio page"
+      }
+    ]
+  },
+  {
+    "id": "blog-post-cta",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "blog-post_text",
+        "label": "Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "hero-content_cta",
+        "label": "CTA",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "hero-content_ctaText",
+        "label": "CTA Text",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "brand",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Link",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "card-variants",
+    "fields": [
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "carousel",
+        "label": "Enable Carousel",
+        "description": "Enable carousel mode with navigation dots",
+        "value": false
+      },
+      {
+        "component": "select",
+        "name": "cardSize",
+        "label": "Card Size",
+        "valueType": "string",
+        "description": "Control the size of the cards",
+        "value": "medium",
+        "options": [
+          {
+            "name": "X-Small",
+            "value": "xsmall"
+          },
+          {
+            "name": "Small",
+            "value": "small"
+          },
+          {
+            "name": "Medium",
+            "value": "medium"
+          },
+          {
+            "name": "Large",
+            "value": "large"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "variant",
+        "label": "Card Variant",
+        "valueType": "string",
+        "description": "Select the card design variant",
+        "value": "variant1",
+        "options": [
+          {
+            "name": "Variant 1 - Image Overlay",
+            "value": "variant1"
+          },
+          {
+            "name": "Variant 2 - Stacked",
+            "value": "variant2"
+          },
+          {
+            "name": "Variant 3 - Contact Card",
+            "value": "variant3"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "autoplay",
+        "label": "Autoplay",
+        "description": "Enable autoplay for the card variants",
+        "value": true
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "loop",
+        "label": "Loop",
+        "description": "Enable loop for the card variants",
+        "value": true
+      },
+      {
+        "component": "multiselect",
+        "name": "styles",
+        "label": "Card Styles",
+        "valueType": "string",
+        "description": "Select spacing and layout styles for the cards",
+        "value": "default",
+        "options": [
+          {
+            "name": "Default Spacing",
+            "value": "default"
+          },
+          {
+            "name": "Space Between",
+            "value": "space between"
+          },
+          {
+            "name": "Space Evenly",
+            "value": "space evenly"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "card-variants-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "badge",
+        "label": "Badge",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "subtitle",
+        "label": "Subtitle",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      }
+    ]
+  },
+  {
+    "id": "cards-carousel",
+    "fields": [
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "autoplay",
+        "label": "Autoplay",
+        "description": "Enable autoplay for the cards carousel",
+        "value": true
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "loop",
+        "label": "Loop",
+        "description": "Enable loop for the cards carousel",
+        "value": true
+      }
+    ]
+  },
+  {
+    "id": "cards-carousel-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "badge",
+        "label": "Badge",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "subtitle",
+        "label": "Subtitle",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      }
+    ]
+  },
+  {
+    "id": "cards",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "highlighted-text",
+        "label": "Highlight Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "rotating-text",
+        "label": "Rotating Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA Link",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLinkText",
+        "label": "CTA Button Text",
+        "value": ""
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Theme & Options",
+        "value": [],
+        "options": [
+          {
+            "name": "Rounded Corners",
+            "value": "rounded-corners"
+          },
+          {
+            "name": "Center Align",
+            "value": "text-center"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "carousel-tabs",
+    "fields": [
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "autoplay",
+        "label": "Autoplay",
+        "description": "Enable autoplay for the carousel tabs",
+        "value": true
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "loop",
+        "label": "Loop",
+        "description": "Enable loop for the carousel tabs",
+        "value": true
+      }
+    ]
+  },
+  {
+    "id": "carousel-tabs-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "badge",
+        "label": "Badge",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "subtitle",
+        "label": "Subtitle",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "aem-tag",
+        "name": "tag",
+        "label": "Tag",
+        "valueType": "string",
+        "description": "Tag to group cards into tabs",
+        "rootPath": "/content/cq:tags/nasm"
+      }
+    ]
+  },
+  {
+    "id": "columns",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "columns",
+        "value": "",
+        "label": "Columns"
+      },
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "rows",
+        "value": "",
+        "label": "Rows"
+      },
+      {
+        "component": "select",
+        "name": "verticalAlignment",
+        "value": "center",
+        "label": "Vertical Alignment",
+        "options": [
+          {
+            "name": "Top",
+            "value": "top"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          },
+          {
+            "name": "Bottom",
+            "value": "bottom"
+          },
+          {
+            "name": "Stretch",
+            "value": "stretch"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "commerce-account-header",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Account Header",
+        "value": "My Account"
+      }
+    ]
+  },
+  {
+    "id": "commerce-addresses",
+    "fields": [
+      {
+        "component": "boolean",
+        "name": "minified-view",
+        "label": "Minified View",
+        "value": false
+      }
+    ]
+  },
+  {
+    "id": "commerce-cart",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "start-shopping-url",
+        "label": "Start Shopping URL",
+        "description": "Link to the start shopping page"
+      },
+      {
+        "component": "aem-content",
+        "name": "checkout-url",
+        "label": "Checkout URL",
+        "description": "Link to Checkout page"
+      },
+      {
+        "component": "boolean",
+        "name": "hide-heading",
+        "label": "Hide Heading",
+        "description": "Hide the heading of the cart"
+      },
+      {
+        "component": "boolean",
+        "name": "hide-attributes",
+        "label": "Hide Attributes",
+        "description": "Hide the attributes of the cart"
+      },
+      {
+        "component": "boolean",
+        "name": "enable-item-quantity-update",
+        "label": "Enable Item Quantity Update",
+        "description": "Enable the ability to update the quantity of items in the cart"
+      },
+      {
+        "component": "boolean",
+        "name": "enable-item-remove",
+        "label": "Enable Item Remove",
+        "description": "Enable the ability to remove items from the cart"
+      },
+      {
+        "component": "boolean",
+        "name": "enable-estimate-shipping",
+        "label": "Enable Estimate Shipping",
+        "description": "Enable the ability to estimate shipping costs"
+      },
+      {
+        "component": "number",
+        "name": "max-items",
+        "label": "Max Items",
+        "description": "Maximum number of items to display in the cart"
+      }
+    ]
+  },
+  {
+    "id": "commerce-mini-cart",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "start-shopping-url",
+        "label": "Start Shopping URL",
+        "description": "Link to the start shopping page"
+      },
+      {
+        "component": "aem-content",
+        "name": "cart-url",
+        "label": "Cart URL",
+        "description": "Link to full shopping Cart"
+      },
+      {
+        "component": "aem-content",
+        "name": "checkout-url",
+        "label": "Checkout URL",
+        "description": "Link to Checkout page"
+      }
+    ]
+  },
+  {
+    "id": "commerce-order-confirmation",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mainHeading",
+        "label": "Page Title",
+        "value": "Order Confirmation",
+        "description": "Main title for the order confirmation page"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "pageSubtitle",
+        "label": "Page Subtitle",
+        "value": "",
+        "description": "Subtitle for the order confirmation page"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Success Message NASM One",
+        "value": "",
+        "description": "Success message for NASM One subscriptions"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "nasmOneDetails",
+        "label": "NASM One Details",
+        "value": "",
+        "description": "Additional details for NASM One subscriptions"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "otherProductsDescription",
+        "label": "Success Message for Other Products",
+        "value": "",
+        "description": "Success message for other product purchases"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "coursesDescription",
+        "label": "Access Your Course(s)",
+        "value": "",
+        "description": "Information about accessing purchased courses"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "helpLineDescription",
+        "label": "Help Line Section",
+        "value": "",
+        "description": "Help and support information"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "finishPurchasingDescription",
+        "label": "Finish Purchasing Other Items",
+        "value": "",
+        "description": "Information about continuing to shop"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "receiptLabel",
+        "label": "Receipt Label",
+        "value": "Receipt",
+        "description": "Label for the receipt section"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "printLabel",
+        "label": "Print Label",
+        "value": "Print",
+        "description": "Label for the print button"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "receiptImageLogo",
+        "label": "Receipt Image Logo",
+        "value": "",
+        "description": "Logo image for the receipt section"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "payTodayLabel",
+        "label": "Pay Today Label",
+        "value": "Pay Today",
+        "description": "Label for the pay today section"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "payTodayOfferAmount",
+        "label": "Pay Today Offer Amount",
+        "value": "$99.00",
+        "description": "Amount to display for pay today offer"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "info",
+        "label": "Pay Today Info Text",
+        "value": "<p>Pay only <strong>$99.00 today</strong> and the remaining balance will be charged in installments.</p>",
+        "description": "Rich text information about payment terms"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "className",
+        "label": "CSS Class Name",
+        "value": "",
+        "description": "Additional CSS class name for styling"
+      }
+    ]
+  },
+  {
+    "id": "commerce-orders-list",
+    "fields": [
+      {
+        "component": "boolean",
+        "name": "minified-view",
+        "label": "Minified View",
+        "value": false
+      }
+    ]
+  },
+  {
+    "id": "commerce-returns-list",
+    "fields": [
+      {
+        "component": "boolean",
+        "name": "minified-view",
+        "label": "Minified View",
+        "value": false
+      }
+    ]
+  },
+  {
+    "id": "contact-rep",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Text",
+        "valueType": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "countdown-promo",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "promoLabel",
+        "label": "Promo Label",
+        "value": "",
+        "description": "The promotional message to display"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "textColor",
+        "label": "Text Color",
+        "options": [
+          {
+            "name": "Dark Blue",
+            "value": "dark-blue"
+          },
+          {
+            "name": "White",
+            "value": "white"
+          },
+          {
+            "name": "Yellow",
+            "value": "yellow"
+          },
+          {
+            "name": "Teal",
+            "value": "teal"
+          },
+          {
+            "name": "Purple",
+            "value": "purple"
+          }
+        ],
+        "value": "dark-blue"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "value": "teal",
+        "options": [
+          {
+            "name": "White",
+            "value": "white"
+          },
+          {
+            "name": "Gray",
+            "value": "gray"
+          },
+          {
+            "name": "Purple",
+            "value": "purple"
+          },
+          {
+            "name": "Dark Blue",
+            "value": "dark-blue"
+          },
+          {
+            "name": "Teal",
+            "value": "teal"
+          },
+          {
+            "name": "Transparent",
+            "value": "transparent"
+          }
+        ]
+      },
+      {
+        "component": "date-time",
+        "valueType": "string",
+        "name": "countdownEndDate",
+        "label": "Countdown End Date",
+        "value": "",
+        "description": "The date and time when the countdown should end"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "showCountdown",
+        "label": "Show Countdown Timer",
+        "value": true,
+        "description": "Enable to display the countdown timer"
+      }
+    ]
+  },
+  {
+    "id": "discount-filter",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "deals-filter-title",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "discount-filter-item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "deals-filter-categoryid",
+        "value": "",
+        "label": "Category Id",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "deals-filter-icon",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "deals-filter-iconAlt",
+        "label": "Image Alt"
+      }
+    ]
+  },
+  {
+    "id": "enrichment",
+    "fields": [
+      {
+        "component": "select",
+        "name": "type",
+        "label": "Type",
+        "description": "What enrichment type to match with",
+        "options": [
+          {
+            "name": "Product",
+            "value": "product"
+          },
+          {
+            "name": "Category",
+            "value": "category"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "position",
+        "label": "Position",
+        "description": "Position to match with",
+        "options": [
+          {
+            "name": "Below Product",
+            "value": "below-product"
+          },
+          {
+            "name": "Above Product",
+            "value": "above-product"
+          },
+          {
+            "name": "Below Category",
+            "value": "below-category"
+          },
+          {
+            "name": "Above Category",
+            "value": "above-category"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "exercise-details",
+    "fields": []
+  },
+  {
+    "id": "exercise-filter",
+    "fields": []
+  },
+  {
+    "id": "expanded-carousel",
+    "fields": []
+  },
+  {
+    "id": "expanded-carousel-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "facts",
+    "fields": []
+  },
+  {
+    "id": "fact",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "icon",
+        "label": "Icon",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "featured-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoUrl",
+        "label": "Video URL",
+        "description": "YouTube or Vimeo video URL (will be used instead of image if mediaSelect is video)",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "mediaSelect",
+        "label": "Media Type",
+        "description": "Choose between image or video",
+        "value": "image",
+        "options": [
+          {
+            "name": "Image",
+            "value": "image"
+          },
+          {
+            "name": "Video",
+            "value": "video"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "icon",
+        "label": "Icon/Badge",
+        "description": "Icon or badge image that appears above the heading",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "iconAlt",
+        "label": "Icon Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "supHeading",
+        "label": "Sup Heading",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mainHeading",
+        "label": "Main Heading",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "mainHeadingType",
+        "label": "Main Heading Type",
+        "value": "h2",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "subHeading",
+        "label": "Sub Heading",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "cta",
+        "label": "CTA",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Text",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "ctaType",
+        "label": "CTA Button Type",
+        "value": "Primary",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Theme & Options",
+        "value": [],
+        "options": [
+          {
+            "name": "Red",
+            "value": "red"
+          },
+          {
+            "name": "White",
+            "value": "white"
+          },
+          {
+            "name": "Primary",
+            "value": "brandcolordark"
+          },
+          {
+            "name": "Accent",
+            "value": "brandcolorhighlight"
+          },
+          {
+            "name": "Rounded Corners",
+            "value": "rounded-corners"
+          },
+          {
+            "name": "Center Align",
+            "value": "text-center"
+          },
+          {
+            "name": "Right Align",
+            "value": "text-right"
+          },
+          {
+            "name": "Image Left",
+            "value": "image-left"
+          },
+          {
+            "name": "Image Right",
+            "value": "image-right"
+          },
+          {
+            "name": "Background Image",
+            "value": "background-image"
+          },
+          {
+            "name": "Small Card (Blog excerpt)",
+            "value": "small-card"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "description": "Background color for left/right image layouts (not used with background image)",
+        "value": "white",
+        "options": [
+          {
+            "name": "White",
+            "value": "white"
+          },
+          {
+            "name": "Gray",
+            "value": "gray"
+          },
+          {
+            "name": "Purple",
+            "value": "purple"
+          },
+          {
+            "name": "Dark Blue",
+            "value": "dark-blue"
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Transparent",
+            "value": "transparent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "filter-section-cards",
+    "fields": [
+      {
+        "component": "text",
+        "name": "filters-title",
+        "label": "filters title",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "filter-section-cards-item",
+    "fields": [
+      {
+        "component": "container",
+        "name": "header",
+        "label": "Header",
+        "collapsible": true,
+        "fields": [
+          {
+            "component": "text",
+            "name": "header-title",
+            "label": "title",
+            "description": ""
+          },
+          {
+            "component": "text",
+            "name": "header-description",
+            "label": "description",
+            "description": ""
+          },
+          {
+            "component": "text",
+            "name": "header-label",
+            "label": "label",
+            "description": ""
+          },
+          {
+            "component": "text",
+            "name": "header-url",
+            "label": "url",
+            "description": ""
+          },
+          {
+            "component": "text",
+            "name": "tag",
+            "label": "tag",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "component": "container",
+        "name": "card1",
+        "label": "Card 1",
+        "collapsible": true,
+        "fields": [
+          {
+            "component": "text",
+            "name": "card1-title",
+            "label": "title",
+            "description": ""
+          },
+          {
+            "component": "text",
+            "name": "card1-description",
+            "label": "description",
+            "description": ""
+          },
+          {
+            "component": "text",
+            "name": "card1-label",
+            "label": "label",
+            "description": ""
+          },
+          {
+            "component": "text",
+            "name": "card1-url",
+            "label": "url",
+            "description": ""
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "card1-image",
+            "label": "Image",
+            "multi": false
+          }
+        ]
+      },
+      {
+        "component": "container",
+        "name": "card2",
+        "label": "Card 2",
+        "collapsible": true,
+        "fields": [
+          {
+            "component": "text",
+            "name": "card2-title",
+            "label": "title",
+            "description": ""
+          },
+          {
+            "component": "text",
+            "name": "card2-description",
+            "label": "description",
+            "description": ""
+          },
+          {
+            "component": "text",
+            "name": "card2-label",
+            "label": "label",
+            "description": ""
+          },
+          {
+            "component": "text",
+            "name": "card2-url",
+            "label": "url",
+            "description": ""
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "card2-image",
+            "label": "Image",
+            "multi": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "flexible-payment-cta",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Text",
+        "valueType": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "footer-copyright",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "copyright",
+        "label": "Copyright Text",
+        "valueType": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "footer-menu",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "menu",
+        "label": "Menu",
+        "valueType": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "footer-social",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "socials",
+        "label": "Social Media Links",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "address",
+        "label": "Address",
+        "valueType": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "fragment",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "health-nutrition-guides",
+    "fields": []
+  },
+  {
+    "id": "hero-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "imageStyle",
+        "label": "Image Style",
+        "value": "circular",
+        "options": [
+          {
+            "name": "Circular",
+            "value": "circular"
+          },
+          {
+            "name": "Square",
+            "value": "square"
+          },
+          {
+            "name": "Rounded",
+            "value": "rounded"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Heading",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "headingType",
+        "label": "Heading Type",
+        "value": "h2",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA Link",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLinkText",
+        "label": "CTA Button Text",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "ctaLinkStyle",
+        "label": "CTA Button Style",
+        "value": "accent",
+        "options": [
+          {
+            "name": "Accent",
+            "value": "accent"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          },
+          {
+            "name": "Default",
+            "value": "default"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "theme",
+        "label": "Theme",
+        "value": "dark",
+        "options": [
+          {
+            "name": "Dark",
+            "value": "dark"
+          },
+          {
+            "name": "Light",
+            "value": "light"
+          },
+          {
+            "name": "Purple",
+            "value": "purple"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hero-stats",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "backgroundImage",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "stat1Percentage",
+        "label": "Statistic 1 Percentage",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "stat1Description",
+        "label": "Statistic 1 Description",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "stat2Percentage",
+        "label": "Statistic 2 Percentage",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "stat2Description",
+        "label": "Statistic 2 Description",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "stat3Percentage",
+        "label": "Statistic 3 Percentage",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "stat3Description",
+        "label": "Statistic 3 Description",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "hero-usp",
+    "fields": [
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "content_type",
+        "label": "Promo Type"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "value": "white",
+        "options": [
+          {
+            "name": "White",
+            "value": "white"
+          },
+          {
+            "name": "Gray",
+            "value": "gray"
+          },
+          {
+            "name": "Purple",
+            "value": "purple"
+          },
+          {
+            "name": "Dark Blue",
+            "value": "dark-blue"
+          },
+          {
+            "name": "Teal",
+            "value": "teal"
+          },
+          {
+            "name": "Morning Mist",
+            "value": "morning-mist"
+          },
+          {
+            "name": "Transparent",
+            "value": "transparent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hero-usp-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "content_subtitle",
+        "label": "Content Sub Title"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "content_link",
+        "label": "Content Link",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "hero-video-background",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mainHeading",
+        "label": "Main Heading",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "mainHeadingType",
+        "label": "Main Heading Type",
+        "value": "h1",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "subHeading",
+        "label": "Sub Heading",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA Link",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLinkText",
+        "label": "CTA Button Text",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "ctaLinkType",
+        "label": "CTA Button Type",
+        "value": "primary",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoUrl",
+        "label": "Background Video URL",
+        "value": "",
+        "required": true,
+        "description": "URL for MP4 video file to use as background"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoPoster",
+        "label": "Video Poster Image",
+        "multi": false,
+        "description": "Fallback image shown before video loads"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "overlayOpacity",
+        "label": "Video Overlay Opacity",
+        "value": "medium",
+        "options": [
+          {
+            "name": "Light (30%)",
+            "value": "light"
+          },
+          {
+            "name": "Medium (50%)",
+            "value": "medium"
+          },
+          {
+            "name": "Heavy (70%)",
+            "value": "heavy"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hero-video",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "rating",
+        "label": "Star Rating (1-5)",
+        "value": "5"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ratingLabel",
+        "label": "Rating Label",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "supHeading",
+        "label": "Sup Heading",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mainHeading",
+        "label": "Main Heading",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "mainHeadingType",
+        "label": "Main Heading Type",
+        "value": "h1",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "titleLine2",
+        "label": "Title Line 2",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA Link",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLinkText",
+        "label": "CTA Button Text",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "ctaLinkType",
+        "label": "CTA Button Type",
+        "value": "primary",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "strikeOutPrice",
+        "label": "Strike Out Price",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "price",
+        "label": "Price",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "priceLabel",
+        "label": "Price Label",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "badge",
+        "label": "Badge Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "promotionLabel",
+        "label": "Promotion Label",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoUrl",
+        "label": "Video URL",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoPoster",
+        "label": "Video Poster Image",
+        "multi": false
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "theme",
+        "label": "Theme",
+        "value": "",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Red",
+            "value": "red"
+          },
+          {
+            "name": "White",
+            "value": "white"
+          },
+          {
+            "name": "Primary",
+            "value": "brandcolordark"
+          },
+          {
+            "name": "Accent",
+            "value": "brandcolorhighlight"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hero",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "hero-content_sup-heading",
+        "label": "Sup Heading",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "hero-content_main-heading",
+        "label": "Main Heading",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "hero-content_main-headingType",
+        "label": "Main Heading Type",
+        "value": "h2",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "hero-content_sub-heading",
+        "label": "Sub Heading",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "hero-content_cta",
+        "label": "CTA",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "hero-content_ctaText",
+        "label": "CTA Text",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "hero-content_ctaType",
+        "label": "CTA Button Type",
+        "value": "Primary",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Theme & Options",
+        "value": [],
+        "options": [
+          {
+            "name": "Red",
+            "value": "red"
+          },
+          {
+            "name": "White",
+            "value": "white"
+          },
+          {
+            "name": "Primary",
+            "value": "brandcolordark"
+          },
+          {
+            "name": "Accent",
+            "value": "brandcolorhighlight"
+          },
+          {
+            "name": "Rounded Corners",
+            "value": "rounded-corners"
+          },
+          {
+            "name": "Center Align",
+            "value": "text-center"
+          },
+          {
+            "name": "Right Align",
+            "value": "text-right"
+          },
+          {
+            "name": "Auto Height",
+            "value": "auto-height"
+          },
+          {
+            "name": "Hero Overlay",
+            "value": "hero-overlay"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hubspot-form",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "formTemplate",
+        "label": "Form Template",
+        "value": "default",
+        "options": [
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Styled",
+            "value": "styled"
+          },
+          {
+            "name": "Outlined",
+            "value": "outlined"
+          },
+          {
+            "name": "Multi Steps",
+            "value": "multi-steps"
+          }
+        ],
+        "description": "Select a form template"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "portalId",
+        "label": "HubSpot Portal ID",
+        "value": "2494739",
+        "required": true,
+        "description": "Your HubSpot Portal ID"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "formId",
+        "label": "HubSpot Form ID",
+        "value": "",
+        "required": true,
+        "description": "The specific form ID from HubSpot"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "target",
+        "label": "Target Container ID",
+        "value": "",
+        "description": "Optional: Custom container ID for the form"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "redirectUrl",
+        "label": "Redirect URL",
+        "value": "",
+        "description": "Optional: URL to redirect to after form submission"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "formHeading",
+        "label": "Form Title",
+        "value": "",
+        "description": "Optional: Form title"
+      },
+      {
+        "component": "select",
+        "name": "formTitleColor",
+        "label": "Form Title Color",
+        "value": "default",
+        "options": [
+          {
+            "name": "Midnight Sky",
+            "value": "--brand-color-midnight-sky"
+          },
+          {
+            "name": "Citrus Pop",
+            "value": "--brand-color-citrus-pop"
+          },
+          {
+            "name": "Morning Mist",
+            "value": "--brand-color-morning-mist"
+          },
+          {
+            "name": "Mist",
+            "value": "--brand-color-mist"
+          },
+          {
+            "name": "Aqua Bliss",
+            "value": "--brand-color-aqua-bliss"
+          },
+          {
+            "name": "Iris Buzz",
+            "value": "--brand-color-iris-buzz"
+          },
+          {
+            "name": "Sunset Sizzle",
+            "value": "--brand-color-sunset-sizzle"
+          },
+          {
+            "name": "Cotton",
+            "value": "--brand-color-cotton"
+          },
+          {
+            "name": "Linen",
+            "value": "--brand-color-linen"
+          },
+          {
+            "name": "Black",
+            "value": "--brand-color-black"
+          },
+          {
+            "name": "Default",
+            "value": "default"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "formHeading-line-2",
+        "label": "Form Title Line 2",
+        "value": "",
+        "description": "Optional: Form title line 2"
+      },
+      {
+        "component": "select",
+        "name": "formTitleLine2Color",
+        "label": "Form Title Line 2 Color",
+        "value": "default",
+        "options": [
+          {
+            "name": "Midnight Sky",
+            "value": "--brand-color-midnight-sky"
+          },
+          {
+            "name": "Citrus Pop",
+            "value": "--brand-color-citrus-pop"
+          },
+          {
+            "name": "Morning Mist",
+            "value": "--brand-color-morning-mist"
+          },
+          {
+            "name": "Mist",
+            "value": "--brand-color-mist"
+          },
+          {
+            "name": "Aqua Bliss",
+            "value": "--brand-color-aqua-bliss"
+          },
+          {
+            "name": "Iris Buzz",
+            "value": "--brand-color-iris-buzz"
+          },
+          {
+            "name": "Sunset Sizzle",
+            "value": "--brand-color-sunset-sizzle"
+          },
+          {
+            "name": "Cotton",
+            "value": "--brand-color-cotton"
+          },
+          {
+            "name": "Linen",
+            "value": "--brand-color-linen"
+          },
+          {
+            "name": "Black",
+            "value": "--brand-color-black"
+          },
+          {
+            "name": "Default",
+            "value": "default"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "formSubtitle",
+        "value": "",
+        "label": "Form Subtitle",
+        "valueType": "string",
+        "description": "Optional: Form subtitle"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "formSize",
+        "label": "Form Size",
+        "value": "fluid",
+        "options": [
+          {
+            "name": "Fluid",
+            "value": "fluid"
+          },
+          {
+            "name": "Small",
+            "value": "small"
+          },
+          {
+            "name": "Medium",
+            "value": "medium"
+          },
+          {
+            "name": "Large",
+            "value": "large"
+          }
+        ],
+        "description": "Select a form size"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "transparentBackground",
+        "label": "Transparent Background",
+        "value": false,
+        "description": "Show form with transparent background"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "transparentBackgroundOpacity",
+        "label": "Transparent Background Opacity",
+        "value": "85",
+        "options": [
+          {
+            "name": "50%",
+            "value": "50"
+          },
+          {
+            "name": "85%",
+            "value": "85"
+          },
+          {
+            "name": "90%",
+            "value": "90"
+          }
+        ],
+        "description": "Transparent background opacity",
+        "condition": {
+          "===": [
+            {
+              "var": "transparentBackground"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "inlineMessage",
+        "label": "Show Inline Thank You Message",
+        "value": true,
+        "description": "Show thank you message inline instead of redirecting"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "textColor",
+        "label": "Text Color",
+        "value": "default",
+        "options": [
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "White",
+            "value": "white"
+          }
+        ],
+        "description": "Select a color for the text"
+      },
+      {
+        "component": "richtext",
+        "name": "formFooter",
+        "value": "",
+        "label": "Form Footer",
+        "valueType": "string",
+        "description": "Optional: Form footer"
+      }
+    ]
+  },
+  {
+    "id": "id-me-badge",
+    "fields": [
+      {
+        "component": "text",
+        "name": "display",
+        "label": "Display Badge",
+        "valueType": "string",
+        "value": "true",
+        "description": "Whether to display the ID.me badge"
+      },
+      {
+        "component": "select",
+        "name": "badgeColor",
+        "label": "Badge Color",
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "primary",
+            "value": "primary"
+          },
+          {
+            "name": "accent",
+            "value": "accent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "id-me-verify-button",
+    "fields": [
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Button Label",
+        "valueType": "string",
+        "value": "Verify with ID.me",
+        "description": "Text to display on the verification button"
+      },
+      {
+        "component": "select",
+        "name": "buttonStyle",
+        "label": "Button Style",
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "primary",
+            "value": "primary"
+          },
+          {
+            "name": "accent",
+            "value": "accent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "login-nav",
+    "fields": []
+  },
+  {
+    "id": "logo",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "maintenance-alert",
+    "fields": [
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "enabled",
+        "label": "Enable Alert",
+        "value": false,
+        "description": "Toggle to enable or disable the maintenance alert"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "message",
+        "label": "Alert Message",
+        "value": "",
+        "description": "The maintenance alert message to display to users"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "value": "midnight-sky",
+        "options": [
+          {
+            "name": "Midnight Sky (Blue)",
+            "value": "midnight-sky"
+          },
+          {
+            "name": "Alert (Red)",
+            "value": "alert"
+          },
+          {
+            "name": "Warning (Orange)",
+            "value": "warning"
+          },
+          {
+            "name": "Positive (Green)",
+            "value": "positive"
+          },
+          {
+            "name": "Informational (Purple)",
+            "value": "informational"
+          },
+          {
+            "name": "Iris Buzz (Purple)",
+            "value": "iris-buzz"
+          },
+          {
+            "name": "Sunset Sizzle (Orange)",
+            "value": "sunset-sizzle"
+          },
+          {
+            "name": "Citrus Pop (Yellow)",
+            "value": "citrus-pop"
+          },
+          {
+            "name": "Neutral Gray",
+            "value": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mansory",
+    "fields": []
+  },
+  {
+    "id": "mansory-item",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "description": "Upload an image for the masonry item"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string",
+        "description": "Alternative text for the image"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoUrl",
+        "label": "Vimeo Video URL",
+        "description": "URL for Vimeo video (e.g., https://vimeo.com/123456789)",
+        "required": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "videoPoster",
+        "label": "Video Poster Image",
+        "description": "Thumbnail image shown before video plays (optional - will use Vimeo thumbnail if not provided)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "videoPosterAlt",
+        "label": "Video Poster Alt Text",
+        "valueType": "string",
+        "description": "Alt text for the video poster image"
+      },
+      {
+        "component": "text",
+        "name": "video-title",
+        "label": "Video Title",
+        "valueType": "string",
+        "description": "Accessible title for the video"
+      }
+    ]
+  },
+  {
+    "id": "marquee",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Text",
+        "valueType": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "membership-value-table",
+    "fields": [
+      {
+        "component": "text",
+        "name": "dataFile",
+        "label": "Data File Path",
+        "valueType": "string",
+        "value": "/blocks/membership-value-table/membership-value-data.json",
+        "description": "Path to the JSON file containing the table data"
+      },
+      {
+        "component": "text",
+        "name": "tableHeading",
+        "label": "Table Title",
+        "valueType": "string",
+        "description": "Override the title from JSON data (optional)"
+      }
+    ]
+  },
+  {
+    "id": "mfe-login",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "mfeLoginIllustration",
+        "label": "MFE Login Illustration",
+        "multi": false
+      }
+    ]
+  },
+  {
+    "id": "mfe-login-banner",
+    "fields": [
+      {
+        "component": "text",
+        "name": "mfeBannerDescription",
+        "label": "Description"
+      }
+    ],
+    "class": "mfe-login-banner"
+  },
+  {
+    "id": "mini-courses",
+    "fields": []
+  },
+  {
+    "id": "nasm-widget",
+    "fields": [
+      {
+        "component": "text",
+        "name": "launchUrl",
+        "label": "Launch URL",
+        "description": "Full URL to the widget launch script (e.g., 'https://widgets.nasm.org/bmi/launch.js')",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "containerId",
+        "label": "Container ID",
+        "description": "ID of the container div that the widget script targets (e.g., 'bwp-node')",
+        "value": "bwp-node"
+      },
+      {
+        "component": "text",
+        "name": "elementName",
+        "label": "Widget Element Name (Optional)",
+        "description": "HTML element name to create (e.g., 'bmi-calculator'). Leave empty if widget script creates its own elements.",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "attributes",
+        "label": "Widget Attributes",
+        "description": "HTML attributes for the widget element (e.g., 'data-lead-gen=\"false\" data-unit-height=\"in\"')",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "styles",
+        "label": "CSS Styles",
+        "description": "CSS styles to apply to the widget (e.g., '.bmi-header { background-color: var(--brand-color-highlight) !important; }')",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "nav-level-3",
+    "fields": [
+      {
+        "component": "text",
+        "name": "id",
+        "label": "id",
+        "description": "the id to link with the third level navigation",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "nav-rich-text",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "content",
+        "label": "content",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "nav-square",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "description": ""
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "description",
+        "description": ""
+      },
+      {
+        "component": "text",
+        "name": "footer-text",
+        "label": "footer text",
+        "description": ""
+      },
+      {
+        "component": "text",
+        "name": "url",
+        "label": "URL",
+        "description": " the url /products/product-name/"
+      }
+    ]
+  },
+  {
+    "id": "nav-title-description",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "description": ""
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "description",
+        "description": ""
+      },
+      {
+        "component": "text",
+        "name": "url",
+        "label": "URL",
+        "description": " the url /nasm"
+      }
+    ]
+  },
+  {
+    "id": "nav",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "logo",
+        "label": "logo",
+        "description": "",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "main-nav",
+        "label": "main navigation",
+        "description": "",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "payment-plans",
+    "fields": []
+  },
+  {
+    "id": "product-description-tabs",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "product-details",
+    "fields": []
+  },
+  {
+    "id": "product-faq",
+    "fields": [
+      {
+        "component": "text",
+        "name": "dataFile",
+        "label": "FAQ Data File Path",
+        "valueType": "string",
+        "value": "/documents/faqs.json",
+        "description": "Path to the JSON file containing the FAQ data"
+      },
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Accordion Heading",
+        "valueType": "string",
+        "value": "Frequently Asked Questions",
+        "description": "The main heading for the FAQ section"
+      },
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string",
+        "description": "Alternative text for the image"
+      },
+      {
+        "component": "select",
+        "name": "layout",
+        "label": "Layout",
+        "valueType": "string",
+        "value": "accordion-only",
+        "options": [
+          {
+            "name": "Accordion Only",
+            "value": "accordion-only"
+          },
+          {
+            "name": "Image Left",
+            "value": "image-left"
+          },
+          {
+            "name": "Image Right",
+            "value": "image-right"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "footerContent",
+        "label": "Accordion Footer Content",
+        "valueType": "string",
+        "description": "Content to display below the accordion (supports rich text)"
+      }
+    ]
+  },
+  {
+    "id": "product-flexible-payment-ready",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "pdp-fp-call_text",
+        "label": "Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "pdp-ready-cta-heading",
+        "label": "Main Heading",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "pdp-ready-cta-headingType",
+        "label": "CTA Heading Type",
+        "value": "h4",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "hero-content_cta",
+        "label": "CTA",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "hero-content_ctaText",
+        "label": "CTA Text",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "hero-content_ctaType",
+        "label": "CTA Button Type",
+        "value": "Primary",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Theme & Options",
+        "value": [],
+        "options": [
+          {
+            "name": "Red",
+            "value": "red"
+          },
+          {
+            "name": "White",
+            "value": "white"
+          },
+          {
+            "name": "Primary",
+            "value": "brandcolordark"
+          },
+          {
+            "name": "Accent",
+            "value": "brandcolorhighlight"
+          },
+          {
+            "name": "Rounded Corners",
+            "value": "rounded-corners"
+          },
+          {
+            "name": "Center Align",
+            "value": "text-center"
+          },
+          {
+            "name": "Right Align",
+            "value": "text-right"
+          },
+          {
+            "name": "Auto Height",
+            "value": "auto-height"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "product-list-page-custom",
+    "fields": [
+      {
+        "component": "number",
+        "name": "category",
+        "label": "Category",
+        "valueType": "number",
+        "value": 4,
+        "description": "Current Category ID"
+      },
+      {
+        "component": "text",
+        "name": "urlPath",
+        "label": "URL Path",
+        "valueType": "string",
+        "value": "gear",
+        "description": "Current Category URL Path"
+      },
+      {
+        "component": "multiselect",
+        "name": "type",
+        "label": "Type",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Search",
+            "value": "search"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "product-list-page",
+    "fields": [
+      {
+        "component": "number",
+        "name": "category",
+        "label": "Category",
+        "valueType": "number",
+        "value": 4,
+        "description": "Current Category ID"
+      },
+      {
+        "component": "text",
+        "name": "urlPath",
+        "label": "URL Path",
+        "valueType": "string",
+        "value": "gear",
+        "description": "Current Category URL Path"
+      },
+      {
+        "component": "multiselect",
+        "name": "type",
+        "label": "Type",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Search",
+            "value": "search"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "product-recommendations",
+    "fields": [
+      {
+        "component": "text",
+        "name": "typeId",
+        "label": "Type ID",
+        "description": "Type ID"
+      }
+    ]
+  },
+  {
+    "id": "product-teaser",
+    "fields": [
+      {
+        "component": "text",
+        "name": "sku",
+        "label": "SKU",
+        "valueType": "string",
+        "value": "",
+        "description": "SKU to display"
+      },
+      {
+        "component": "boolean",
+        "name": "details-button",
+        "label": "Show Details Button",
+        "valueType": "boolean"
+      },
+      {
+        "component": "boolean",
+        "name": "cart-button",
+        "label": "Show Cart Button",
+        "valueType": "boolean"
+      }
+    ]
+  },
+  {
+    "id": "product-testimonials",
+    "fields": [
+      {
+        "component": "text",
+        "name": "dataFile",
+        "label": "Testimonials Data File Path",
+        "valueType": "string",
+        "value": "/documents/testimonials.json",
+        "description": "Path to the JSON file containing the testimonials data"
+      }
+    ]
+  },
+  {
+    "id": "quote",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "sectionLabel",
+        "label": "Section Title",
+        "value": "WHAT EXPERTS ARE SAYING",
+        "description": "Title that appears above the quote section"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "quote",
+        "label": "Quote Text",
+        "value": "",
+        "required": true,
+        "description": "The testimonial/quote text. Use <strong> or <b> tags to highlight text in yellow"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "authorName",
+        "label": "Author Name",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "authorFirm",
+        "label": "Author Title",
+        "value": "",
+        "description": "Job title or role (e.g., 'Mind Pump Podcast Host')"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "authorCredentials",
+        "label": "Author Credentials",
+        "value": "",
+        "description": "Professional certifications (e.g., 'NASM PES, CES')"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media",
+        "label": "Media (Image/Video Thumbnail)",
+        "multi": false,
+        "description": "Image or video thumbnail to display on the right"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mediaAlt",
+        "label": "Media Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoUrl",
+        "label": "Video URL",
+        "value": "",
+        "description": "If media is a video thumbnail, provide the video URL here"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "showQuoteIcon",
+        "label": "Show Quote Icon",
+        "value": true,
+        "description": "Display large quotation mark icon"
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Theme & Options",
+        "value": [],
+        "options": [
+          {
+            "name": "Light Theme",
+            "value": "light-theme"
+          },
+          {
+            "name": "Image Left",
+            "value": "image-left"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recertification-and-pay",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "loadingMessage",
+        "label": "Loading Message",
+        "value": "Processing recertification...",
+        "description": "Message to display while processing recertification"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "successMessage",
+        "label": "Success Message",
+        "value": "Recertification added to cart successfully!",
+        "description": "Message to display on successful recertification processing"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "errorMessage",
+        "label": "Error Message",
+        "value": "Error processing recertification. Please try again.",
+        "description": "Message to display on error"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "noParamsMessage",
+        "label": "No Parameters Message",
+        "value": "No recertification parameters found in URL. Redirecting to cart...",
+        "description": "Message when no URL parameters are found"
+      }
+    ]
+  },
+  {
+    "id": "salary-map",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "description": "Main title displayed above the map",
+        "value": "NASM PROS ACROSS THE USA"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "searchPlaceholder",
+        "label": "Search Placeholder",
+        "description": "Placeholder text for the state search input",
+        "value": "Search By State"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "instructionHeading",
+        "label": "Instruction Title",
+        "description": "Title for the instruction section",
+        "value": "HOVER OVER STATE TO SEE NASM PROS"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "instructionLabel",
+        "label": "Instruction Text",
+        "description": "Descriptive text below the instruction title",
+        "value": "<p>Are you an NASM-certified professional with a story to tell? Share your journey and join the \"NASM in Action\" community. Together, we can inspire the next generation of fitness and wellness leaders.</p>"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "shareStoryLabel",
+        "label": "Share Story Link Text",
+        "description": "Text for the share story link",
+        "value": "Share your story"
+      },
+      {
+        "component": "pathbrowser",
+        "valueType": "string",
+        "name": "shareStoryLink",
+        "label": "Share Story Link URL",
+        "description": "URL for the share story link",
+        "value": "#"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "dataSource",
+        "label": "Data Source",
+        "description": "Path to the JSON file containing state salary data",
+        "value": "/salary-map-data.json"
+      }
+    ]
+  },
+  {
+    "id": "secure-badge",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Badge Title",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "secure-badge-image",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "link",
+        "label": "Link URL",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "alt",
+        "label": "Alt Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "sports-tabs",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "colorScheme",
+        "label": "Color Scheme",
+        "value": "light",
+        "options": [
+          {
+            "name": "Light",
+            "value": "light"
+          },
+          {
+            "name": "Dark",
+            "value": "dark"
+          }
+        ],
+        "description": "Select a color scheme based on the background color"
+      }
+    ]
+  },
+  {
+    "id": "sports-tab",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Tab Title",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "desc",
+        "value": "",
+        "label": "Tab Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "story-carousel",
+    "fields": []
+  },
+  {
+    "id": "story-carousel-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "quote",
+        "value": "",
+        "label": "Quote/Testimonial",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "personName",
+        "label": "Person Name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "personRole",
+        "label": "Person Title/Role",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "content",
+        "label": "Table Content",
+        "description": "Add tables using the rich text editor or create a list where each item represents a row",
+        "required": true,
+        "value": ""
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Table Styles",
+        "description": "Select styling options for the table",
+        "value": [],
+        "options": [
+          {
+            "name": "No Header",
+            "value": "no-header"
+          },
+          {
+            "name": "Striped Rows",
+            "value": "striped"
+          },
+          {
+            "name": "Bordered (All cells)",
+            "value": "bordered"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tabs",
+    "fields": []
+  },
+  {
+    "id": "tab",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Tab Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "content",
+        "value": "",
+        "label": "Tab Content",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "testimonials",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "titleType",
+        "label": "Title Type",
+        "hidden": true
+      }
+    ]
+  },
+  {
+    "id": "testimonial-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "quote",
+        "label": "Quote"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "byline",
+        "label": "By Line"
+      }
+    ]
+  },
+  {
+    "id": "user-form",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Form Title",
+        "value": "TALK TO A PROGRAM ADVISOR",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Form Subtitle",
+        "value": "Fill out the form below and one of our friendly program advisors will get in touch within the next business day.",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "firstNameLabel",
+        "label": "First Name Field Label",
+        "value": "First Name"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "lastNameLabel",
+        "label": "Last Name Field Label",
+        "value": "Last Name"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "emailLabel",
+        "label": "Email Field Label",
+        "value": "Email"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "phoneLabel",
+        "label": "Phone Field Label",
+        "value": "Phone"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "consentLabel",
+        "label": "SMS Consent Text",
+        "value": "I consent to receive SMS texts from NASM. Msg/Data rates may apply, reply STOP to opt-out.",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "privacyLabel",
+        "label": "Privacy Policy Text",
+        "value": "By submitting this form you consent to receive recurring marketing emails and agree to our Privacy Policy. You may unsubscribe at any time.",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "submitButtonLabel",
+        "label": "Submit Button Text",
+        "value": "Sign Up Now"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "callToActionLabel",
+        "label": "Call to Action Text",
+        "value": "Don't wait? Call now to speak with a program advisor instantly."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "phoneNumber",
+        "label": "Contact Phone Number",
+        "value": "800-460-6276"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "backgroundImage",
+        "label": "Background Image",
+        "multi": false
+      }
+    ]
+  },
+  {
+    "id": "validate-credentials",
+    "fields": []
+  },
+  {
+    "id": "video",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "videoUrl",
+        "label": "Video URL",
+        "description": "URL for YouTube, Vimeo, or direct video file",
+        "required": true
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "videoUrl-tablet",
+        "label": "Video URL Tablet",
+        "description": "URL for YouTube, Vimeo, or direct video file"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "videoUrl-mobile",
+        "label": "Video URL Mobile",
+        "description": "URL for YouTube, Vimeo, or direct video file"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "poster",
+        "label": "Poster Image (Desktop)",
+        "description": "Thumbnail image shown before video plays on desktop",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "poster-tablet",
+        "label": "Poster Image (Tablet)",
+        "description": "Thumbnail image shown before video plays on tablet",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "poster-mobile",
+        "label": "Poster Image (Mobile)",
+        "description": "Thumbnail image shown before video plays on mobile",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "lottie-overlay",
+        "label": "Animation Overlay",
+        "description": "Please add a lottie animation content (Json format)"
+      },
+      {
+        "component": "text",
+        "name": "posterAlt",
+        "label": "Poster Alt Text",
+        "valueType": "string",
+        "description": "Alt text for the poster image"
+      },
+      {
+        "component": "boolean",
+        "name": "autoplay",
+        "label": "Autoplay",
+        "valueType": "boolean",
+        "description": "Enable autoplay (respects user's reduced motion preference)"
+      },
+      {
+        "component": "boolean",
+        "name": "background",
+        "label": "Background Video",
+        "valueType": "boolean",
+        "description": "Play video as background (muted, looped, no controls)"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Video Title",
+        "valueType": "string",
+        "description": "Accessible title for the video"
+      }
+    ]
+  },
+  {
+    "id": "page-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "enrichment-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "enrichment",
+        "readOnly": true
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "value": "",
+        "description": "Title of the enrichment"
+      },
+      {
+        "component": "text",
+        "name": "enrichment-products",
+        "label": "Product SKU's to match with",
+        "valueType": "string",
+        "multi": true
+      },
+      {
+        "component": "text",
+        "name": "enrichment-categories",
+        "label": "Product Categories to match with",
+        "valueType": "string",
+        "multi": true
+      },
+      {
+        "component": "text",
+        "name": "enrichment-positions",
+        "label": "Positions to match with",
+        "valueType": "string",
+        "multi": true
+      }
+    ]
+  },
+  {
+    "id": "pdp-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "pdp",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "order-details-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "order-details",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "plp-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "plp",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "cart-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "cart",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "mini-cart-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "mini-cart",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "checkout-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "checkout",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "search-order-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "search-order",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "search-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "search",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "login-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "login",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "forgot-password-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "forgot-password",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "create-account-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "create-account",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "account-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "account",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "orders-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "orders",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "address-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "address",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "returns-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "returns",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "account-order-details-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "account-order-details",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "order-status-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "order-status",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "return-details-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "return-details",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "create-return-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "create-return",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "confirm-account-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "confirm-account",
+        "readOnly": true
+      }
+    ]
+  },
+  {
+    "id": "create-password-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "create-password",
+        "readOnly": true
+      }
+    ]
+  }
+]

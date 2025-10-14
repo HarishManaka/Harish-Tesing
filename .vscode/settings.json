@@ -1,0 +1,37 @@
+{
+  // ESLint integration
+  "eslint.enable": true,
+  "eslint.validate": ["javascript", "json"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+
+  // Stylelint integration
+  "css.validate": false,
+
+  // Format on save
+  "editor.formatOnSave": false,
+
+  // Set ESLint as default formatter for JS/JSON
+  "[javascript]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2
+  },
+
+  // Set Stylelint as default formatter for CSS
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false,
+    "editor.tabSize": 4
+  },
+
+  // Default tab size
+  "editor.tabSize": 2
+}

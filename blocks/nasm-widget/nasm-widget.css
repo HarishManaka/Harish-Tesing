@@ -1,0 +1,146 @@
+/* Base container styles */
+.nasm-widget-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Ensure the widget displays properly */
+.nasm-widget-container > * {
+  width: 100%;
+}
+
+/* Loading state styling - light gray background until widget loads */
+.nasm-widget-container:empty {
+  background-color: #f5f5f5;
+  min-height: 200px;
+  border-radius: 8px;
+}
+
+/* Error state styling - only for direct error messages */
+.nasm-widget-container > p {
+  text-align: center;
+  padding: 2rem;
+  color: #d32f2f;
+  font-family: Prompt, sans-serif;
+}
+
+/* EDS Branded Theme */
+.nasm-widget-eds-branded {
+  background: #f0f4f8;
+  border: 2px solid #123257;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgb(18 50 87 / 15%);
+  position: relative;
+}
+
+.nasm-widget-eds-branded::before {
+  content: "EDS Branded Widget";
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  background: #123257;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.nasm-widget-eds-branded.eds-branded-widget {
+  font-family: Prompt, sans-serif;
+}
+
+.nasm-widget-eds-branded bmi-calculator {
+  /* Override widget styles with EDS variables */
+  font-family: Prompt, sans-serif !important;
+  color: #123257 !important;
+}
+
+.nasm-widget-eds-branded bmi-calculator h1,
+.nasm-widget-eds-branded bmi-calculator h2,
+.nasm-widget-eds-branded bmi-calculator h3 {
+  color: #123257 !important;
+  font-family: Prompt, sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.nasm-widget-eds-branded bmi-calculator input,
+.nasm-widget-eds-branded bmi-calculator select {
+  border: 2px solid #FFA500 !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+  font-family: Prompt, sans-serif !important;
+  background: white !important;
+  font-size: 16px !important;
+}
+
+.nasm-widget-eds-branded bmi-calculator input:focus,
+.nasm-widget-eds-branded bmi-calculator select:focus {
+  border-color: #123257 !important;
+  box-shadow: 0 0 0 3px rgb(18 50 87 / 20%) !important;
+  outline: none !important;
+}
+
+.nasm-widget-eds-branded bmi-calculator button {
+  background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%) !important;
+  color: #123257 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 16px 24px !important;
+  font-family: Prompt, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  transition: all 0.3s ease !important;
+}
+
+.nasm-widget-eds-branded bmi-calculator button:hover {
+  background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgb(255 165 0 / 40%) !important;
+}
+
+.nasm-widget-eds-branded bmi-calculator label {
+  color: #123257 !important;
+  font-family: Prompt, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Original NASM Theme - minimal container styling */
+.nasm-widget-nasm-original {
+  /* Let the loaded NASM styles handle most of the styling */
+  background: transparent;
+}
+
+/* Custom Theme - basic container */
+.nasm-widget-custom {
+  /* Minimal styling, let custom CSS handle the rest */
+  background: transparent;
+}
+
+/* Unstyled Theme */
+.nasm-widget-unstyled {
+  /* Completely unstyled */
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Responsive design */
+@media (width < 600px) {
+  .nasm-widget-container {
+    padding: 0 1rem;
+  }
+  
+  .nasm-widget-eds-branded {
+    padding: var(--spacing-s);
+  }
+}

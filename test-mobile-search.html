@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Mobile Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-results {
+            background: #f5f5f5;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 3px;
+            min-height: 100px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 3px;
+            display: inline-block;
+            margin: 5px 0;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mobile Search Functionality Test</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Check Mobile Search Implementation</h2>
+        <button onclick="testMobileSearchSetup()">Run Test</button>
+        <div id="test1-results" class="test-results">
+            Click "Run Test" to check if mobile search is properly set up
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Simulate Mobile Search</h2>
+        <button onclick="simulateMobileSearch()">Simulate Search</button>
+        <div id="test2-results" class="test-results">
+            Click "Simulate Search" to test search functionality
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Check Mobile Navigation Integration</h2>
+        <button onclick="testNavigationIntegration()">Check Integration</button>
+        <div id="test3-results" class="test-results">
+            Click "Check Integration" to verify mobile nav search integration
+        </div>
+    </div>
+
+    <script>
+        async function testMobileSearchSetup() {
+            const results = document.getElementById('test1-results');
+            results.innerHTML = '<div class="status info">Testing mobile search setup...</div>';
+            
+            try {
+                // Check if mobile-search-dropin.js exists
+                const response = await fetch('/blocks/nav/mobile-search-dropin.js');
+                const fileExists = response.ok;
+                
+                let html = '';
+                
+                if (fileExists) {
+                    html += '<div class="status success">✓ mobile-search-dropin.js file exists</div>';
+                } else {
+                    html += '<div class="status error">✗ mobile-search-dropin.js file not found</div>';
+                }
+                
+                // Check if nav-root.js is updated
+                const navRootResponse = await fetch('/blocks/nav/nav-root.js');
+                if (navRootResponse.ok) {
+                    const navRootContent = await navRootResponse.text();
+                    if (navRootContent.includes('mobile-search-dropin')) {
+                        html += '<div class="status success">✓ nav-root.js includes mobile search dropin</div>';
+                    } else {
+                        html += '<div class="status error">✗ nav-root.js does not include mobile search dropin</div>';
+                    }
+                    
+                    if (navRootContent.includes('mobile-search-autocomplete')) {
+                        html += '<div class="status success">✓ Autocomplete container added to mobile search</div>';
+                    } else {
+                        html += '<div class="status error">✗ Autocomplete container not found</div>';
+                    }
+                }
+                
+                // Check CSS updates
+                const cssResponse = await fetch('/blocks/nav/nav.css');
+                if (cssResponse.ok) {
+                    const cssContent = await cssResponse.text();
+                    if (cssContent.includes('mobile-search-autocomplete')) {
+                        html += '<div class="status success">✓ CSS styles for mobile search autocomplete added</div>';
+                    } else {
+                        html += '<div class="status error">✗ CSS styles for mobile search autocomplete missing</div>';
+                    }
+                }
+                
+                results.innerHTML = html;
+                
+            } catch (error) {
+                results.innerHTML = `<div class="status error">Error: ${error.message}</div>`;
+            }
+        }
+        
+        async function simulateMobileSearch() {
+            const results = document.getElementById('test2-results');
+            results.innerHTML = '<div class="status info">Simulating mobile search...</div>';
+            
+            try {
+                // Create a mock mobile navigation structure
+                const mockHTML = `
+                    <div class="mobile-nav-search-wrapper">
+                        <form action="/search" method="GET" class="mobile-nav-search-form">
+                            <div class="mobile-nav-search-input-wrapper">
+                                <input id="test-mobile-search" type="search" placeholder="Search for products..." />
+                            </div>
+                            <div id="test-mobile-search-autocomplete" class="search-autocomplete mobile-search-autocomplete"></div>
+                        </form>
+                    </div>
+                `;
+                
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = mockHTML;
+                document.body.appendChild(tempDiv);
+                
+                let html = '<div class="status success">✓ Mobile search structure created</div>';
+                
+                // Check if elements exist
+                const searchInput = document.getElementById('test-mobile-search');
+                const autocompleteContainer = document.getElementById('test-mobile-search-autocomplete');
+                
+                if (searchInput) {
+                    html += '<div class="status success">✓ Search input element found</div>';
+                } else {
+                    html += '<div class="status error">✗ Search input element not found</div>';
+                }
+                
+                if (autocompleteContainer) {
+                    html += '<div class="status success">✓ Autocomplete container element found</div>';
+                } else {
+                    html += '<div class="status error">✗ Autocomplete container element not found</div>';
+                }
+                
+                // Simulate typing in search
+                if (searchInput) {
+                    searchInput.value = 'test product';
+                    const event = new Event('input', { bubbles: true });
+                    searchInput.dispatchEvent(event);
+                    html += '<div class="status info">Simulated typing "test product" in search field</div>';
+                }
+                
+                // Clean up
+                document.body.removeChild(tempDiv);
+                
+                results.innerHTML = html;
+                
+            } catch (error) {
+                results.innerHTML = `<div class="status error">Error: ${error.message}</div>`;
+            }
+        }
+        
+        async function testNavigationIntegration() {
+            const results = document.getElementById('test3-results');
+            results.innerHTML = '<div class="status info">Testing navigation integration...</div>';
+            
+            try {
+                let html = '';
+                
+                // Check for required imports
+                const checks = [
+                    { 
+                        file: '/blocks/nav/nav-root.js',
+                        contains: 'mobile-search-dropin',
+                        message: 'Mobile search dropin import'
+                    },
+                    {
+                        file: '/blocks/nav/nav-root.js',
+                        contains: 'searchCleanup',
+                        message: 'Search cleanup mechanism'
+                    },
+                    {
+                        file: '/blocks/nav/mobile-search-dropin.js',
+                        contains: '@dropins/storefront-product-discovery',
+                        message: 'Product discovery dropin import'
+                    },
+                    {
+                        file: '/blocks/nav/mobile-search-dropin.js',
+                        contains: 'initMobileSearchDropin',
+                        message: 'Mobile search initialization function'
+                    }
+                ];
+                
+                for (const check of checks) {
+                    const response = await fetch(check.file);
+                    if (response.ok) {
+                        const content = await response.text();
+                        if (content.includes(check.contains)) {
+                            html += `<div class="status success">✓ ${check.message} found</div>`;
+                        } else {
+                            html += `<div class="status error">✗ ${check.message} not found</div>`;
+                        }
+                    } else {
+                        html += `<div class="status error">✗ Could not load ${check.file}</div>`;
+                    }
+                }
+                
+                // Summary
+                html += '<hr><strong>Integration Summary:</strong>';
+                html += '<pre>Mobile search has been integrated with:\n';
+                html += '1. Nav-root.js for initialization\n';
+                html += '2. Mobile-search-dropin.js for functionality\n';
+                html += '3. Nav.css for styling\n';
+                html += '4. Autocomplete container for results display</pre>';
+                
+                results.innerHTML = html;
+                
+            } catch (error) {
+                results.innerHTML = `<div class="status error">Error: ${error.message}</div>`;
+            }
+        }
+    </script>
+</body>
+</html>

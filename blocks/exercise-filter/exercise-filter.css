@@ -1,0 +1,185 @@
+/* Exercise Filter Block - Imports generic styles and adds custom overrides */
+
+/* Deployment trigger comment */
+@import url("../../shared-components/generic-filter/generic-filter.css");
+
+/* Block Container */
+.exercise-filter.block {
+    padding: 0;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Custom CSS Variables for Exercise Filter Theme */
+.exercise-filter {
+    /* Custom font for all filter UI elements */
+    --gf-font-family: prompt, sans-serif;
+
+    /* Use brand citrus-pop color for primary button hover */
+    --gf-primary-hover-bg: #ffc107;
+}
+
+/* Exercise-specific Card Styles */
+.exercise-filter .crc-resource-list-item,
+.exercise-filter a.exercise-card-link {
+    border: 1px solid var(--ui-color-mid-light, #ddd);
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+}
+
+.exercise-filter .crc-resource-list-item:hover,
+.exercise-filter a.exercise-card-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgb(0 0 0 / 10%);
+    text-decoration: none;
+}
+
+.exercise-filter .resource-list-item-img {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.exercise-filter .resource-list-item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.exercise-filter .resource-list-item-content {
+    position: relative;
+    padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.exercise-filter .resource-list-item-content h3 {
+    font-family: Prompt, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--brand-color-midnight-sky, #123257);
+    margin: 0 0 10px;
+    line-height: 1.3;
+}
+
+.exercise-filter .resource-list-item-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 24px;
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.exercise-filter .view-link {
+    font-family: Prompt, sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--brand-color-midnight-sky, #123257);
+    text-decoration: underline;
+}
+
+.exercise-filter .view-link:hover {
+    color: #06c;
+}
+
+/* Difficulty Pill Styles */
+.exercise-filter .difficulty-pill {
+    border-radius: 20px;
+    padding: 0 16px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    border: 1px solid var(--brand-color-midnight-sky, #123257);
+    color: var(--brand-color-midnight-sky, #123257);
+    background-color: transparent;
+    margin-left: auto;
+    line-height: 1.2rem;
+}
+
+/* Exercise Metadata Styles */
+.exercise-filter .exercise-metadata {
+    flex: 1;
+}
+
+.exercise-filter .exercise-metadata p {
+    font-family: peridot-pe-variable, sans-serif;
+    font-size: 0.875rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+.exercise-filter .exercise-metadata .metadata-label {
+    font-family: Prompt, sans-serif;
+    font-weight: 600;
+    color: var(--brand-color-aqua-bliss, #40b5e6);
+    margin-right: 5px;
+}
+
+/* Skeleton Loading States */
+.exercise-skeleton .skeleton-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.exercise-skeleton .skeleton-title {
+    height: 24px;
+    width: 80%;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.exercise-skeleton .skeleton-text {
+    height: 16px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.exercise-skeleton .skeleton-link {
+    height: 18px;
+    width: 100px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.exercise-skeleton .skeleton-pill {
+    height: 24px;
+    width: 80px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 20px;
+    margin-left: auto;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}

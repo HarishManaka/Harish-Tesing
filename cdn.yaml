@@ -1,0 +1,24 @@
+kind: "CDN"
+version: "1"
+metadata:
+  envs: ["qa", "preview", "live"]
+data:
+  origin:
+    selectors:
+      - condition: '${ req.headers.host == "qa-www.nasm.org" }'
+        value: https://qa--nasm-qa--sprucetechnology.aem.page
+  headers:
+    - key: "x-forwarded-host"
+      value: '${ req.headers.host }'
+  authentication:
+    authenticators:
+       - name: purge-auth
+         type: purge
+         purgeKey1: ${{CDN_PURGEKEY_100125}}
+         purgeKey2: ${{CDN_PURGEKEY_100225}}
+    rules:
+       - name: purge-auth-rule
+         when: { reqProperty: tier, equals: "publish" }
+         action:
+           type: authenticate
+           authenticator: purge-auth

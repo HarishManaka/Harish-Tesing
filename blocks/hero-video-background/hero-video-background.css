@@ -1,0 +1,322 @@
+/* Hero Video Background Block Styles */
+.hero-video-background-wrapper{
+  width: 100%;
+}
+
+.hero-video-background {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--brand-color-midnight-sky, #2c4a6b);
+}
+
+.hero-video-background-container {
+  position: relative;
+  width: 100%;
+  height: 768px;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Video Background */
+.hero-video-background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  aspect-ratio: 16/9;
+}
+
+.hero-video-background-video.loaded {
+  opacity: 1;
+}
+
+/* Video Fallback */
+.hero-video-background-container.video-fallback {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Overlay */
+.hero-video-background-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-color: var(--brand-color-midnight-sky, #2c4a6b);
+}
+
+.hero-video-background-overlay.light {
+  opacity: 0.3;
+}
+
+.hero-video-background-overlay.medium {
+  opacity: 0.5;
+}
+
+.hero-video-background-overlay.heavy {
+  opacity: 0.7;
+}
+
+/* Content */
+.hero-video-background-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.hero-video-background-heading {
+  font-family: var(--type-base-font-family);
+  font-size: 48px;
+  font-weight: 900;
+  font-style: normal;
+  line-height: 1.1;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.001em;
+  color: #fff;
+}
+
+.hero-video-background-subheading {
+  font-family: var(--type-base-font-family);
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0 0 24px;
+  color: var(--brand-color-citrus-pop, #E8F557);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-variation-settings: "wdth" 60;
+}
+
+.hero-video-background-description {
+  font-family: var(--body-font-family), sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0 0 32px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fff;
+  font-variation-settings: normal;
+}
+
+.hero-video-background-cta {
+  margin-top: 32px;
+}
+
+.hero-video-background-cta .button {
+  display: inline-block;
+  padding: 16px 32px;
+  font-family: var(--body-font-family), sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  line-height: 0px;
+}
+
+.hero-video-background-cta .button.primary {
+  background-color: var(--brand-color-citrus-pop, #E8F557);
+  color: var(--brand-color-midnight-sky, #123257);
+  font-size: 20px;
+  padding: 0 70px;
+  line-height: 40px;
+  box-shadow: none;
+  transition: all 300ms ease 0ms;
+}
+
+.hero-video-background-cta .button.primary:hover {
+  background-color: var(--brand-color-morning-mist);
+}
+
+.hero-video-background-cta .button.secondary {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.hero-video-background-cta .button.secondary:hover {
+  background-color: #fff;
+  color: var(--brand-color-midnight-sky, #123257);
+  transform: translateY(-2px);
+}
+
+.hero-video-background-cta .button.default {
+  background-color: var(--brand-color-midnight-sky, #123257);
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.hero-video-background-cta .button.default:hover {
+  background-color: #fff;
+  color: var(--brand-color-midnight-sky, #123257);
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* SMALL: 320px - 600px (iPhone SE, iPhone 16 Pro Max) */
+@media (320px <= width <= 599px) {
+  .hero-video-background-container {
+    min-height: 75vh;
+    height: auto;
+  }
+
+  .hero-video-background-content {
+    padding: 40px 16px;
+  }
+
+  .hero-video-background-heading {
+    font-size: 64px;
+    margin-bottom: 24px;
+    line-height: 0.87em;
+  }
+
+  .hero-video-background-subheading {
+    font-size: 24px;
+    margin-bottom: 24px;
+    line-height: 0.87em;
+  }
+
+  .hero-video-background-description {
+    font-size: 20px;
+    margin-bottom: 24px;
+    line-height: 1.3em;
+  }
+
+  .hero-video-background-cta .button {
+    font-size: 20px;
+  }
+}
+
+/* MEDIUM: 600px - 900px (iPad 11") */
+@media (600px <= width <= 899px) {
+  .hero-video-background-content {
+    padding: 60px 40px;
+  }
+
+  .hero-video-background-heading {
+    font-size: 80px;
+    margin-bottom: 28px;
+    line-height: 0.9em;
+  }
+
+  .hero-video-background-subheading {
+    font-size: 40px;
+    margin-bottom: 28px;
+    line-height: 0.9em;
+  }
+
+  .hero-video-background-description {
+    font-size: 22px;
+    margin-bottom: 36px;
+    line-height: 1.4em;
+  }
+
+  .hero-video-background-cta .button {
+    padding: 16px 32px;
+    font-size: 20px;
+  }
+}
+
+/* LARGE: 900px - 1200px (iPad Pro 12.9") */
+@media (900px <= width <= 1199px) {
+  .hero-video-background-content {
+    padding: 80px 60px;
+  }
+
+  .hero-video-background-heading {
+    font-size: 96px;
+    margin-bottom: 32px;
+    line-height: 0.9em;
+  }
+
+  .hero-video-background-subheading {
+    font-size: 36px;
+    margin-bottom: 32px;
+    line-height: 1em;
+  }
+
+  .hero-video-background-description {
+    font-size: 24px;
+    margin-bottom: 40px;
+    line-height: 1.5em;
+  }
+
+  .hero-video-background-cta .button {
+    padding: 18px 36px;
+    font-size: 20px;
+  }
+}
+
+/* EXTRA-LARGE: 1200px - 1440px */
+@media (width >= 1200px) {
+  .hero-video-background-content {
+    padding: 100px 80px;
+  }
+
+  .hero-video-background-heading {
+    font-size: 104px;
+    line-height: 0.9em;
+  }
+
+  .hero-video-background-subheading {
+    font-size: 40px;
+    line-height: 1em;
+  }
+
+  .hero-video-background-cta .button {
+    padding: 20px 40px;
+    font-size: 20px;
+  }
+}
+
+/* Accessibility and motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video-background-video {
+    transition: none;
+  }
+  
+  .hero-video-background-cta .button {
+    transition: none;
+  }
+  
+  .hero-video-background-cta .button:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .hero-video-background-heading,
+  .hero-video-background-subheading,
+  .hero-video-background-description {
+    text-shadow: none;
+  }
+  
+  .hero-video-background-overlay {
+    background-color: Canvas;
+    opacity: 0.8;
+  }
+}

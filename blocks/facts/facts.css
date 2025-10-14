@@ -1,0 +1,113 @@
+.banner {
+    position: relative;
+    overflow: hidden;
+  }
+
+.facts .facts-container {
+    width: 100%;
+    padding: 40px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .facts .facts-content {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+.facts ul {
+    width: 100%;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(374px, 1fr));
+    grid-gap: var(--spacing-xlarge);
+    grid-row-gap: var(--spacing-big);
+}
+
+.facts ul li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--spacing-medium);
+}
+
+.facts .facts-fact-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 2000ms ease, transform 2000ms ease;
+}
+
+.facts .facts-fact-item.animate-in {    
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.facts .facts-fact-body {
+    margin: 0;
+}
+
+.facts .facts-fact-body p {
+    color: var(--brand-color-white);
+    font-family: var(--body-font-family);
+    font-size: 20px;
+    font-style: normal;
+    line-height: 1.2em;
+    font-variation-settings: normal;
+    margin: 0;
+}
+
+.facts .facts-fact-body p strong {
+    font-weight: 800;
+}
+
+.section[data-background="white"] .facts .facts-fact-body p,
+.section[data-background="--brand-color-white"] .facts .facts-fact-body p{
+    color: var(--brand-color-midnight-sky, #123257);
+}
+
+.facts .facts-fact-image {
+    line-height: 0;
+}
+
+.facts ul li img {
+    width: 80px;
+    max-width: 80px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* SMALL: 320px - 600px (iPhone SE, iPhone 16 Pro Max) */
+@media (320px <= width <= 599px) {
+    .facts ul li {
+        gap: var(--spacing-xsmall);
+        align-items: center;
+    }
+
+    .facts ul {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
+  }
+  
+  /* MEDIUM: 600px - 900px (iPad 11") */
+  @media (600px <= width <= 899px) {
+    .facts ul li {
+        gap: var(--spacing-small);
+    }
+  }
+  
+  /* EXTRA-LARGE: 1200px - 1440px */
+  
+  /* @media (width >= 1440px) {
+
+  } */

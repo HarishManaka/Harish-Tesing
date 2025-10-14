@@ -1,0 +1,221 @@
+/* Countdown Promo Block Styles */
+
+.countdown-promo {
+  background: var(--brand-color-aqua-bliss, #66BFC7);
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-promo .countdown-promo-container {
+  width: 100%;
+  padding: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-promo .countdown-promo-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Text section */
+.countdown-promo .countdown-promo-text {
+  flex: 1;
+}
+
+.countdown-promo .countdown-promo-title {
+  font-family: var(--heading-font-family), sans-serif;
+  margin: 0;
+  text-transform: uppercase;
+  color: var(--brand-color-midnight-sky, #123257);
+  line-height: 1.2;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+/* Countdown timer section */
+.countdown-promo .countdown-timer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.countdown-promo .time-unit {
+  border-radius: 5px;
+  border: 1px solid var(--secondary-colors-morning-mist, #BEE2E7);
+  background: rgb(190 226 231 / 60%);
+  padding: 12px 16px;
+  text-align: center;
+  min-width: 70px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.countdown-promo .time-value {
+  display: block;
+  font-family: var(--heading-font-family), sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--brand-color-midnight-sky, #123257);
+  line-height: normal;
+  letter-spacing: 0.32px;
+  margin-bottom: 4px;
+}
+
+.countdown-promo .time-label {
+  display: block;
+  font-family: var(--body-font-family), sans-serif;
+  font-size: 12px;
+  color: var(--brand-color-midnight-sky, #123257);
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.24px;
+  text-transform: capitalize;
+}
+
+/* Background color classes */
+.countdown-promo .countdown-promo-container.bg-white {
+  background: #fff;
+}
+
+.countdown-promo .countdown-promo-container.bg-white .countdown-promo-title {
+  color: var(--brand-color-midnight-sky, #123257);
+}
+
+.countdown-promo .countdown-promo-container.bg-gray {
+  background: var(--color-neutral-200, #f5f5f5);
+}
+
+.countdown-promo .countdown-promo-container.bg-gray .countdown-promo-title {
+  color: var(--brand-color-midnight-sky, #123257);
+}
+
+.countdown-promo .countdown-promo-container.bg-purple {
+  background: var(--brand-color-iris-buzz, #6463C8);
+}
+
+.countdown-promo .countdown-promo-container.bg-purple .countdown-promo-title {
+  color: #fff;
+}
+
+.countdown-promo .countdown-promo-container.bg-dark-blue {
+  background: var(--brand-color-midnight-sky, #123257);
+}
+
+.countdown-promo .countdown-promo-container.bg-dark-blue .countdown-promo-title {
+  color: #fff;
+}
+
+.countdown-promo .countdown-promo-container.bg-teal {
+  background: var(--brand-color-aqua-bliss, #66BFC7);
+}
+
+.countdown-promo .countdown-promo-container.bg-teal .countdown-promo-title {
+  color: var(--brand-color-midnight-sky, #123257);
+}
+
+.countdown-promo .countdown-promo-container.bg-transparent {
+  background: transparent;
+}
+
+.countdown-promo .countdown-promo-container.bg-transparent .countdown-promo-title {
+  color: var(--brand-color-midnight-sky, #123257);
+}
+
+/* Responsive styles */
+@media (width < 768px) {
+  .countdown-promo .countdown-promo-container {
+    padding: 16px 0;
+  }
+  
+  .countdown-promo .countdown-promo-content {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    padding: 0 15px;
+  }
+  
+  .countdown-promo .countdown-promo-title {
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .countdown-promo .countdown-timer {
+    gap: 12px;
+    justify-content: center;
+  }
+  
+  .countdown-promo .time-unit {
+    min-width: 60px;
+    padding: 10px 12px;
+  }
+  
+  .countdown-promo .time-value {
+    font-size: 24px;
+  }
+  
+  .countdown-promo .time-label {
+    font-size: 10px;
+  }
+}
+
+@media (width >= 768px) and (width < 1024px) {
+  .countdown-promo .countdown-promo-title {
+    font-size: 20px;
+  }
+  
+  .countdown-promo .countdown-timer {
+    gap: 14px;
+  }
+  
+  .countdown-promo .time-value {
+    font-size: 28px;
+  }
+}
+
+@media (width >= 1024px) {
+  .countdown-promo .countdown-promo-title {
+    font-size: 26px;
+  }
+  
+  .countdown-promo .time-value {
+    font-size: 36px;
+  }
+}
+
+/* Text color classes */
+.countdown-promo .text-dark-blue {
+  color: var(--brand-color-midnight-sky, #123257);
+}
+
+.countdown-promo .text-white {
+  color: #fff;
+}
+
+.countdown-promo .text-yellow {
+  color: var(--brand-color-sunshine-ray, #FFD700);
+}
+
+.countdown-promo .text-teal {
+  color: var(--brand-color-aqua-bliss, #66BFC7);
+}
+
+.countdown-promo .text-purple {
+  color: var(--brand-color-iris-buzz, #6463C8);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .countdown-promo .time-unit {
+    animation: none;
+  }
+}

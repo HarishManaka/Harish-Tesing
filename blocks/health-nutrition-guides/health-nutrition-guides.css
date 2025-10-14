@@ -1,0 +1,267 @@
+/* Health & Nutrition Guides Filter Block - Imports generic styles and adds custom overrides */
+@import url("../../shared-components/generic-filter/generic-filter.css");
+
+/* Block Container */
+.health-nutrition-guides.block {
+    padding: 0;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Custom CSS Variables for Health & Nutrition Guides Filter Theme */
+.health-nutrition-guides {
+    /* Custom font for all filter UI elements */
+    --gf-font-family: prompt, sans-serif;
+
+    /* Use brand citrus-pop color for primary button hover */
+    --gf-primary-hover-bg: #ffc107;
+}
+
+/* Health & Nutrition Guide-specific Card Styles */
+.health-nutrition-guides .crc-resource-list-item,
+.health-nutrition-guides a.health-nutrition-guide-card-link {
+    border: 1px solid var(--ui-color-mid-light, #ddd);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+}
+
+.health-nutrition-guides .crc-resource-list-item:hover,
+.health-nutrition-guides a.health-nutrition-guide-card-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgb(0 0 0 / 15%);
+    text-decoration: none;
+}
+
+.health-nutrition-guides .resource-list-item-img {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: #f8f9fa;
+}
+
+.health-nutrition-guides .resource-list-item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.health-nutrition-guides .resource-list-item-content {
+    position: relative;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.health-nutrition-guides .resource-list-item-content h3 {
+    font-family: Prompt, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--brand-color-midnight-sky, #123257);
+    margin: 0 0 12px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-transform: none;
+}
+
+/* Guide Description */
+.health-nutrition-guides .guide-description {
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+.health-nutrition-guides .guide-description p {
+    font-family: peridot-pe-variable, sans-serif;
+    font-size: 0.875rem;
+    color: #222;
+    line-height: 1.6;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Guide Metadata */
+.health-nutrition-guides .guide-metadata {
+    margin-bottom: 15px;
+}
+
+.health-nutrition-guides .guide-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.health-nutrition-guides .guide-ceus {
+    font-family: Prompt, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--brand-color-aqua-bliss, #40b5e6);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.health-nutrition-guides .guide-price {
+    font-family: Prompt, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--brand-color-midnight-sky, #123257);
+}
+
+.health-nutrition-guides .guide-category {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.health-nutrition-guides .category-tag {
+    background: var(--brand-color-aqua-bliss, #40b5e6);
+    color: #fff;
+    font-family: Prompt, sans-serif;
+    font-size: 0.625rem;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Resource List Item Meta */
+.health-nutrition-guides .resource-list-item-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.health-nutrition-guides .view-link {
+    font-family: Prompt, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    color: var(--brand-color-midnight-sky, #123257);
+    text-decoration: underline;
+}
+
+.health-nutrition-guides .view-link:hover {
+    color: var(--brand-color-aqua-bliss, #40b5e6);
+}
+
+/* Duration Pill */
+.health-nutrition-guides .duration-pill {
+    background: transparent;
+    border: 1px solid var(--brand-color-midnight-sky, #123257);
+    color: var(--brand-color-midnight-sky, #123257);
+    font-family: Prompt, sans-serif;
+    font-size: 0.625rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Skeleton Loading States */
+.health-nutrition-guide-skeleton .skeleton-image {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.health-nutrition-guide-skeleton .skeleton-title {
+    height: 22px;
+    width: 85%;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.health-nutrition-guide-skeleton .skeleton-text {
+    height: 14px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+    margin-bottom: 6px;
+}
+
+.health-nutrition-guide-skeleton .skeleton-link {
+    height: 16px;
+    width: 90px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.health-nutrition-guide-skeleton .skeleton-pill {
+    height: 20px;
+    width: 60px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 16px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Responsive Design */
+@media (width <= 768px) {
+    .health-nutrition-guides .resource-list-item-content {
+        padding: 15px;
+    }
+
+    .health-nutrition-guides .resource-list-item-content h3 {
+        font-size: 1rem;
+    }
+
+    .health-nutrition-guides .guide-description p {
+        font-size: 0.8125rem;
+    }
+
+    .health-nutrition-guides .resource-list-item-img {
+        height: 160px;
+    }
+}
+
+/* Grid Layout Adjustments */
+.health-nutrition-guides .crc-filter-resources-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+@media (width <= 768px) {
+    .health-nutrition-guides .crc-filter-resources-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
