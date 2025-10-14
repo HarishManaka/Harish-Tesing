@@ -1,6 +1,6 @@
 mountpoints:
   /:
-    url: "https://author-p154556-e1691202.adobeaemcloud.com/bin/franklin.delivery/sprucetechnology/Harish-Testing/main"
+    url: "https://author-p154556-e1691202.adobeaemcloud.com/bin/franklin.delivery/sprucetechnology/Harish-Testing/main/fetaure/Sathish"
 
     type: "markup"
     suffix: ".html"

@@ -5518,5 +5518,41 @@
         "readOnly": true
       }
     ]
-  }
+  },
+  {
+  "title": "Three Cards Model",
+  "description": "Defines the data structure for the Three Cards component.",
+  "properties": {
+    "cards": {
+      "type": "array",
+      "title": "Cards List",
+      "items": {
+        "type": "object",
+        "properties": {
+          "image": {
+            "type": "string",
+            "title": "Card Image",
+            "format": "uri"
+          },
+          "title": {
+            "type": "string",
+            "title": "Card Title"
+          },
+          "description": {
+            "type": "string",
+            "title": "Card Description"
+          },
+          "link": {
+            "type": "string",
+            "title": "Card Link",
+            "format": "uri"
+          }
+        },
+        "required": ["title", "image"]
+      }
+    }
+  },
+  "required": ["cards"]
+ }
 ]
+   
