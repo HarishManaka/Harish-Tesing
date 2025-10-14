@@ -117,6 +117,7 @@
       "hubspot-form",
       "maintenance-alert",
       "three-cards"
+    
     ]
   },
   {
@@ -198,7 +199,8 @@
       "validate-credentials",
       "video",
       "product-teaser",
-      "product-recommendations"
+      "product-recommendations",
+      "three-cards"
     ]
   },
   {
@@ -282,7 +284,8 @@
       "enrichment",
       "product-teaser",
       "product-recommendations",
-      "product-list-page"
+      "product-list-page",
+       "three-cards"
     ]
   },
   {
@@ -366,7 +369,8 @@
       "enrichment",
       "product-details",
       "product-teaser",
-      "product-recommendations"
+      "product-recommendations",
+      "three-cards"
     ]
   },
   {
@@ -447,7 +451,8 @@
       "user-form",
       "validate-credentials",
       "video",
-      "commerce-mini-cart"
+      "commerce-mini-cart",
+      "three-cards"
     ]
   },
   {
@@ -530,7 +535,8 @@
       "video",
       "commerce-cart",
       "product-teaser",
-      "product-recommendations"
+      "product-recommendations",
+      "three-cards"
     ]
   },
   {
@@ -619,7 +625,8 @@
       "commerce-order-product-list",
       "commerce-order-returns",
       "product-teaser",
-      "product-recommendations"
+      "product-recommendations",
+      "three-cards"
     ]
   },
   {
@@ -700,7 +707,8 @@
       "user-form",
       "validate-credentials",
       "video",
-      "commerce-checkout"
+      "commerce-checkout",
+      "three-cards"
     ]
   },
   {
@@ -781,7 +789,8 @@
       "user-form",
       "validate-credentials",
       "video",
-      "commerce-search-order"
+      "commerce-search-order",
+      "three-cards"
     ]
   },
   {
@@ -862,7 +871,8 @@
       "user-form",
       "validate-credentials",
       "video",
-      "product-list-page"
+      "product-list-page",
+      "three-cards"
     ]
   },
   {
@@ -943,7 +953,8 @@
       "user-form",
       "validate-credentials",
       "video",
-      "commerce-login"
+      "commerce-login",
+      "three-cards"
     ]
   },
   {
@@ -1024,7 +1035,8 @@
       "user-form",
       "validate-credentials",
       "video",
-      "commerce-forgot-password"
+      "commerce-forgot-password",
+      "three-cards"
     ]
   },
   {
@@ -1105,7 +1117,8 @@
       "user-form",
       "validate-credentials",
       "video",
-      "commerce-create-account"
+      "commerce-create-account",
+      "three-cards"
     ]
   },
   {
@@ -1191,7 +1204,8 @@
       "commerce-orders-list",
       "commerce-addresses",
       "commerce-customer-information",
-      "commerce-returns-list"
+      "commerce-returns-list",
+      "three-cards"
     ]
   },
   {
@@ -1273,7 +1287,8 @@
       "validate-credentials",
       "video",
       "commerce-account-sidebar",
-      "commerce-orders-list"
+      "commerce-orders-list",
+      "three-cards"
     ]
   },
   {
@@ -1355,7 +1370,8 @@
       "validate-credentials",
       "video",
       "commerce-account-sidebar",
-      "commerce-addresses"
+      "commerce-addresses",
+      "three-cards"
     ]
   },
   {
@@ -1437,7 +1453,8 @@
       "validate-credentials",
       "video",
       "commerce-account-sidebar",
-      "commerce-returns-list"
+      "commerce-returns-list",
+      "three-cards"
     ]
   },
   {
@@ -1525,7 +1542,8 @@
       "commerce-customer-details",
       "commerce-order-cost-summary",
       "commerce-order-product-list",
-      "commerce-order-returns"
+      "commerce-order-returns",
+      "three-cards"
     ]
   },
   {
@@ -1606,7 +1624,8 @@
       "user-form",
       "validate-credentials",
       "video",
-      "commerce-search-order"
+      "commerce-search-order",
+      "three-cards"
     ]
   },
   {
@@ -1691,7 +1710,8 @@
       "commerce-order-status",
       "commerce-shipping-status",
       "commerce-customer-details",
-      "commerce-order-product-list"
+      "commerce-order-product-list",
+      "three-cards"
     ]
   },
   {
@@ -1772,7 +1792,8 @@
       "user-form",
       "validate-credentials",
       "video",
-      "commerce-create-return"
+      "commerce-create-return",
+      "three-cards"
     ]
   },
   {
@@ -1853,7 +1874,8 @@
       "user-form",
       "validate-credentials",
       "video",
-      "commerce-confirm-account"
+      "commerce-confirm-account",
+      "three-cards"
     ]
   },
   {
@@ -1934,7 +1956,8 @@
       "user-form",
       "validate-credentials",
       "video",
-      "commerce-create-password"
+      "commerce-create-password",
+      "three-cards"
     ]
   },
   {
