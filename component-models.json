@@ -5642,6 +5642,32 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "about-section",
+    "fields": [
+      {
+        "component": "img",
+        "valueType": "string",
+        "name": "IMG",
+        "label": "Image",
+        "multi": false
+      },
+     {
+        "component": "about-title",
+        "valueType": "string",
+        "name": "about-title",
+        "label": "About Title",
+        "value": ""
+      },
+      {
+        "component": "about-description",
+        "name": "about-description",
+        "value": "",
+        "label": "About Description",
+        "valueType": "string"
+      }
+    ]
   }
 ]
    
