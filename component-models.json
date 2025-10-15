@@ -5562,21 +5562,21 @@
     "id": "about-section",
     "fields": [
       {
-        "component": "img",
+        "component": "reference",
         "valueType": "string",
-        "name": "IMG",
+        "name": "image",
         "label": "Image",
         "multi": false
       },
      {
-        "component": "about-title",
+        "component": "text",
         "valueType": "string",
         "name": "about-title",
         "label": "About Title",
         "value": ""
       },
       {
-        "component": "about-description",
+        "component": "richtext",
         "name": "about-description",
         "value": "",
         "label": "About Description",
