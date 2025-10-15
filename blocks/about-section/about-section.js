@@ -1,40 +1,46 @@
 export default function decorate(block) {
   const rows = [...block.children];
 
-  // Create containers
+  // Create structure containers
   const textContainer = document.createElement('div');
   textContainer.classList.add('text-content');
 
   const imageContainer = document.createElement('div');
   imageContainer.classList.add('image-container');
 
-  // Loop through authored cells
+  // Iterate through authored rows and cells
   rows.forEach((row) => {
     const cells = [...row.children];
     cells.forEach((cell) => {
-      const img = cell.querySelector('img');
-      const hasTitle = cell.classList.contains('about-title');
-      const hasDesc = cell.classList.contains('about-description');
+      const imgRef = cell.querySelector('a[href]');
+      const text = cell.querySelector('.text');
+      const richtext = cell.querySelector('.richtext');
 
-      if (img) {
+      // Handle image reference (AEM Edge Delivery style)
+      if (imgRef && imgRef.href.match(/\.(jpg|jpeg|png|webp|gif)$/i)) {
+        const img = document.createElement('img');
+        img.src = imgRef.href;
+        img.alt = imgRef.title || 'About image';
         imageContainer.append(img);
-      } else if (hasTitle) {
-        const titleEl = document.createElement('div');
-        titleEl.classList.add('about-title');
-        titleEl.innerHTML = cell.innerHTML;
-        textContainer.append(titleEl);
-      } else if (hasDesc) {
-        const descEl = document.createElement('div');
-        descEl.classList.add('about-description');
-        descEl.innerHTML = cell.innerHTML;
-        textContainer.append(descEl);
-      } else {
-        textContainer.append(cell);
+      }
+      // Handle text (title)
+      else if (text) {
+        const textEl = document.createElement('div');
+        textEl.classList.add('text');
+        textEl.innerHTML = text.innerHTML;
+        textContainer.append(textEl);
+      }
+      // Handle rich text (description or flexible content)
+      else if (richtext) {
+        const richEl = document.createElement('div');
+        richEl.classList.add('richtext');
+        richEl.innerHTML = richtext.innerHTML;
+        textContainer.append(richEl);
       }
     });
   });
 
-  // Build final structure
+  // Build final block structure
   block.textContent = '';
   block.classList.add('about-section');
   block.append(textContainer, imageContainer);
