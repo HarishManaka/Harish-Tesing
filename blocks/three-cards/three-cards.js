@@ -1,83 +1,93 @@
-/* three-cards.js
-   Features:
-   • Lazy-load images (data-src / data-srcset)
-   • Reveal animation on scroll
-   • Optional click analytics beacon
-*/
+// three-cards-generator.js
 
-(function () {
-  'use strict';
+document.addEventListener("DOMContentLoaded", () => {
+  // Root container
+  const container = document.createElement("section");
+  container.className = "three-cards";
 
-  const rootSelector = '.three-cards';
-  const cardSelector = '.three-cards__card';
-  const revealClass = 'card--reveal';
-  const visibleClass = 'is-visible';
+  // Section title
+  const sectionTitle = document.createElement("h2");
+  sectionTitle.className = "three-cards__title";
+  sectionTitle.textContent = "Our Services"; // Change as needed
+  container.appendChild(sectionTitle);
 
-  function loadImage(img) {
-    const src = img.getAttribute('data-src');
-    if (src) {
-      img.src = src;
-      img.removeAttribute('data-src');
+  // Grid container
+  const grid = document.createElement("div");
+  grid.className = "three-cards__grid";
+  container.appendChild(grid);
+
+  // Sample card data (image URL, title, CTA link)
+  const cardsData = [
+    {
+      img: "https://via.placeholder.com/400x300",
+      title: "Card One",
+      cta: "Learn More",
+      link: "#"
+    },
+    {
+      img: "https://via.placeholder.com/400x300",
+      title: "Card Two",
+      cta: "Discover",
+      link: "#"
+    },
+    {
+      img: "https://via.placeholder.com/400x300",
+      title: "Card Three",
+      cta: "Get Started",
+      link: "#"
     }
-  }
+  ];
 
-  function init(container) {
-    if (container.dataset.init) return;
-    container.dataset.init = 'true';
+  // Generate each card
+  cardsData.forEach((data) => {
+    const card = document.createElement("div");
+    card.className = "three-cards__card new-card--reveal";
 
-    const cards = container.querySelectorAll(cardSelector);
-    cards.forEach(c => c.classList.add(revealClass));
+    // Image container
+    const imgContainer = document.createElement("div");
+    imgContainer.className = "new-card__media";
+    const img = document.createElement("img");
+    img.src = data.img;
+    img.alt = data.title;
+    imgContainer.appendChild(img);
+    card.appendChild(imgContainer);
 
-    // lazy load & reveal
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const card = entry.target;
-            const img = card.querySelector('img[data-src]');
-            if (img) loadImage(img);
-            card.classList.add(visibleClass);
-            obs.unobserve(card);
-          }
-        });
-      }, { threshold: 0.2, rootMargin: '100px' });
+    // Content container
+    const content = document.createElement("div");
+    content.className = "new-card__content";
 
-      cards.forEach(card => observer.observe(card));
-    } else {
-      // fallback
-      cards.forEach(card => {
-        const img = card.querySelector('img[data-src]');
-        if (img) loadImage(img);
-        card.classList.add(visibleClass);
-      });
-    }
+    const title = document.createElement("h3");
+    title.className = "new-card__title";
+    title.textContent = data.title;
 
-    // click beacon (optional)
-    container.addEventListener('click', e => {
-      const btn = e.target.closest('.card__cta');
-      if (!btn) return;
-      const title = btn.closest(cardSelector)?.querySelector('.card__title')?.textContent?.trim() || '';
-      const endpoint = container.dataset.analyticsEndpoint;
-      if (endpoint) {
-        const payload = JSON.stringify({ event: 'cardClick', title });
-        if (navigator.sendBeacon) {
-          navigator.sendBeacon(endpoint, payload);
-        } else {
-          fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload });
-        }
+    const cta = document.createElement("a");
+    cta.className = "new-card__cta";
+    cta.href = data.link;
+    cta.textContent = data.cta;
+
+    content.appendChild(title);
+    content.appendChild(cta);
+    card.appendChild(content);
+
+    grid.appendChild(card);
+  });
+
+  // Append the whole section to body
+  document.body.appendChild(container);
+
+  // Reveal animation using Intersection Observer
+  const revealCards = document.querySelectorAll(".new-card--reveal");
+  const observerOptions = { root: null, rootMargin: "0px", threshold: 0.1 };
+
+  const revealOnScroll = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
       }
     });
-  }
+  };
 
-  function autoInit() {
-    document.querySelectorAll(rootSelector).forEach(init);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', autoInit);
-  } else {
-    autoInit();
-  }
-
-  window.ThreeCards = { init };
-})();
+  const observer = new IntersectionObserver(revealOnScroll, observerOptions);
+  revealCards.forEach((card) => observer.observe(card));
+});

@@ -1453,7 +1453,23 @@
       }
     }
   }
+
 },
+ {
+      "title": "New Card",
+      "id": "new-card",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "New Card",
+              "model": "new-card"
+            }
+          }
+        }
+      }
+    },
         {
           "title": "Filter Section Cards Item",
           "id": "filter-section-cards-item",

@@ -5533,7 +5533,7 @@
     ]
   },
   {
-    "id": "card",
+    "id": "new-card",
     "fields": [
       {
         "component": "reference",
