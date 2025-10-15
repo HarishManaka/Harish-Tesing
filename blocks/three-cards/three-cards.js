@@ -1,95 +1,83 @@
-/**
-
-* three-cards.js
-
-* EDS Block - Three Card Layout
-
+/* three-cards.js
+   Features:
+   • Lazy-load images (data-src / data-srcset)
+   • Reveal animation on scroll
+   • Optional click analytics beacon
 */
- 
-export default function decorate(block) {
 
-  const rows = Array.from(block.children);
- 
-  const container = document.createElement('div');
+(function () {
+  'use strict';
 
-  container.classList.add('three-cards-container');
- 
-  rows.forEach((row) => {
+  const rootSelector = '.three-cards';
+  const cardSelector = '.three-cards__card';
+  const revealClass = 'card--reveal';
+  const visibleClass = 'is-visible';
 
-    const [imgCol, titleCol, descCol, linkCol] = Array.from(row.children);
- 
-    const card = document.createElement('div');
-
-    card.classList.add('three-card');
- 
-    // Image
-
-    const img = imgCol.querySelector('img');
-
-    if (img) {
-
-      const imageWrapper = document.createElement('div');
-
-      imageWrapper.classList.add('three-card-image');
-
-      imageWrapper.append(img);
-
-      card.append(imageWrapper);
-
+  function loadImage(img) {
+    const src = img.getAttribute('data-src');
+    if (src) {
+      img.src = src;
+      img.removeAttribute('data-src');
     }
- 
-    // Title
+  }
 
-    if (titleCol?.textContent.trim()) {
+  function init(container) {
+    if (container.dataset.init) return;
+    container.dataset.init = 'true';
 
-      const title = document.createElement('h3');
+    const cards = container.querySelectorAll(cardSelector);
+    cards.forEach(c => c.classList.add(revealClass));
 
-      title.classList.add('three-card-title');
+    // lazy load & reveal
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const card = entry.target;
+            const img = card.querySelector('img[data-src]');
+            if (img) loadImage(img);
+            card.classList.add(visibleClass);
+            obs.unobserve(card);
+          }
+        });
+      }, { threshold: 0.2, rootMargin: '100px' });
 
-      title.textContent = titleCol.textContent.trim();
-
-      card.append(title);
-
+      cards.forEach(card => observer.observe(card));
+    } else {
+      // fallback
+      cards.forEach(card => {
+        const img = card.querySelector('img[data-src]');
+        if (img) loadImage(img);
+        card.classList.add(visibleClass);
+      });
     }
- 
-    // Description
 
-    if (descCol?.textContent.trim()) {
+    // click beacon (optional)
+    container.addEventListener('click', e => {
+      const btn = e.target.closest('.card__cta');
+      if (!btn) return;
+      const title = btn.closest(cardSelector)?.querySelector('.card__title')?.textContent?.trim() || '';
+      const endpoint = container.dataset.analyticsEndpoint;
+      if (endpoint) {
+        const payload = JSON.stringify({ event: 'cardClick', title });
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(endpoint, payload);
+        } else {
+          fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload });
+        }
+      }
+    });
+  }
 
-      const desc = document.createElement('p');
+  function autoInit() {
+    document.querySelectorAll(rootSelector).forEach(init);
+  }
 
-      desc.classList.add('three-card-description');
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', autoInit);
+  } else {
+    autoInit();
+  }
 
-      desc.textContent = descCol.textContent.trim();
-
-      card.append(desc);
-
-    }
- 
-    // Link
-
-    if (linkCol?.textContent.trim()) {
-
-      const link = document.createElement('a');
-
-      link.classList.add('three-card-link');
-
-      link.href = linkCol.textContent.trim();
-
-      link.textContent = 'Learn More';
-
-      card.append(link);
-
-    }
- 
-    container.append(card);
-
-  });
- 
-  block.textContent = '';
-
-  block.append(container);
-
-}
-
- 
+  window.ThreeCards = { init };
+})();
