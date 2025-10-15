@@ -2,7 +2,7 @@
   "definitions": [
     {
       "title": "Three Cards",
-      "id": "three cards",
+      "id": "three-cards",
       "plugins": {
         "xwalk": {
           "page": {
@@ -17,15 +17,15 @@
       }
     },
     {
-      "title": "Card",
-      "id": "card",
+      "title": "New Card",
+      "id": "new-card",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
-              "name": "Card",
-              "model": "card"
+              "name": "New Card",
+              "model": "new-card"
             }
           }
         }
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "id": "card",
+      "id": "new-card",
       "fields": [
         {
           "component": "reference",
@@ -75,8 +75,8 @@
   ],
   "filters": [
     {
-      "id": "cards",
-      "components": ["card"]
+      "id": "three-cards",
+      "components": ["new-card"]
     }
   ]
 }
