@@ -1,36 +1,82 @@
 {
-  "blockName": "Three Cards",
-  "description": "Displays three cards with image, title, description, and link — ideal for highlighting features or services.",
-  "category": "Content",
-  "author": "Your Name",
-  "preview": "/blocks/three-cards/preview.png",
-  "variants": ["default"],
-  "elements": {
-    "image": "Path to image file (e.g., /images/card1.jpg)",
-    "title": "Card title text (e.g., Fast Delivery)",
-    "description": "Short descriptive text (e.g., Get your orders delivered within 24 hours.)",
-    "link": "Card link URL (e.g., /delivery)"
-  },
-  "example": {
-    "cards": [
-      {
-        "image": "/images/card1.jpg",
-        "title": "Fast Delivery",
-        "description": "Get your orders delivered within 24 hours.",
-        "link": "/delivery"
-      },
-      {
-        "image": "/images/card2.jpg",
-        "title": "Quality Products",
-        "description": "Only the best products sourced globally.",
-        "link": "/products"
-      },
-      {
-        "image": "/images/card3.jpg",
-        "title": "Customer Support",
-        "description": "We’re here for you 24/7 with dedicated support.",
-        "link": "/support"
+  "definitions": [
+    {
+      "title": "Three Cards",
+      "id": "three cards",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Three Cards",
+              "filter": "Three cards",
+              "model": "three-cards"
+            }
+          }
+        }
       }
-    ]
-  }
+    },
+    {
+      "title": "Card",
+      "id": "card",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Card",
+              "model": "card"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "three-cards",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title",
+          "value": ""
+        }
+ 
+      ]
+    },
+    {
+      "id": "card",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "description",
+          "label": "Description",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "cards",
+      "components": ["card"]
+    }
+  ]
 }

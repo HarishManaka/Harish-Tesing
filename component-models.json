@@ -5520,187 +5520,43 @@
     ]
   },
   {
-
-   "id": "three-cards",
-
-   "title": "Three Cards",
-
-  "description": "Displays three cards with image, title, description, link, and optional styling.",
-
-  "fields": [
-
-    {
-
-      "id": "cards",
-
-      "label": "Cards List",
-
-      "component": "array",
-
-      "fields": [
-
-        {
-
-          "component": "reference",
-
-          "valueType": "string",
-
-          "name": "image",
-
-          "label": "Image",
-
-          "multi": false
-
-        },
-
-        {
-
-          "component": "text",
-
-          "valueType": "string",
-
-          "name": "highlighted-text",
-
-          "label": "Highlight Text",
-
-          "value": ""
-
-        },
-
-        {
-
-          "component": "text",
-
-          "valueType": "string",
-
-          "name": "title",
-
-          "label": "Title",
-
-          "value": ""
-
-        },
-
-        {
-
-          "component": "richtext",
-
-          "valueType": "string",
-
-          "name": "description",
-
-          "label": "Description",
-
-          "value": ""
-
-        },
-
-        {
-
-          "component": "text",
-
-          "valueType": "string",
-
-          "name": "rotating-text",
-
-          "label": "Rotating Text",
-
-          "value": ""
-
-        },
-
-        {
-
-          "component": "aem-content",
-
-          "valueType": "string",
-
-          "name": "ctaLink",
-
-          "label": "CTA Link",
-
-          "value": ""
-
-        },
-
-        {
-
-          "component": "text",
-
-          "valueType": "string",
-
-          "name": "ctaLinkText",
-
-          "label": "CTA Button Text",
-
-          "value": ""
-
-        },
-
-        {
-
-          "component": "multiselect",
-
-          "valueType": "string",
-
-          "name": "classes",
-
-          "label": "Theme & Options",
-
-          "value": [],
-
-          "options": [
-
-            {
-
-              "name": "Rounded Corners",
-
-              "value": "rounded-corners"
-
-            },
-
-            {
-
-              "name": "Center Align",
-
-              "value": "text-center"
-
-            },
-
-            {
-
-              "name": "Hide on Mobile",
-
-              "value": "hide-on-mobile"
-
-            },
-
-            {
-
-              "name": "Hide on Tablet",
-
-              "value": "hide-on-tablet"
-
-            },
-
-            {
-
-              "name": "Hide on Desktop",
-
-              "value": "hide-on-desktop"
-
-            }
-
-          ]
-
-        }
-
-      ]
-
-    }
-
-  ]
-
- }
+    "id": "three-cards",
+    "fields": [
+ 
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+     {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  }
 ]
    
