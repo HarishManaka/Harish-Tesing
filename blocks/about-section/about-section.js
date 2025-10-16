@@ -1,41 +1,42 @@
 export default function decorate(block) {
-  block.textContent = '';
+  // If already decorated, skip
+  if (block.querySelector('.about-section')) return;
 
+  // Create main container
   const aboutSection = document.createElement('div');
   aboutSection.className = 'about-section';
 
+  // Wrap text content
   const textContent = document.createElement('div');
   textContent.className = 'text-content';
 
-  // Universal Editor fields
   const mainTextField = block.querySelector('[data-field="maintext"]');
   const subTextField = block.querySelector('[data-field="subtext"]');
-  const imgField = block.querySelector('[data-field="img"] img');
 
   if (mainTextField) {
-    const mainText = document.createElement('div');
-    mainText.className = 'maintext';
-    mainText.textContent = mainTextField.textContent.trim();
-    textContent.appendChild(mainText);
+    mainTextField.classList.add('maintext');
+    textContent.appendChild(mainTextField);
   }
 
   if (subTextField) {
-    const subText = document.createElement('div');
-    subText.className = 'subtext';
-    subText.innerHTML = subTextField.innerHTML;
-    textContent.appendChild(subText);
+    subTextField.classList.add('subtext');
+    textContent.appendChild(subTextField);
   }
 
+  // Wrap image content
   const imageContainer = document.createElement('div');
   imageContainer.className = 'image-container';
+
+  const imgField = block.querySelector('[data-field="img"] img');
   if (imgField) {
-    const img = document.createElement('img');
-    img.src = imgField.src;
-    img.alt = imgField.alt || '';
-    imageContainer.appendChild(img);
+    imageContainer.appendChild(imgField);
   }
 
+  // Build structure
   aboutSection.appendChild(textContent);
   aboutSection.appendChild(imageContainer);
+
+  // Clear original block and append new structure
+  block.textContent = '';
   block.appendChild(aboutSection);
 }
