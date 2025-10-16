@@ -1,22 +1,14 @@
-/**
- * about-section.js — Universal Editor / Edge Delivery version
- * Dynamically builds .maintext and .subtext while keeping content editable
- */
 
 export default function decorate(block) {
   if (!(block instanceof HTMLElement)) return;
 
   block.classList.add('about-section');
 
-  // --- STEP 1: Extract heading & text (work with nested divs too) ---
-  const findFirst = (selector) => block.querySelector(selector);
-
-  // Headings in authored content (may be inside div)
-  const heading = findFirst('h1, h2, h3, h4');
-  // Paragraphs or text blocks
+  // Step 1: Find headings and paragraphs
+  const heading = block.querySelector('h1, h2, h3, h4');
   const paragraphs = Array.from(block.querySelectorAll('p'));
 
-  // --- STEP 2: Ensure structure containers exist ---
+  // Step 2: Create containers if missing
   let textContent = block.querySelector('.text-content');
   if (!textContent) {
     textContent = document.createElement('div');
@@ -38,20 +30,19 @@ export default function decorate(block) {
     textContent.append(sub);
   }
 
-  // --- STEP 3: Fill in content (but do NOT delete authored nodes — important for Universal Editor) ---
+  // Step 3: Fill main text
   if (heading && !main.innerHTML.trim()) {
-    main.innerHTML = heading.outerHTML; // preserve editability
-  } else if (!heading && paragraphs[0] && !main.innerHTML.trim()) {
-    main.innerHTML = `<p>${paragraphs[0].innerHTML}</p>`;
+    main.appendChild(heading); // move heading into main
+  } else if (!heading && paragraphs.length && !main.innerHTML.trim()) {
+    // Move the first paragraph to main
+    main.appendChild(paragraphs[0]);
   }
 
-  // Use remaining paragraphs for subtext
-  const subParas = paragraphs.slice(heading ? 0 : 1);
-  if (subParas.length && !sub.innerHTML.trim()) {
-    sub.innerHTML = subParas.map((p) => `<p>${p.innerHTML}</p>`).join('');
-  }
+  // Step 4: Fill subtext with remaining paragraphs
+  const remainingParas = paragraphs.filter(p => p.parentElement !== main);
+  remainingParas.forEach(p => sub.appendChild(p));
 
-  // --- STEP 4: Handle image container ---
+  // Step 5: Handle image container
   let imageContainer = block.querySelector('.image-container');
   if (!imageContainer) {
     imageContainer = document.createElement('div');
@@ -64,11 +55,11 @@ export default function decorate(block) {
     imageContainer.append(img);
   }
 
-  // --- STEP 5: Keep correct order (text first by default) ---
+  // Step 6: Ensure order
   const imageFirst = block.dataset.imageFirst === 'true' || block.classList.contains('image-first');
   block.replaceChildren(imageFirst ? imageContainer : textContent, imageFirst ? textContent : imageContainer);
 
-  // --- STEP 6: Accessibility ---
+  // Step 7: Accessibility
   if (!block.hasAttribute('role')) block.setAttribute('role', 'region');
   if (!block.hasAttribute('aria-labelledby')) {
     const id = `about-${Math.random().toString(36).slice(2, 9)}`;
@@ -76,10 +67,10 @@ export default function decorate(block) {
     block.setAttribute('aria-labelledby', id);
   }
 
-  // --- STEP 7: Add a hook for JS enhancement ---
+  // Step 8: JS hook
   block.classList.add('about-section--ready');
 
-  // --- STEP 8: Live update API (used by editor or dynamic content) ---
+  // Step 9: Live update API
   block._update = (data = {}) => {
     if (data.title) main.innerHTML = data.title;
     if (data.body) sub.innerHTML = data.body;
