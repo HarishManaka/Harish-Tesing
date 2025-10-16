@@ -1,4 +1,4 @@
- {
+{
   "definitions": [
     {
       "title": "About Section",
@@ -29,18 +29,18 @@
           "value": ""
         },
         {
-          "component": "reference",
-          "valueType": "string",
-          "name": "img",
-          "label": "Img",
-          "multi": false
-        },
-        {
           "component": "richtext",
           "valueType": "string",
           "name": "subtext",
           "label": "SubText",
           "value": ""
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "img",
+          "label": "Img",
+          "multi": false
         }
       ]
     }
