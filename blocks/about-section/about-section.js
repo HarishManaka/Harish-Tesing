@@ -1,5 +1,5 @@
 export default function decorate(block) {
-  // Clear existing content
+  // Clear any existing content
   block.textContent = '';
 
   // Create main container
@@ -10,25 +10,26 @@ export default function decorate(block) {
   const textContent = document.createElement('div');
   textContent.className = 'text-content';
 
-  // Read AEM Universal Editor fields dynamically
-  // Assuming fields: title, about-description, img
+  // Dynamically select fields from the block
   const titleField = block.querySelector('[data-field="title"]');
   const descField = block.querySelector('[data-field="about-description"]');
   const imgField = block.querySelector('[data-field="img"] img');
 
-  // Create title
-  const title = document.createElement('div');
-  title.className = 'maintext';
-  title.textContent = titleField ? titleField.textContent.trim() : 'About Section Title';
+  // Only create title if it exists
+  if (titleField) {
+    const title = document.createElement('div');
+    title.className = 'maintext';
+    title.textContent = titleField.textContent.trim();
+    textContent.appendChild(title);
+  }
 
-  // Create description
-  const description = document.createElement('div');
-  description.className = 'subtext';
-  description.textContent = descField ? descField.textContent.trim() : 'This is the about section description.';
-
-  // Append title and description to text container
-  textContent.appendChild(title);
-  textContent.appendChild(description);
+  // Only create description if it exists
+  if (descField) {
+    const description = document.createElement('div');
+    description.className = 'subtext';
+    description.textContent = descField.textContent.trim();
+    textContent.appendChild(description);
+  }
 
   // Create image container
   const imageContainer = document.createElement('div');
@@ -37,14 +38,15 @@ export default function decorate(block) {
   if (imgField) {
     const img = document.createElement('img');
     img.src = imgField.src;
-    img.alt = imgField.alt || 'About Section Image';
+    img.alt = imgField.alt || '';
     imageContainer.appendChild(img);
   }
 
-  // Append text and image to main container
+  // Append text and image containers to main section
   aboutSection.appendChild(textContent);
   aboutSection.appendChild(imageContainer);
 
-  // Append the constructed about-section to the block
+  // Append the fully constructed section to the block
   block.appendChild(aboutSection);
 }
+
