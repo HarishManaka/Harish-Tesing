@@ -1,21 +1,20 @@
 export default function decorate(block) {
-  // Clear any existing content
-  block.textContent = '';
+  block.textContent = ''; // clear existing content
 
-  // Create main container
+  // Main container
   const aboutSection = document.createElement('div');
   aboutSection.className = 'about-section';
 
-  // Create text container
+  // Text container
   const textContent = document.createElement('div');
   textContent.className = 'text-content';
 
-  // Dynamically select fields from the block
+  // Read content from AEM fields
   const titleField = block.querySelector('[data-field="title"]');
   const descField = block.querySelector('[data-field="about-description"]');
   const imgField = block.querySelector('[data-field="img"] img');
 
-  // Only create title if it exists
+  // Title
   if (titleField) {
     const title = document.createElement('div');
     title.className = 'maintext';
@@ -23,7 +22,7 @@ export default function decorate(block) {
     textContent.appendChild(title);
   }
 
-  // Only create description if it exists
+  // Description
   if (descField) {
     const description = document.createElement('div');
     description.className = 'subtext';
@@ -31,10 +30,9 @@ export default function decorate(block) {
     textContent.appendChild(description);
   }
 
-  // Create image container
+  // Image container
   const imageContainer = document.createElement('div');
   imageContainer.className = 'image-container';
-
   if (imgField) {
     const img = document.createElement('img');
     img.src = imgField.src;
@@ -42,11 +40,10 @@ export default function decorate(block) {
     imageContainer.appendChild(img);
   }
 
-  // Append text and image containers to main section
+  // Append to main container
   aboutSection.appendChild(textContent);
   aboutSection.appendChild(imageContainer);
 
-  // Append the fully constructed section to the block
+  // Add to block
   block.appendChild(aboutSection);
 }
-
