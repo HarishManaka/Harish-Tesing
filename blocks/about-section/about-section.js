@@ -1,75 +1,68 @@
 export default function decorate(block) {
-
-  // Extract data from the block rows (Edge Delivery reads content as table cells)
-
-  const rows = [...block.children];
- 
-  // Create container elements
-
-  const aboutSection = document.createElement('div');
-
-  aboutSection.className = 'about-section';
- 
-  const textContent = document.createElement('div');
-
-  textContent.className = 'text-content';
- 
-  const imageContainer = document.createElement('div');
-
-  imageContainer.className = 'image-container';
- 
-  // Read block data (assumes author added: title | description | image)
-
-  const [titleCell, descriptionCell, imageCell] = rows[0].children;
- 
-  // Title
-
-  const title = document.createElement('div');
-
-  title.className = 'maintext';
-
-  title.textContent = titleCell ? titleCell.textContent.trim() : 'About Title';
- 
-  // Description
-
-  const description = document.createElement('div');
-
-  description.className = 'subtext';
-
-  description.textContent = descriptionCell ? descriptionCell.textContent.trim() : 'About description goes here.';
- 
-  // Image
-
-  const img = imageCell?.querySelector('img');
-
-  if (img) {
-
-    const image = document.createElement('img');
-
-    image.src = img.src;
-
-    image.alt = img.alt || 'About Image';
-
-    imageContainer.appendChild(image);
-
+  // Retry if block is not ready yet
+  if (!block.children || block.children.length === 0) {
+    setTimeout(() => decorate(block), 50);
+    return;
   }
- 
-  // Assemble structure
 
-  textContent.appendChild(title);
+  const mainText = block.children[0]?.textContent?.trim() || '';
+  const subText = block.children[2]?.innerHTML?.trim() || '';
 
-  textContent.appendChild(description);
+  // Handle image safely
+  let imgEl = null;
+  const imgField = block.children[1];
+  if (imgField) {
+    // If there’s already an <img> inside the div
+    const existingImg = imgField.querySelector('img');
+    if (existingImg) {
+      imgEl = existingImg.cloneNode(true);
+    } else {
+      // If it's a reference div with a background-image (Edge Delivery pattern)
+      const bgImage = imgField.style.backgroundImage;
+      if (bgImage && bgImage !== 'none') {
+        imgEl = document.createElement('img');
+        // Extract URL from `url("...")`
+        imgEl.src = bgImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+        imgEl.alt = mainText || 'About image';
+      }
+    }
+  }
 
-  aboutSection.appendChild(textContent);
+  // Clear block
+  block.innerHTML = '';
 
-  aboutSection.appendChild(imageContainer);
- 
-  // Replace the original block content with new structure
+  // Build About Section
+  const aboutSection = document.createElement('section');
+  aboutSection.className = 'about-section';
 
-  block.textContent = '';
+  // Text container
+  const textDiv = document.createElement('div');
+  textDiv.className = 'text-content';
+  if (mainText) {
+    const h2 = document.createElement('h2');
+    h2.className = 'maintext';
+    h2.textContent = mainText;
+    textDiv.append(h2);
+  }
+  if (subText) {
+    const p = document.createElement('p');
+    p.className = 'subtext';
+    p.innerHTML = subText;
+    textDiv.append(p);
+  }
 
-  block.appendChild(aboutSection);
+  // Image container
+  const imageContainer = document.createElement('div');
+  imageContainer.className = 'image-container';
+  if (imgEl) imageContainer.append(imgEl);
 
+  // Append text and image
+  aboutSection.append(textDiv, imageContainer);
+  block.append(aboutSection);
+
+  // Optional GA4 validation
+  const martechConfig = window.martechConfig || {};
+  if (!martechConfig?.tags?.length) {
+    console.warn('⚠️ No GA4 tag provided. Analytics events may not be tracked.');
+  }
 }
-
- 
