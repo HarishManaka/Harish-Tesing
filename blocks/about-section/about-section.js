@@ -1,19 +1,11 @@
 // about-section.js
-// Edge Delivery (Franklin) block for "About Section"
-
 export default function decorate(block) {
-  // Expected structure (rows from Universal Editor):
-  // Row 1 → maintext
-  // Row 2 → img
-  // Row 3 → subtext
+  // Get fields by data-field attribute (Edge Delivery standard)
+  const mainText = block.querySelector('[data-field="maintext"]')?.textContent?.trim() || '';
+  const subText = block.querySelector('[data-field="subtext"]')?.innerHTML?.trim() || '';
+  const imgEl = block.querySelector('[data-field="img"] img')?.cloneNode(true) || null;
 
-  const rows = Array.from(block.children);
-
-  const mainText = rows[0]?.textContent?.trim() || '';
-  const imgEl = rows[1]?.querySelector('img') || null;
-  const subText = rows[2]?.innerHTML?.trim() || '';
-
-  // Create main wrapper
+  // Create main container
   const aboutSection = document.createElement('section');
   aboutSection.className = 'about-section';
 
@@ -31,7 +23,7 @@ export default function decorate(block) {
   if (subText) {
     const p = document.createElement('p');
     p.className = 'subtext';
-    p.innerHTML = subText; // richtext allowed
+    p.innerHTML = subText;
     textDiv.append(p);
   }
 
@@ -40,16 +32,17 @@ export default function decorate(block) {
   imageContainer.className = 'image-container';
   if (imgEl) imageContainer.append(imgEl);
 
-  // Append text and image
+  // Append text and image to main section
   aboutSection.append(textDiv, imageContainer);
 
   // Replace original block content
-  block.textContent = '';
+  block.innerHTML = '';
   block.append(aboutSection);
 
-  // ✅ Optional: GA4 validation
+  // Optional GA4 check
   const martechConfig = window.martechConfig || {};
   if (!martechConfig?.tags?.length) {
     console.warn('⚠️ No GA4 tag provided. Analytics events may not be tracked.');
   }
 }
+
