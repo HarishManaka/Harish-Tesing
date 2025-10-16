@@ -1,76 +1,47 @@
 export default function decorate(block) {
- 
-  // Extract data from the block rows (Edge Delivery reads content as table cells)
- 
-  const rows = [...block.children];
- 
-  // Create container elements
- 
-  const aboutSection = document.createElement('div');
- 
-  aboutSection.className = 'about-section';
- 
-  const textContent = document.createElement('div');
- 
-  textContent.className = 'text-content';
- 
-  const imageContainer = document.createElement('div');
- 
-  imageContainer.className = 'image-container';
- 
-  // Read block data (assumes author added: title | description | image)
- 
-  const [titleCell, descriptionCell, imageCell] = rows[0].children;
- 
-  // Title
- 
-  const title = document.createElement('div');
- 
-  title.className = 'maintext';
- 
-  title.textContent = titleCell ? titleCell.textContent.trim() : 'About Title';
- 
-  // Description
- 
-  const description = document.createElement('div');
- 
-  description.className = 'subtext';
- 
-  description.textContent = descriptionCell ? descriptionCell.textContent.trim() : 'About description goes here.';
- 
-  // Image
- 
-  const img = imageCell?.querySelector('img');
- 
-  if (img) {
- 
-    const image = document.createElement('img');
- 
-    image.src = img.src;
- 
-    image.alt = img.alt || 'About Image';
- 
-    imageContainer.appendChild(image);
- 
-  }
- 
-  // Assemble structure
- 
-  textContent.appendChild(title);
- 
-  textContent.appendChild(description);
- 
-  aboutSection.appendChild(textContent);
- 
-  aboutSection.appendChild(imageContainer);
- 
-  // Replace the original block content with new structure
- 
+  // Clear existing content
   block.textContent = '';
- 
+
+  // Create main container
+  const aboutSection = document.createElement('div');
+  aboutSection.className = 'about-section';
+
+  // Create text container
+  const textContent = document.createElement('div');
+  textContent.className = 'text-content';
+
+  // Create title
+  const title = document.createElement('div');
+  title.className = 'maintext';
+  // Example title, can replace with dynamic content from block.dataset or CMS
+  title.textContent = block.dataset.title || 'About Section Title';
+
+  // Create description
+  const description = document.createElement('div');
+  description.className = 'subtext';
+  // Example description
+  description.textContent = block.dataset.description || 'This is the about section description.';
+
+  // Append title and description to text container
+  textContent.appendChild(title);
+  textContent.appendChild(description);
+
+  // Create image container
+  const imageContainer = document.createElement('div');
+  imageContainer.className = 'image-container';
+
+  // Create image element
+  const img = document.createElement('img');
+  // Example image, can replace with dynamic URL
+  img.src = block.dataset.img || 'https://via.placeholder.com/700x400';
+  img.alt = block.dataset.imgAlt || 'About Section Image';
+
+  imageContainer.appendChild(img);
+
+  // Append text and image to main container
+  aboutSection.appendChild(textContent);
+  aboutSection.appendChild(imageContainer);
+
+  // Append the constructed about-section to the block
   block.appendChild(aboutSection);
- 
 }
- 
- 
- 
