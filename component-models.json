@@ -5662,8 +5662,8 @@
       },
       {
         "component": "richtext",
-        "name": "about-description",
-        "value": "subtext",
+        "name": "subtext",
+        "value": "",
         "label": "Subtext",
         "valueType": "string"
       }
