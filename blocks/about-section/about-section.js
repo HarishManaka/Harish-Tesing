@@ -1,49 +1,53 @@
 // about-section.js
-// Edge Delivery Services Block JS (Universal Editor Compatible)
+// Edge Delivery (Franklin) block for "About Section"
 
-export default async function decorate(block) {
-  // Read model data from Franklin block JSON (Edge Delivery automatically maps model fields)
-  const mainText = block.dataset.maintext || '';
-  const subText = block.dataset.subtext || '';
-  const imgSrc = block.dataset.img || '';
+export default function decorate(block) {
+  // Expected structure (rows from Universal Editor):
+  // Row 1 → maintext
+  // Row 2 → img
+  // Row 3 → subtext
 
-  // Create structure for About Section
+  const rows = Array.from(block.children);
+
+  const mainText = rows[0]?.textContent?.trim() || '';
+  const imgEl = rows[1]?.querySelector('img') || null;
+  const subText = rows[2]?.innerHTML?.trim() || '';
+
+  // Create main wrapper
   const aboutSection = document.createElement('section');
   aboutSection.className = 'about-section';
 
-  // Create text content container
-  const textContent = document.createElement('div');
-  textContent.className = 'text-content';
+  // Text container
+  const textDiv = document.createElement('div');
+  textDiv.className = 'text-content';
 
-  const mainTextEl = document.createElement('h2');
-  mainTextEl.className = 'maintext';
-  mainTextEl.textContent = mainText;
-
-  const subTextEl = document.createElement('p');
-  subTextEl.className = 'subtext';
-  subTextEl.innerHTML = subText; // richtext allows markup
-
-  textContent.append(mainTextEl, subTextEl);
-
-  // Create image container
-  const imageContainer = document.createElement('div');
-  imageContainer.className = 'image-container';
-
-  if (imgSrc) {
-    const imgEl = document.createElement('img');
-    imgEl.src = imgSrc;
-    imgEl.alt = mainText || 'About image';
-    imageContainer.append(imgEl);
+  if (mainText) {
+    const h2 = document.createElement('h2');
+    h2.className = 'maintext';
+    h2.textContent = mainText;
+    textDiv.append(h2);
   }
 
-  // Append text and image to main section
-  aboutSection.append(textContent, imageContainer);
+  if (subText) {
+    const p = document.createElement('p');
+    p.className = 'subtext';
+    p.innerHTML = subText; // richtext allowed
+    textDiv.append(p);
+  }
 
-  // Replace Franklin block content with built section
+  // Image container
+  const imageContainer = document.createElement('div');
+  imageContainer.className = 'image-container';
+  if (imgEl) imageContainer.append(imgEl);
+
+  // Append text and image
+  aboutSection.append(textDiv, imageContainer);
+
+  // Replace original block content
   block.textContent = '';
   block.append(aboutSection);
 
-  // Optional: GA4 Config Validation
+  // ✅ Optional: GA4 validation
   const martechConfig = window.martechConfig || {};
   if (!martechConfig?.tags?.length) {
     console.warn('⚠️ No GA4 tag provided. Analytics events may not be tracked.');
