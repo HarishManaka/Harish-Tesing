@@ -5646,27 +5646,27 @@
   {
     "id": "about-section",
     "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "img",
-        "label": "Img",
-        "multi": false
-      },
-     {
-        "component": "text",
-        "valueType": "string",
-        "name": "maintext",
-        "label": "MainText",
-        "value": ""
-      },
-      {
-        "component": "richtext",
-        "name": "subtext",
-        "value": "",
-        "label": "Subtext",
-        "valueType": "string"
-      }
+       {
+          "component": "text",
+          "valueType": "string",
+          "name": "maintext",
+          "label": "MainText",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "subtext",
+          "label": "SubText",
+          "value": ""
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "img",
+          "label": "Img",
+          "multi": false
+        }
     ]
   }
 ]
