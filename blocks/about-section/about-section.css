@@ -21,14 +21,12 @@
   color: var(--brand-color-navy-sky);
 }
 
-.about-section .subtext
-{
+.about-section .subtext {
   font-size: 1.25rem;
   line-height: 1.6;
   color: var(--brand-color-navy-sky);
 }
 
-/* Image container */
 .about-section .image-container {
   flex: 1 1 45%;
   display: flex;
@@ -42,7 +40,6 @@
   object-fit: cover;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
   .about-section {
     flex-direction: column;
