@@ -1,48 +1,75 @@
-// about-section.js
 export default function decorate(block) {
-  // Get fields by data-field attribute (Edge Delivery standard)
-  const mainText = block.querySelector('[data-field="maintext"]')?.textContent?.trim() || '';
-  const subText = block.querySelector('[data-field="subtext"]')?.innerHTML?.trim() || '';
-  const imgEl = block.querySelector('[data-field="img"] img')?.cloneNode(true) || null;
 
-  // Create main container
-  const aboutSection = document.createElement('section');
+  // Extract data from the block rows (Edge Delivery reads content as table cells)
+
+  const rows = [...block.children];
+ 
+  // Create container elements
+
+  const aboutSection = document.createElement('div');
+
   aboutSection.className = 'about-section';
+ 
+  const textContent = document.createElement('div');
 
-  // Text container
-  const textDiv = document.createElement('div');
-  textDiv.className = 'text-content';
-
-  if (mainText) {
-    const h2 = document.createElement('h2');
-    h2.className = 'maintext';
-    h2.textContent = mainText;
-    textDiv.append(h2);
-  }
-
-  if (subText) {
-    const p = document.createElement('p');
-    p.className = 'subtext';
-    p.innerHTML = subText;
-    textDiv.append(p);
-  }
-
-  // Image container
+  textContent.className = 'text-content';
+ 
   const imageContainer = document.createElement('div');
+
   imageContainer.className = 'image-container';
-  if (imgEl) imageContainer.append(imgEl);
+ 
+  // Read block data (assumes author added: title | description | image)
 
-  // Append text and image to main section
-  aboutSection.append(textDiv, imageContainer);
+  const [titleCell, descriptionCell, imageCell] = rows[0].children;
+ 
+  // Title
 
-  // Replace original block content
-  block.innerHTML = '';
-  block.append(aboutSection);
+  const title = document.createElement('div');
 
-  // Optional GA4 check
-  const martechConfig = window.martechConfig || {};
-  if (!martechConfig?.tags?.length) {
-    console.warn('⚠️ No GA4 tag provided. Analytics events may not be tracked.');
+  title.className = 'maintext';
+
+  title.textContent = titleCell ? titleCell.textContent.trim() : 'About Title';
+ 
+  // Description
+
+  const description = document.createElement('div');
+
+  description.className = 'subtext';
+
+  description.textContent = descriptionCell ? descriptionCell.textContent.trim() : 'About description goes here.';
+ 
+  // Image
+
+  const img = imageCell?.querySelector('img');
+
+  if (img) {
+
+    const image = document.createElement('img');
+
+    image.src = img.src;
+
+    image.alt = img.alt || 'About Image';
+
+    imageContainer.appendChild(image);
+
   }
+ 
+  // Assemble structure
+
+  textContent.appendChild(title);
+
+  textContent.appendChild(description);
+
+  aboutSection.appendChild(textContent);
+
+  aboutSection.appendChild(imageContainer);
+ 
+  // Replace the original block content with new structure
+
+  block.textContent = '';
+
+  block.appendChild(aboutSection);
+
 }
 
+ 
