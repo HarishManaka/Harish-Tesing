@@ -5557,6 +5557,32 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "about-section",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "img",
+        "label": "Img",
+        "multi": false
+      },
+     {
+        "component": "text",
+        "valueType": "string",
+        "name": "maintext",
+        "label": "MainText",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "about-description",
+        "value": "subtext",
+        "label": "Subtext",
+        "valueType": "string"
+      }
+    ]
   }
 ]
    
