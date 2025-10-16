@@ -1,33 +1,34 @@
 export default function decorate(block) {
-  block.textContent = ''; // clear existing content
+  // Clear any existing content
+  block.textContent = '';
 
-  // Main container
+  // Create main container
   const aboutSection = document.createElement('div');
   aboutSection.className = 'about-section';
 
-  // Text container
+  // Create text container
   const textContent = document.createElement('div');
   textContent.className = 'text-content';
 
-  // Read content from AEM fields
-  const titleField = block.querySelector('[data-field="title"]');
-  const descField = block.querySelector('[data-field="about-description"]');
+  // Dynamically read fields
+  const mainTextField = block.querySelector('[data-field="maintext"]');
+  const subTextField = block.querySelector('[data-field="subtext"]');
   const imgField = block.querySelector('[data-field="img"] img');
 
-  // Title
-  if (titleField) {
-    const title = document.createElement('div');
-    title.className = 'maintext';
-    title.textContent = titleField.textContent.trim();
-    textContent.appendChild(title);
+  // Main text
+  if (mainTextField) {
+    const mainText = document.createElement('div');
+    mainText.className = 'maintext';
+    mainText.textContent = mainTextField.textContent.trim();
+    textContent.appendChild(mainText);
   }
 
-  // Description
-  if (descField) {
-    const description = document.createElement('div');
-    description.className = 'subtext';
-    description.textContent = descField.textContent.trim();
-    textContent.appendChild(description);
+  // Sub text
+  if (subTextField) {
+    const subText = document.createElement('div');
+    subText.className = 'subtext';
+    subText.innerHTML = subTextField.innerHTML; // richtext supports HTML
+    textContent.appendChild(subText);
   }
 
   // Image container
@@ -40,7 +41,7 @@ export default function decorate(block) {
     imageContainer.appendChild(img);
   }
 
-  // Append to main container
+  // Append text and image containers
   aboutSection.appendChild(textContent);
   aboutSection.appendChild(imageContainer);
 
