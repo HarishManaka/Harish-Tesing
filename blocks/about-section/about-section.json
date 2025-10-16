@@ -22,6 +22,13 @@
       "id": "about-section",
       "fields": [
         {
+          "component": "reference",
+          "valueType": "string",
+          "name": "img",
+          "label": "Img",
+          "multi": false
+        }
+        {
           "component": "text",
           "valueType": "string",
           "name": "maintext",
@@ -34,13 +41,6 @@
           "name": "subtext",
           "label": "SubText",
           "value": ""
-        },
-        {
-          "component": "reference",
-          "valueType": "string",
-          "name": "img",
-          "label": "Img",
-          "multi": false
         }
       ]
     }
