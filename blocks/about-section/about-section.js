@@ -10,17 +10,21 @@ export default function decorate(block) {
   const textContent = document.createElement('div');
   textContent.className = 'text-content';
 
+  // Read AEM Universal Editor fields dynamically
+  // Assuming fields: title, about-description, img
+  const titleField = block.querySelector('[data-field="title"]');
+  const descField = block.querySelector('[data-field="about-description"]');
+  const imgField = block.querySelector('[data-field="img"] img');
+
   // Create title
   const title = document.createElement('div');
   title.className = 'maintext';
-  // Example title, can replace with dynamic content from block.dataset or CMS
-  title.textContent = block.dataset.title || 'About Section Title';
+  title.textContent = titleField ? titleField.textContent.trim() : 'About Section Title';
 
   // Create description
   const description = document.createElement('div');
   description.className = 'subtext';
-  // Example description
-  description.textContent = block.dataset.description || 'This is the about section description.';
+  description.textContent = descField ? descField.textContent.trim() : 'This is the about section description.';
 
   // Append title and description to text container
   textContent.appendChild(title);
@@ -30,13 +34,12 @@ export default function decorate(block) {
   const imageContainer = document.createElement('div');
   imageContainer.className = 'image-container';
 
-  // Create image element
-  const img = document.createElement('img');
-  // Example image, can replace with dynamic URL
-  img.src = block.dataset.img || 'https://via.placeholder.com/700x400';
-  img.alt = block.dataset.imgAlt || 'About Section Image';
-
-  imageContainer.appendChild(img);
+  if (imgField) {
+    const img = document.createElement('img');
+    img.src = imgField.src;
+    img.alt = imgField.alt || 'About Section Image';
+    imageContainer.appendChild(img);
+  }
 
   // Append text and image to main container
   aboutSection.appendChild(textContent);
