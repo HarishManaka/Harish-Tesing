@@ -31,7 +31,7 @@
         {
           "component": "reference",
           "valueType": "string",
-          "name": "img",
+          "name": "image",
           "label": "Image",
           "multi": false
         },

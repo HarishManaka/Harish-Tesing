@@ -1,47 +1,75 @@
 export default function decorate(block) {
+
+  // Extract data from the block rows (Edge Delivery reads content as table cells)
+
   const rows = [...block.children];
+ 
+  // Create container elements
 
-  // Create structure containers
-  const textContainer = document.createElement('div');
-  textContainer.classList.add('text-content');
+  const aboutSection = document.createElement('div');
 
+  aboutSection.className = 'about-section';
+ 
+  const textContent = document.createElement('div');
+
+  textContent.className = 'text-content';
+ 
   const imageContainer = document.createElement('div');
-  imageContainer.classList.add('image-container');
 
-  // Iterate through authored rows and cells
-  rows.forEach((row) => {
-    const cells = [...row.children];
-    cells.forEach((cell) => {
-      const imgRef = cell.querySelector('a[href]');
-      const text = cell.querySelector('.text');
-      const richtext = cell.querySelector('.richtext');
+  imageContainer.className = 'image-container';
+ 
+  // Read block data (assumes author added: title | description | image)
 
-      // Handle image reference (AEM Edge Delivery style)
-      if (imgRef && imgRef.href.match(/\.(jpg|jpeg|png|webp|gif)$/i)) {
-        const img = document.createElement('img');
-        img.src = imgRef.href;
-        img.alt = imgRef.title || 'About image';
-        imageContainer.append(img);
-      }
-      // Handle text (title)
-      else if (text) {
-        const textEl = document.createElement('div');
-        textEl.classList.add('text');
-        textEl.innerHTML = text.innerHTML;
-        textContainer.append(textEl);
-      }
-      // Handle rich text (description or flexible content)
-      else if (richtext) {
-        const richEl = document.createElement('div');
-        richEl.classList.add('richtext');
-        richEl.innerHTML = richtext.innerHTML;
-        textContainer.append(richEl);
-      }
-    });
-  });
+  const [titleCell, descriptionCell, imageCell] = rows[0].children;
+ 
+  // Title
 
-  // Build final block structure
+  const title = document.createElement('div');
+
+  title.className = 'maintext';
+
+  title.textContent = titleCell ? titleCell.textContent.trim() : 'About Title';
+ 
+  // Description
+
+  const description = document.createElement('div');
+
+  description.className = 'subtext';
+
+  description.textContent = descriptionCell ? descriptionCell.textContent.trim() : 'About description goes here.';
+ 
+  // Image
+
+  const img = imageCell?.querySelector('img');
+
+  if (img) {
+
+    const image = document.createElement('img');
+
+    image.src = img.src;
+
+    image.alt = img.alt || 'About Image';
+
+    imageContainer.appendChild(image);
+
+  }
+ 
+  // Assemble structure
+
+  textContent.appendChild(title);
+
+  textContent.appendChild(description);
+
+  aboutSection.appendChild(textContent);
+
+  aboutSection.appendChild(imageContainer);
+ 
+  // Replace the original block content with new structure
+
   block.textContent = '';
-  block.classList.add('about-section');
-  block.append(textContainer, imageContainer);
+
+  block.appendChild(aboutSection);
+
 }
+
+ 
