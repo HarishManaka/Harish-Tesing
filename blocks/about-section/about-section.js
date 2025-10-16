@@ -1,119 +1,94 @@
 /**
- * about-section.js (Dynamic Universal Editor version)
- * AEM Edge Delivery / Franklin Decorator
- *
- * - Dynamically structures content into:
- *   .text-content (maintext + subtext)
- *   .image-container (img)
- * - No hardcoded text, colors, or inline styles.
- * - Works in Universal Editor (safe, idempotent).
+ * about-section.js — Universal Editor / Edge Delivery version
+ * Dynamically builds .maintext and .subtext while keeping content editable
  */
 
 export default function decorate(block) {
   if (!(block instanceof HTMLElement)) return;
 
-  // Core class
   block.classList.add('about-section');
 
-  // --- STEP 1: Extract useful nodes dynamically ---
-  const children = Array.from(block.children);
-  const heading = children.find((el) => /^H[1-4]$/.test(el.tagName));
-  const imageWrapper = children.find((el) =>
-    el.tagName === 'IMG' || (el.querySelector && el.querySelector('img'))
-  );
-  const paragraphs = children.filter(
-    (el) => el.tagName === 'P' && !el.closest('figure')
-  );
+  // --- STEP 1: Extract heading & text (work with nested divs too) ---
+  const findFirst = (selector) => block.querySelector(selector);
 
-  // --- STEP 2: Create text-content container ---
+  // Headings in authored content (may be inside div)
+  const heading = findFirst('h1, h2, h3, h4');
+  // Paragraphs or text blocks
+  const paragraphs = Array.from(block.querySelectorAll('p'));
+
+  // --- STEP 2: Ensure structure containers exist ---
   let textContent = block.querySelector('.text-content');
   if (!textContent) {
     textContent = document.createElement('div');
     textContent.className = 'text-content';
+    block.append(textContent);
   }
 
-  // --- MAIN TEXT ---
-  let main = textContent.querySelector('.maintext') || document.createElement('div');
-  main.className = 'maintext';
-  if (heading) {
-    main.textContent = heading.textContent.trim();
-    heading.remove();
-  } else if (!main.textContent.trim() && paragraphs[0]) {
-    main.textContent = paragraphs[0].textContent.trim();
+  let main = textContent.querySelector('.maintext');
+  if (!main) {
+    main = document.createElement('div');
+    main.className = 'maintext';
+    textContent.append(main);
   }
 
-  // --- SUB TEXT ---
-  let sub = textContent.querySelector('.subtext') || document.createElement('div');
-  sub.className = 'subtext';
-  if (paragraphs.length) {
-    sub.innerHTML = paragraphs.map((p) => p.innerHTML).join('<br/><br/>');
-    paragraphs.forEach((p) => p.remove());
+  let sub = textContent.querySelector('.subtext');
+  if (!sub) {
+    sub = document.createElement('div');
+    sub.className = 'subtext';
+    textContent.append(sub);
   }
 
-  // Clean and reappend
-  textContent.replaceChildren(main, sub);
+  // --- STEP 3: Fill in content (but do NOT delete authored nodes — important for Universal Editor) ---
+  if (heading && !main.innerHTML.trim()) {
+    main.innerHTML = heading.outerHTML; // preserve editability
+  } else if (!heading && paragraphs[0] && !main.innerHTML.trim()) {
+    main.innerHTML = `<p>${paragraphs[0].innerHTML}</p>`;
+  }
 
-  // --- STEP 3: Create image-container ---
+  // Use remaining paragraphs for subtext
+  const subParas = paragraphs.slice(heading ? 0 : 1);
+  if (subParas.length && !sub.innerHTML.trim()) {
+    sub.innerHTML = subParas.map((p) => `<p>${p.innerHTML}</p>`).join('');
+  }
+
+  // --- STEP 4: Handle image container ---
   let imageContainer = block.querySelector('.image-container');
   if (!imageContainer) {
     imageContainer = document.createElement('div');
     imageContainer.className = 'image-container';
+    block.append(imageContainer);
   }
 
-  // Move or create image node
-  if (imageWrapper) {
-    const imgNode =
-      imageWrapper.tagName === 'IMG'
-        ? imageWrapper
-        : imageWrapper.querySelector('img');
-
-    if (imgNode) {
-      imgNode.loading = 'lazy';
-
-      // Apply any data-src / data-srcset if present
-      if (imgNode.dataset.src && !imgNode.src) {
-        imgNode.src = imgNode.dataset.src;
-      }
-      if (imgNode.dataset.srcset && !imgNode.srcset) {
-        imgNode.srcset = imgNode.dataset.srcset;
-      }
-
-      // Fallback alt from content
-      if (!imgNode.alt) {
-        imgNode.alt = main.textContent || 'About section image';
-      }
-
-      imageContainer.replaceChildren(imgNode);
-    }
+  const img = block.querySelector('img');
+  if (img && !imageContainer.contains(img)) {
+    imageContainer.append(img);
   }
 
-  // --- STEP 4: Clean up block children and re-append structure ---
-  Array.from(block.children).forEach((child) => {
-    if (![textContent, imageContainer].includes(child)) child.remove();
-  });
-
+  // --- STEP 5: Keep correct order (text first by default) ---
   const imageFirst = block.dataset.imageFirst === 'true' || block.classList.contains('image-first');
   block.replaceChildren(imageFirst ? imageContainer : textContent, imageFirst ? textContent : imageContainer);
 
-  // --- STEP 5: Accessibility ---
+  // --- STEP 6: Accessibility ---
   if (!block.hasAttribute('role')) block.setAttribute('role', 'region');
   if (!block.hasAttribute('aria-labelledby')) {
-    if (!main.id) main.id = `about-title-${Math.random().toString(36).slice(2, 9)}`;
-    block.setAttribute('aria-labelledby', main.id);
+    const id = `about-${Math.random().toString(36).slice(2, 9)}`;
+    main.id = id;
+    block.setAttribute('aria-labelledby', id);
   }
 
-  // --- STEP 6: JS enhancement flag ---
+  // --- STEP 7: Add a hook for JS enhancement ---
   block.classList.add('about-section--ready');
 
-  // --- STEP 7: Simple update API for editor ---
+  // --- STEP 8: Live update API (used by editor or dynamic content) ---
   block._update = (data = {}) => {
-    if (data.title) main.textContent = data.title;
+    if (data.title) main.innerHTML = data.title;
     if (data.body) sub.innerHTML = data.body;
     if (data.image) {
-      let img = imageContainer.querySelector('img') || document.createElement('img');
-      img.src = data.image;
-      if (data.alt) img.alt = data.alt;
-      imageContainer.replaceChildren(img);
+      let imgTag = imageContainer.querySelector('img') || document.createElement('img');
+      imgTag.loading = 'lazy';
+      imgTag.src = data.image;
+      if (data.alt) imgTag.alt = data.alt;
+      imageContainer.replaceChildren(imgTag);
     }
   };
 
