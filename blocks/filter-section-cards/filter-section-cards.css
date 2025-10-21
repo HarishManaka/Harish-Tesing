@@ -1,21 +1,41 @@
-//* ===================================
+/* ===================================
    Filter Section Cards Block
-   Matches NASM.org specializations design
+   Matches NASM.org specializations design (AEM Universal Editor Compatible)
    =================================== */
 
-/* Import GenericFilter styles for consistent filter UI */
+/* Import GenericFilter styles */
 @import url('../../shared-components/generic-filter/generic-filter.css');
 
-/* GenericFilter responsive overrides (fallback if @import fails) */
+/* ===================================
+   Base Colors (NASM palette)
+   =================================== */
+:root {
+  --nasm-primary: #123257;
+  --nasm-primary-dark: #0d2440;
+  --nasm-accent: #356ca8;
+  --nasm-light-bg: #f9fafb;
+  --nasm-border: #e5e7eb;
+  --nasm-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  --nasm-shadow-hover: 0 4px 16px rgb(0 0 0 / 15%);
+}
 
-/* Hide overlay by default on mobile */
+/* ===================================
+   GenericFilter Overrides
+   =================================== */
+
+/* Hide overlay by default */
 .filter-section-cards .gf-overlay {
   display: none;
   opacity: 0;
   visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  background-color: rgb(0 0 0 / 50%);
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
 }
 
-/* Show overlay only when sidebar is open (mobile only) */
+/* Show overlay when open (mobile only) */
 @media (width < 700px) {
   .filter-section-cards .gf-overlay.gf-overlay-open {
     display: block;
@@ -24,6 +44,7 @@
   }
 }
 
+/* Sidebar visibility & layout */
 @media (width >= 700px) {
   .filter-section-cards .gf-mobile-toggle {
     display: none;
@@ -47,6 +68,10 @@
     height: auto;
     overflow: visible;
     margin: 0;
+    background: #fff;
+    border: 1px solid var(--nasm-border);
+    border-radius: 8px;
+    box-shadow: var(--nasm-shadow);
   }
 
   .filter-section-cards .gf-close-btn {
@@ -59,133 +84,124 @@
   }
 }
 
-/* Block Container */
+/* ===================================
+   Block Container
+   =================================== */
 .filter-section-cards {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Main wrapper that contains filter title and all item sets */
-.filter-section-cards-main-wrapper {
-  width: 100%;
+/* ===================================
+   Sidebar (filters)
+   =================================== */
+.gf-sidebar-header h5 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--nasm-primary);
+  margin-bottom: 15px;
 }
 
-/* Wrapper - Main Flexbox Container for each item set */
-.filter-section-cards-wrapper {
+.gf-filter-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.gf-filter-option:hover {
+  color: var(--nasm-accent);
+}
+
+.gf-filter-option input {
+  margin-right: 8px;
+  accent-color: var(--nasm-primary);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Highlight active filter */
+.gf-filter-option input:checked + span {
+  color: var(--nasm-primary);
+  font-weight: 700;
+}
+
+/* Sidebar footer buttons */
+.gf-sidebar-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.gf-sidebar-footer button {
+  flex: 1;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gf-apply-btn {
+  background-color: var(--nasm-primary);
+  color: #fff;
+}
+
+.gf-apply-btn:hover {
+  background-color: var(--nasm-primary-dark);
+}
+
+.gf-clear-btn {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.gf-clear-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* ===================================
+   Mobile toggle
+   =================================== */
+.filter-section-cards .gf-mobile-toggle {
+  position: sticky;
+  top: 75px;
+  z-index: 1001;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #fff;
+  border: 1px solid var(--nasm-border);
+  cursor: pointer;
+  box-shadow: var(--nasm-shadow);
+}
+
+@media (width <= 700px) {
+  .filter-section-cards .gf-mobile-toggle {
+    display: block;
+  }
+}
+
+/* ===================================
+   Card Layout
+   =================================== */
+.filter-section-cards-wrapper,
+.gf-results {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5%;
   margin: 30px 0;
 }
 
-/* ===================================
-   Filter Title Section
-   =================================== */
-
-.filter-section-cards-filter-title {
-  flex: 0 0 100%;
-  margin-bottom: 25px;
-  text-align: center;
-  display: none;
-}
-
-.filter-section-cards-filter-title h2 {
-  font-size: 2.25rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin: 0;
-  color: #123257;
-}
-
-/* ===================================
-   Filter Sidebar (uses GenericFilter classes)
-   =================================== */
-
-/* Position the filter sidebar within the block */
-.filter-section-cards .gf-sidebar {
- @media (width <= 699px) {
-  margin: 77px 0;
-  }
-}
-
-/* No results message */
-.filter-section-cards-no-results {
-  display: none;
-  padding: 40px 20px;
-  text-align: center;
-  background-color: #f9fafb;
-  border-radius: 8px;
-  margin: 30px 0;
-}
-
-.filter-section-cards-no-results p {
-  font-size: 1.125rem;
-  color: #666;
-  margin: 0;
-}
-
-/* ===================================
-   Header Section
-   =================================== */
-
-.filter-section-cards-header {
-  flex: 0 0 100%;
-  margin-bottom: 30px;
-  text-align: left;
-}
-
-.filter-section-cards-description{
-  @media (width >= 1024px) {
-    display:flex;justify-content: space-between;align-items: flex-start;
-  }
-}
-
-.filter-section-cards-header h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin: 0 0 15px;
-
-  /* color: #333; */
-  text-transform: capitalize;
-}
-
-.filter-section-cards-header p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 0 0 20px;
-
-  /* color: #666; */
-}
-
-.filter-section-cards-cta {
-  display: inline-block;
-  padding: 0 30px;
-  background-color: #123257;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 300;
-
-  /* border-radius: 4px; */
-  font-size: 1.2rem;
-  transition: background-color 0.3s ease;
-
-  &:hover{
-    color:white;
-    text-decoration: none;
-  }
-}
-
-.filter-section-cards-cta:hover {
-  background-color: #0d2440;
-}
-
-/* ===================================
-   Card Items
-   =================================== */
-
-/* Card wrapper link - makes entire card clickable */
 .filter-section-cards-item-link {
   flex: 0 0 49.25%;
   margin-bottom: 30px;
@@ -196,8 +212,7 @@
 }
 
 .filter-section-cards-item-link:hover {
-  text-decoration: none;
-  color: inherit;
+  transform: translateY(-4px);
 }
 
 .filter-section-cards-item {
@@ -205,23 +220,21 @@
   background: #fff;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  box-shadow: var(--nasm-shadow);
   transition: box-shadow 0.3s ease;
 }
 
 .filter-section-cards-item-link:hover .filter-section-cards-item {
-  box-shadow: 0 4px 16px rgb(0 0 0 / 15%);
+  box-shadow: var(--nasm-shadow-hover);
 }
 
-.filter-section-cards-item-link:hover {
-  transform: translateY(-4px);
-}
-
-/* Image Container */
+/* ===================================
+   Image
+   =================================== */
 .filter-section-cards-item-img {
   position: relative;
   width: 100%;
-  padding-top: 50%; /* 2:1 aspect ratio */
+  padding-top: 50%;
   overflow: hidden;
   background-color: #f5f5f5;
 }
@@ -233,149 +246,87 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
-/* Content Container */
+/* ===================================
+   Content
+   =================================== */
 .filter-section-cards-item-content {
   padding: 24px;
-
-  /* height: 100%; */
 }
 
 .filter-section-cards-item-content h3 {
   font-size: 1.5rem;
   font-weight: 700;
-  line-height: 1.3;
-  margin: 0 0 12px;
-  color: #123257;
-  text-transform: capitalize;
+  color: var(--nasm-primary);
+  margin-bottom: 12px;
 }
 
 .filter-section-cards-item-content p {
   font-size: 0.95rem;
-  line-height: 1.6;
-  margin: 0 0 20px;
   color: #555;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
-/* Meta Section (CTA + Badge) */
+/* ===================================
+   Meta (badge + link)
+   =================================== */
 .filter-section-cards-item-meta {
   display: flex;
-  place-content: center space-between;
+  justify-content: space-between;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .filter-section-cards-link {
-  color: #123257;
+  color: var(--nasm-primary);
   text-decoration: underline;
-  font-weight: 400;
-  font-size: 0.95rem;
+  font-weight: 500;
   transition: color 0.3s ease;
-  position: relative;
-  text-transform: capitalize;
-}
-
-.filter-section-cards-link::after {
-  display: inline-block;
-  margin-left: 4px;
-  transition: transform 0.3s ease;
 }
 
 .filter-section-cards-link:hover {
-  color: #0d2440;
-}
-
-.filter-section-cards-link:hover::after {
-  transform: translateX(4px);
+  color: var(--nasm-primary-dark);
 }
 
 .filter-section-cards-badge {
   display: inline-block;
   padding: 6px 12px;
-
-  /* background-color: #e8f5f7; */
-  color: #356ca8;
+  border: 1px solid var(--nasm-accent);
+  color: var(--nasm-accent);
   font-size: 0.75rem;
-  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
   border-radius: 15px;
-  border: 1px solid #356ca8;
   line-height: 1.4;
-  align-self: center;
 }
 
 /* ===================================
-   Responsive Design
+   Empty State
    =================================== */
+.filter-section-cards-no-results {
+  flex: 0 0 100%;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: var(--nasm-light-bg);
+  border-radius: 8px;
+  color: #666;
+  font-size: 1.125rem;
+}
 
-/* Tablet */
+/* ===================================
+   Responsive
+   =================================== */
 @media (width <= 992px) {
-  .filter-section-cards-filter-title h2 {
-    font-size: 2rem;
-  }
-
-  .filter-section-cards-header h2 {
-    font-size: 1.75rem;
-  }
-
   .filter-section-cards-item-link {
     flex: 0 0 100%;
-  }
-
-  .filter-section-cards-item-content h3 {
-    font-size: 1.35rem;
   }
 }
 
-/* Mobile */
 @media (width <= 768px) {
   .filter-section-cards {
     padding: 0 15px;
-  }
-
-  .filter-section-cards-filter-title h2 {
-    font-size: 1.75rem;
-  }
-
-  .filter-section-cards-no-results {
-    padding: 30px 15px;
-  }
-
-  .filter-section-cards-no-results p {
-    font-size: 1rem;
-  }
-
-  .filter-section-cards-wrapper {
-    gap: 0;
-    margin: 20px 0;
-  }
-
-  .filter-section-cards-header {
-    margin-bottom: 20px;
-  }
-
-  .filter-section-cards-header h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-
-  .filter-section-cards-header p {
-    font-size: 0.95rem;
-    margin-bottom: 15px;
-  }
-
-  .filter-section-cards-cta {
-    padding: 0 24px;
-    font-size: 0.9rem;
-  }
-
-  .filter-section-cards-item-link {
-    flex: 0 0 100%;
-    margin-bottom: 20px;
   }
 
   .filter-section-cards-item-content {
@@ -384,130 +335,36 @@
 
   .filter-section-cards-item-content h3 {
     font-size: 1.25rem;
-    margin-bottom: 10px;
-  }
-
-  .filter-section-cards-item-content p {
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-  }
-
-  .filter-section-cards-item-meta {
-    /* flex-direction: column; */
-    align-items: flex-start;
-    gap: 10px;
   }
 
   .filter-section-cards-badge {
     font-size: 0.7rem;
-    padding: 0 10px;
-  }
-}
-
-/* Small Mobile */
-@media (width <= 480px) {
-  .filter-section-cards-filter-title h2 {
-    font-size: 1.5rem;
-  }
-
-  .filter-section-cards-header h2 {
-    font-size: 1.35rem;
-  }
-
-  .filter-section-cards-item-content h3 {
-    font-size: 1.15rem;
+    padding: 4px 10px;
   }
 }
 
 /* ===================================
-   Accessibility & Print
+   Accessibility
    =================================== */
-
-/* Focus states for keyboard navigation */
-.filter-section-cards-cta:focus,
+.gf-apply-btn:focus,
+.gf-clear-btn:focus,
+.gf-mobile-toggle:focus,
 .filter-section-cards-item-link:focus {
-  outline: 2px solid #123257;
+  outline: 2px solid var(--nasm-primary);
   outline-offset: 2px;
 }
 
-/* Reduce motion for users with motion sensitivity */
-@media (prefers-reduced-motion: reduce) {
-  .filter-section-cards-item,
-  .filter-section-cards-item-link,
-  .filter-section-cards-cta {
-    transition: none;
-  }
-
-  .filter-section-cards-item-link:hover {
-    transform: none;
-  }
-}
-
-/* Print styles */
+/* ===================================
+   Print
+   =================================== */
 @media print {
-  .filter-section-cards .gf-sidebar {
+  .gf-sidebar,
+  .gf-mobile-toggle {
     display: none;
   }
 
   .filter-section-cards-item {
     box-shadow: none;
     border: 1px solid #ddd;
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-
-  .filter-section-cards-cta,
-  .filter-section-cards-item-link {
-    color: #000;
-    text-decoration: underline;
-  }
-}
-
-
-.filter-section-cards {
-  & .gf-mobile-toggle {
-    position: sticky;
-    top: 75px;
-    z-index: 2;
-    width: 100vw;
-    margin-left: -32px;
-    margin-right: -32px;
-    background-color: white;
-    border: none;
-    box-shadow: 0 22px 6px 0 rgb(0 0 0 / 0%), 0 14px 6px 0 rgb(0 0 0 / 1%), 0 8px 5px 0 rgb(0 0 0 / 4%), 0 4px 4px 0 rgb(0 0 0 / 6%), 0 1px 2px 0 rgb(0 0 0 / 7%);
-  }
-
-  & .gf-sidebar.gf-sidebar-open {
-    z-index: 1001;
-    height: auto;
-  } 
-
-  & .gf-sidebar-header{
-    padding-top: 36px;
-
-    & h5 {
-      font-variation-settings: unset;
-      letter-spacing: -1px;
-    }
-
-  }
-
-  & .gf-filter-option:hover{
-    color:inherit;
-  }
-
-  & .gf-close-btn{
-    top:10px;
-    height: auto;
-    width: auto;
-    padding: 2px 4px;
-  }
-
-  & .gf-container {
-  width: 100%;
-  }
-
-  & .gf-overlay{
-    z-index: 1000;
   }
 }
