@@ -1,13 +1,59 @@
 /**
- * Filter Section Cards - AEM Edge Delivery Service (Universal Editor)
- * Fully dynamic, DOM-driven, card-level tag filtering
+ * Filter Section Cards – AEM Edge Delivery Service (Universal Editor Compatible)
+ * - Fully dynamic (reads DOM from Universal Editor)
+ * - Card-level filtering (each .filter-section-cards-item-link)
+ * - Auto tag fallback detection (no hardcoded values)
+ * - Compatible with moveInstrumentation, gf-sidebar, gf-overlay, etc.
  */
 
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
-export default function decorate(block) {
+export default async function decorate(block) {
   // -------------------------------
-  // 1️⃣ Initialize Elements
+  // 1️⃣ Collect All Cards
+  // -------------------------------
+  const cardLinks = [...block.querySelectorAll('.filter-section-cards-item-link')];
+  if (!cardLinks.length) return;
+
+  // Apply AEM instrumentation (for analytics)
+  cardLinks.forEach((link) => moveInstrumentation(link));
+
+  // -------------------------------
+  // 2️⃣ Detect Tags for Each Card (Auto Fallback)
+  // -------------------------------
+  const getTag = (link) => {
+    // Preferred: data-tag attribute
+    const attrTag = link.dataset.tag || link.getAttribute('data-tag');
+    if (attrTag && attrTag.trim()) return attrTag.trim();
+
+    // Fallback: look for inner tag element or text (e.g., <span class="tag">Nutrition</span>)
+    const tagEl =
+      link.querySelector('[data-tag]') ||
+      link.querySelector('.filter-section-cards-tag') ||
+      link.querySelector('.tag');
+    if (tagEl?.textContent?.trim()) return tagEl.textContent.trim();
+
+    // Fallback: try text from meta or badge
+    const metaTag =
+      link.querySelector('.filter-section-cards-badge')?.textContent?.trim() ||
+      link.querySelector('.filter-section-cards-item-content h3')?.textContent?.split(' ')[0] ||
+      '';
+    return metaTag.trim();
+  };
+
+  const cards = cardLinks.map((link) => ({
+    el: link,
+    tag: getTag(link),
+  }));
+
+  // -------------------------------
+  // 3️⃣ Build Tag List (Unique)
+  // -------------------------------
+  const tags = [...new Set(cards.map((c) => c.tag).filter(Boolean))].sort();
+  if (!tags.length) return; // no tags, skip filter UI
+
+  // -------------------------------
+  // 4️⃣ Build Sidebar + Overlay + Results
   // -------------------------------
   const overlay = document.createElement('div');
   overlay.className = 'gf-overlay';
@@ -21,97 +67,73 @@ export default function decorate(block) {
   const container = document.createElement('div');
   container.className = 'gf-container';
   container.append(sidebar, resultsContainer);
-
   block.append(overlay, container);
 
-  // -------------------------------
-  // 2️⃣ Read All Cards from DOM (Universal Editor generated)
-  // -------------------------------
-  const cards = Array.from(block.querySelectorAll('.filter-section-cards-item-link')).map((link) => {
-    const item = link.querySelector('.filter-section-cards-item');
-    moveInstrumentation(item);
-
-    return {
-      el: link,
-      tag:
-        link.dataset.tag ||
-        link.getAttribute('data-tag') ||
-        (link.querySelector('[data-tag]')?.dataset.tag || '').trim() ||
-        '',
-    };
-  });
-
-  if (!cards.length) return;
-
-  // -------------------------------
-  // 3️⃣ Build Unique Tag List (Card-Level)
-  // -------------------------------
-  const tags = Array.from(new Set(cards.map((c) => c.tag).filter(Boolean))).sort();
-
+  // Sidebar Header
   const sidebarHeader = document.createElement('div');
   sidebarHeader.className = 'gf-sidebar-header';
-  const title = document.createElement('h5');
-  title.textContent = 'Filter By';
-  sidebarHeader.append(title);
+  sidebarHeader.innerHTML = '<h5>Filter By</h5>';
   sidebar.append(sidebarHeader);
 
+  // Sidebar Filter List
   const filterList = document.createElement('div');
   filterList.className = 'gf-filter-list';
   tags.forEach((tag) => {
     const label = document.createElement('label');
     label.className = 'gf-filter-option';
-    label.innerHTML = `<input type="checkbox" value="${tag}"> <span>${tag}</span>`;
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.value = tag;
+    const span = document.createElement('span');
+    span.textContent = tag;
+    label.append(input, span);
     filterList.append(label);
   });
   sidebar.append(filterList);
 
+  // Sidebar Footer (Apply / Clear)
   const footer = document.createElement('div');
   footer.className = 'gf-sidebar-footer';
   footer.innerHTML = `
-    <button class="gf-apply-btn">Apply</button>
-    <button class="gf-clear-btn">Clear</button>
+    <button class="gf-apply-btn" type="button">Apply</button>
+    <button class="gf-clear-btn" type="button">Clear</button>
   `;
   sidebar.append(footer);
 
   // -------------------------------
-  // 4️⃣ Render Initial Cards
+  // 5️⃣ Render Cards Function
   // -------------------------------
-  const renderCards = (visibleCards) => {
+  const renderCards = (cardsToShow) => {
     resultsContainer.innerHTML = '';
-    if (!visibleCards.length) {
-      const noResults = document.createElement('div');
-      noResults.className = 'filter-section-cards-no-results';
-      noResults.innerHTML = '<p>No results found.</p>';
-      resultsContainer.append(noResults);
+    if (!cardsToShow.length) {
+      const empty = document.createElement('div');
+      empty.className = 'filter-section-cards-no-results';
+      empty.innerHTML = '<p>No results found.</p>';
+      resultsContainer.append(empty);
       return;
     }
 
-    visibleCards.forEach((c) => {
-      resultsContainer.append(c.el);
-    });
+    cardsToShow.forEach((card) => resultsContainer.append(card.el));
   };
 
   renderCards(cards);
 
   // -------------------------------
-  // 5️⃣ Filtering Logic (Card-Level)
+  // 6️⃣ Filter Logic (Card-Level)
   // -------------------------------
   const applyFilters = () => {
-    const selected = Array.from(
-      sidebar.querySelectorAll('input[type="checkbox"]:checked')
-    ).map((i) => i.value);
-
-    if (!selected.length) {
+    const selectedTags = [...sidebar.querySelectorAll('input:checked')].map((i) => i.value);
+    if (!selectedTags.length) {
       renderCards(cards);
       return;
     }
 
-    const filtered = cards.filter((c) => selected.includes(c.tag));
+    const filtered = cards.filter((c) => selectedTags.includes(c.tag));
     renderCards(filtered);
   };
 
   const clearFilters = () => {
-    sidebar.querySelectorAll('input[type="checkbox"]').forEach((cb) => (cb.checked = false));
+    sidebar.querySelectorAll('input').forEach((cb) => (cb.checked = false));
     renderCards(cards);
   };
 
@@ -119,7 +141,7 @@ export default function decorate(block) {
   sidebar.querySelector('.gf-clear-btn').addEventListener('click', clearFilters);
 
   // -------------------------------
-  // 6️⃣ Mobile Overlay Logic
+  // 7️⃣ Mobile Toggle & Overlay Behavior
   // -------------------------------
   const toggleBtn = document.createElement('button');
   toggleBtn.className = 'gf-mobile-toggle';
@@ -136,4 +158,17 @@ export default function decorate(block) {
   });
 
   block.prepend(toggleBtn);
+
+  // -------------------------------
+  // 8️⃣ Listen for Universal Editor Live Updates
+  // -------------------------------
+  document.addEventListener('aem-contentchange', () => {
+    // if authors add/remove cards in Universal Editor, re-scan tags and re-render
+    const updatedLinks = [...block.querySelectorAll('.filter-section-cards-item-link')];
+    const updatedCards = updatedLinks.map((link) => ({
+      el: link,
+      tag: getTag(link),
+    }));
+    renderCards(updatedCards);
+  });
 }
