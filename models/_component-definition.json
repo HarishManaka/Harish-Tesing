@@ -50,6 +50,9 @@
           "...": "../blocks/fragment/_*.json#/definitions"
         },
         {
+          "...": "../blocks/about-section/_*.json#/definitions"
+        },
+        {
           "...": "../blocks/featured-card/_*.json#/definitions"
         },
         {
