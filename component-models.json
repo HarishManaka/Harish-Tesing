@@ -2637,13 +2637,9 @@
             "name": "header-url",
             "label": "url",
             "description": ""
-          },
-          {
-            "component": "text",
-            "name": "tag",
-            "label": "tag",
-            "description": ""
           }
+        
+        
         ]
       },
       {
@@ -2682,6 +2678,12 @@
             "name": "card1-image",
             "label": "Image",
             "multi": false
+          },
+          {
+            "component": "text",
+            "name": "tag",
+            "label": "tag",
+            "description": ""
           }
         ]
       },
@@ -2721,6 +2723,12 @@
             "name": "card2-image",
             "label": "Image",
             "multi": false
+          },
+          {
+            "component": "text",
+            "name": "tag",
+            "label": "tag",
+            "description": ""
           }
         ]
       }

@@ -1,3 +1,4 @@
+
 {
   "definitions": [
     {
@@ -71,18 +72,13 @@
               "label": "label",
               "description": ""
             },
-            {
+             {
               "component": "text",
               "name": "header-url",
               "label": "url",
               "description": ""
-            },
-            {
-              "component": "text",
-              "name": "tag",
-              "label": "tag",
-              "description": ""
             }
+           
           ]
         },
         {
@@ -121,8 +117,19 @@
               "name": "card1-image",
               "label": "Image",
               "multi": false
+            },
+            {
+              "component": "text",
+              "name": "card1-badge",
+              "label": "badge (override)",
+              "description": ""
+            },
+            {
+              "component": "text",
+              "name": "tag",
+              "label": "tag",
+              "description": ""
             }
-            
           ]
         },
         {
@@ -161,6 +168,69 @@
               "name": "card2-image",
               "label": "Image",
               "multi": false
+            },
+            {
+              "component": "text",
+              "name": "card2-badge",
+              "label": "badge (override)",
+              "description": ""
+            },
+            {
+              "component": "text",
+              "name": "tag",
+              "label": "tag",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "component": "container",
+          "name": "card3",
+          "label": "Card 3 (optional)",
+          "collapsible": true,
+          "fields": [
+            {
+              "component": "text",
+              "name": "card3-title",
+              "label": "title",
+              "description": ""
+            },
+            {
+              "component": "text",
+              "name": "card3-description",
+              "label": "description",
+              "description": ""
+            },
+            {
+              "component": "text",
+              "name": "card3-label",
+              "label": "label",
+              "description": ""
+            },
+            {
+              "component": "text",
+              "name": "card3-url",
+              "label": "url",
+              "description": ""
+            },
+            {
+              "component": "reference",
+              "valueType": "string",
+              "name": "card3-image",
+              "label": "Image",
+              "multi": false
+            },
+            {
+              "component": "text",
+              "name": "card3-badge",
+              "label": "badge (override)",
+              "description": ""
+            },
+            {
+              "component": "text",
+              "name": "tag",
+              "label": "tag",
+              "description": ""
             }
           ]
         }
