@@ -1,179 +1,207 @@
 /**
- * Filter Section Cards - Grouped & Mixed View
- * Works with Edge Delivery Service (AEM Franklin)
- * Dynamically builds cards and filters by tag
+ * Filter Section Cards Block (AEM Edge Delivery Service)
+ * Filtering is now at CARD LEVEL (card1, card2, card3 each have their own tag)
  */
 
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
-const FilterSectionCards = (() => {
-  function el(tag, attrs = {}, children = []) {
-    const node = document.createElement(tag);
-    for (const k in attrs) {
-      if (k === 'class') node.className = attrs[k];
-      else if (k === 'text') node.textContent = attrs[k];
-      else node.setAttribute(k, attrs[k]);
+/**
+ * Builds the Filter Section Cards block
+ * @param {HTMLElement} block - The block element
+ */
+export default async function decorate(block) {
+  const allItems = Array.from(block.querySelectorAll(':scope > div'));
+  if (!allItems.length) return;
+
+  /* -------------------------------
+     1️⃣ Build Containers
+  ------------------------------- */
+  const wrapper = document.createElement('div');
+  wrapper.className = 'filter-section-cards-wrapper';
+
+  const sidebar = document.createElement('aside');
+  sidebar.className = 'gf-sidebar';
+
+  const resultsContainer = document.createElement('div');
+  resultsContainer.className = 'gf-results';
+
+  const overlay = document.createElement('div');
+  overlay.className = 'gf-overlay';
+  block.appendChild(overlay);
+
+  /* -------------------------------
+     2️⃣ Extract Data (Cards)
+  ------------------------------- */
+  const cards = [];
+
+  allItems.forEach((item) => {
+    const cardData = {};
+    const headings = Array.from(item.querySelectorAll('h2, h3, h4'));
+    const paragraphs = Array.from(item.querySelectorAll('p'));
+    const links = Array.from(item.querySelectorAll('a'));
+    const imgs = Array.from(item.querySelectorAll('img'));
+
+    // Try to detect card-level data (card1, card2, card3)
+    const cardEls = item.querySelectorAll('.filter-section-cards-item-link, a');
+    cardEls.forEach((cardEl, index) => {
+      const tag = cardEl.dataset.tag || cardEl.getAttribute('data-tag') || cardEl.getAttribute('tag') || '';
+      const card = {
+        title: cardEl.querySelector('h3')?.textContent?.trim() || headings[index]?.textContent?.trim() || '',
+        description: cardEl.querySelector('p')?.textContent?.trim() || paragraphs[index]?.textContent?.trim() || '',
+        label: cardEl.querySelector('.filter-section-cards-link')?.textContent?.trim() || 'Learn More',
+        url: cardEl.getAttribute('href') || links[index]?.href || '#',
+        image: cardEl.querySelector('img')?.src || imgs[index]?.src || '',
+        badge: cardEl.querySelector('.filter-section-cards-badge')?.textContent?.trim() || '',
+        tag: tag,
+      };
+      cards.push(card);
+    });
+  });
+
+  if (!cards.length) return;
+
+  /* -------------------------------
+     3️⃣ Build Filter Sidebar
+  ------------------------------- */
+  const tags = Array.from(new Set(cards.map((c) => c.tag).filter(Boolean))).sort();
+
+  const sidebarHeader = document.createElement('div');
+  sidebarHeader.className = 'gf-sidebar-header';
+  const title = document.createElement('h5');
+  title.textContent = 'Filter By Category';
+  sidebarHeader.appendChild(title);
+  sidebar.appendChild(sidebarHeader);
+
+  const filterList = document.createElement('div');
+  filterList.className = 'gf-filter-list';
+  tags.forEach((tag) => {
+    const option = document.createElement('label');
+    option.className = 'gf-filter-option';
+    option.innerHTML = `<input type="checkbox" value="${tag}"> <span>${tag}</span>`;
+    filterList.appendChild(option);
+  });
+  sidebar.appendChild(filterList);
+
+  const footer = document.createElement('div');
+  footer.className = 'gf-sidebar-footer';
+  footer.innerHTML = `
+    <button class="gf-apply-btn">Apply</button>
+    <button class="gf-clear-btn">Clear</button>
+  `;
+  sidebar.appendChild(footer);
+
+  /* -------------------------------
+     4️⃣ Build Cards in DOM
+  ------------------------------- */
+  const renderCards = (visibleCards) => {
+    resultsContainer.innerHTML = '';
+    if (!visibleCards.length) {
+      const noResults = document.createElement('div');
+      noResults.className = 'filter-section-cards-no-results';
+      noResults.innerHTML = '<p>No results found.</p>';
+      resultsContainer.appendChild(noResults);
+      return;
     }
-    (Array.isArray(children) ? children : [children]).forEach((c) => {
-      if (typeof c === 'string') node.appendChild(document.createTextNode(c));
-      else if (c) node.appendChild(c);
+
+    visibleCards.forEach((card) => {
+      const link = document.createElement('a');
+      link.className = 'filter-section-cards-item-link';
+      link.href = card.url;
+      if (card.tag) link.dataset.tag = card.tag;
+
+      const item = document.createElement('div');
+      item.className = 'filter-section-cards-item';
+      moveInstrumentation(item);
+
+      // image
+      const imgContainer = document.createElement('div');
+      imgContainer.className = 'filter-section-cards-item-img';
+      if (card.image) {
+        const img = document.createElement('img');
+        img.src = card.image;
+        img.alt = card.title || 'Card image';
+        imgContainer.appendChild(img);
+      }
+      item.appendChild(imgContainer);
+
+      // content
+      const content = document.createElement('div');
+      content.className = 'filter-section-cards-item-content';
+      content.innerHTML = `
+        <h3>${card.title}</h3>
+        <p>${card.description}</p>
+      `;
+
+      // meta
+      const meta = document.createElement('div');
+      meta.className = 'filter-section-cards-item-meta';
+      const cta = document.createElement('span');
+      cta.className = 'filter-section-cards-link';
+      cta.textContent = card.label || 'Read More';
+      const badge = document.createElement('span');
+      badge.className = 'filter-section-cards-badge';
+      badge.textContent = card.badge || 'PDF';
+      meta.append(cta, badge);
+
+      content.appendChild(meta);
+      item.appendChild(content);
+      link.appendChild(item);
+      resultsContainer.appendChild(link);
     });
-    return node;
-  }
+  };
 
-  /* Collect all card1/card2/card3 data objects */
-  function collectCards(items) {
-    const cards = [];
-    items.forEach((item) => {
-      ['card1', 'card2', 'card3'].forEach((key) => {
-        if (item[key] && item[key][`${key}-title`]) {
-          const card = { ...item[key] };
-          card.tag = card.tag || item.tag || item[`${key}-tag`] || '';
-          cards.push(card);
-        }
-      });
-    });
-    return cards;
-  }
+  renderCards(cards);
 
-  /* Unique tags for filter sidebar */
-  function getUniqueTags(cards) {
-    const set = new Set();
-    cards.forEach((c) => c.tag && c.tag.split(',').forEach((t) => set.add(t.trim())));
-    return Array.from(set);
-  }
-
-  /* Group by tag */
-  function groupByTag(cards) {
-    const grouped = {};
-    cards.forEach((c) => {
-      const tags = c.tag ? c.tag.split(',').map((t) => t.trim()) : ['Other'];
-      tags.forEach((t) => {
-        if (!grouped[t]) grouped[t] = [];
-        grouped[t].push(c);
-      });
-    });
-    return grouped;
-  }
-
-  /* Sidebar with filters and toggle button */
-  function renderSidebar(root, tags, onChange, onToggleView) {
-    const aside = el('aside', { class: 'fsc-sidebar' });
-    aside.appendChild(el('div', { class: 'fsc-filters-title', text: 'FILTER CATEGORIES' }));
-
-    const list = el('div', { class: 'fsc-filter-list' });
-    tags.forEach((tag) => {
-      const id = 'fsc-' + tag.replace(/\s+/g, '-');
-      const label = el('label', { for: id, class: 'fsc-filter-item' });
-      const input = el('input', { type: 'checkbox', id });
-      input.dataset.tag = tag;
-      input.addEventListener('change', onChange);
-      label.appendChild(input);
-      label.appendChild(el('span', { text: tag }));
-      list.appendChild(label);
-    });
-    aside.appendChild(list);
-
-    const toggle = el('button', { class: 'fsc-toggle-view', text: 'Switch to Mixed View' });
-    toggle.addEventListener('click', onToggleView);
-    aside.appendChild(toggle);
-
-    root.appendChild(aside);
-  }
-
-  /* Render cards grouped by tag */
-  function renderGrouped(root, cards) {
-    const container = root.querySelector('.fsc-card-groups') || el('div', { class: 'fsc-card-groups' });
-    container.innerHTML = '';
-
-    const grouped = groupByTag(cards);
-    Object.keys(grouped).forEach((tag) => {
-      const section = el('div', { class: 'fsc-card-group' });
-      section.appendChild(el('h2', { class: 'fsc-group-title', text: tag }));
-      const grid = el('div', { class: 'fsc-cards' });
-      grouped[tag].forEach((card) => grid.appendChild(createCard(card)));
-      section.appendChild(grid);
-      container.appendChild(section);
-    });
-
-    if (!root.querySelector('.fsc-card-groups')) root.appendChild(container);
-  }
-
-  /* Render all cards mixed */
-  function renderMixed(root, cards) {
-    const container = root.querySelector('.fsc-card-groups') || el('div', { class: 'fsc-card-groups' });
-    container.innerHTML = '';
-    const grid = el('div', { class: 'fsc-cards' });
-    cards.forEach((card) => grid.appendChild(createCard(card)));
-    container.appendChild(grid);
-    if (!root.querySelector('.fsc-card-groups')) root.appendChild(container);
-  }
-
-  /* Create individual card */
-  function createCard(card) {
-    const cardEl = el('article', { class: 'fsc-card' });
-
-    // moveInstrumentation support (AEM analytics/monitoring)
-    moveInstrumentation(cardEl);
-
-    if (card['card1-image'])
-      cardEl.appendChild(el('img', { src: card['card1-image'], alt: card['card1-title'] }));
-
-    const body = el('div', { class: 'fsc-card-body' });
-    body.appendChild(el('h3', { class: 'fsc-card-title', text: card['card1-title'] }));
-    body.appendChild(el('p', { class: 'fsc-card-desc', text: card['card1-description'] }));
-
-    const footer = el('div', { class: 'fsc-card-footer' });
-    const link = el('a', {
-      class: 'fsc-cta',
-      href: card['card1-url'] || '#',
-      text: card['card1-label'] || 'Download Now',
-    });
-    footer.appendChild(link);
-    footer.appendChild(el('span', { class: 'fsc-badge', text: card['card1-badge'] || 'PDF' }));
-    body.appendChild(footer);
-
-    cardEl.appendChild(body);
-    return cardEl;
-  }
-
-  /* Initialize Component */
-  function init(data, selector) {
-    const root = document.querySelector(selector);
-    if (!root) throw new Error('Container not found');
-    root.classList.add('fsc-wrapper');
-
-    const cards = collectCards(data);
-    const tags = getUniqueTags(cards);
-    let groupedView = true;
-
-    const onFilterChange = () => {
-      const selected = Array.from(root.querySelectorAll('.fsc-filter-list input:checked')).map(
-        (i) => i.dataset.tag
+  /* -------------------------------
+     5️⃣ Filter Logic
+  ------------------------------- */
+  const applyFilters = () => {
+    const selected = Array.from(
+      sidebar.querySelectorAll('input[type="checkbox"]:checked')
+    ).map((el) => el.value);
+    if (!selected.length) {
+      renderCards(cards);
+    } else {
+      const filtered = cards.filter((card) =>
+        selected.includes(card.tag)
       );
-      const filtered = !selected.length
-        ? cards
-        : cards.filter((c) => {
-            const ct = c.tag ? c.tag.split(',').map((t) => t.trim()) : [];
-            return ct.some((t) => selected.includes(t));
-          });
-      groupedView ? renderGrouped(root, filtered) : renderMixed(root, filtered);
-    };
+      renderCards(filtered);
+    }
+  };
 
-    const onToggleView = (e) => {
-      groupedView = !groupedView;
-      e.target.textContent = groupedView ? 'Switch to Mixed View' : 'Switch to Grouped View';
-      onFilterChange();
-    };
+  const clearFilters = () => {
+    sidebar.querySelectorAll('input[type="checkbox"]').forEach((cb) => (cb.checked = false));
+    renderCards(cards);
+  };
 
-    renderSidebar(root, tags, onFilterChange, onToggleView);
-    renderGrouped(root, cards);
-  }
+  sidebar.querySelector('.gf-apply-btn').addEventListener('click', applyFilters);
+  sidebar.querySelector('.gf-clear-btn').addEventListener('click', clearFilters);
 
-  return { init };
-})();
+  /* -------------------------------
+     6️⃣ Assemble Block
+  ------------------------------- */
+  const container = document.createElement('div');
+  container.className = 'gf-container';
+  container.append(sidebar, resultsContainer);
 
-/* Global exposure for browser usage */
-if (typeof window !== 'undefined') window.FilterSectionCards = FilterSectionCards;
+  block.innerHTML = '';
+  block.appendChild(container);
 
-   
+  /* -------------------------------
+     7️⃣ Mobile Overlay / Toggle
+  ------------------------------- */
+  const toggleBtn = document.createElement('button');
+  toggleBtn.className = 'gf-mobile-toggle';
+  toggleBtn.textContent = 'Filter Options';
+  toggleBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('gf-sidebar-open');
+    overlay.classList.toggle('gf-overlay-open');
+  });
+
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('gf-sidebar-open');
+    overlay.classList.remove('gf-overlay-open');
+  });
+
+  block.prepend(toggleBtn);
+}
