@@ -5530,6 +5530,91 @@
   {
     "id": "three-cards",
     "fields": [
+      {
+
+  "component": "boolean",
+
+  "valueType": "boolean",
+
+  "name": "autoplay",
+
+  "label": "Autoplay",
+
+  "description": "Enable autoplay for the cards carousel",
+
+  "value": true
+
+},
+
+{
+
+  "component": "boolean",
+
+  "valueType": "boolean",
+
+  "name": "loop",
+
+  "label": "Loop",
+
+  "description": "Enable loop for the cards carousel",
+
+  "value": true
+
+},
+
+{
+
+  "component": "array",
+
+  "name": "cards",
+
+  "label": "Cards",
+
+  "description": "List of cards for the three-card component",
+
+  "items": [
+
+    {
+
+      "title": "Card One",
+
+      "image": "",
+
+      "ctaText": "Learn More",
+
+      "ctaLink": "#"
+
+    },
+
+    {
+
+      "title": "Card Two",
+
+      "image": "",
+
+      "ctaText": "Discover",
+
+      "ctaLink": "#"
+
+    },
+
+    {
+
+      "title": "Card Three",
+
+      "image": "",
+
+      "ctaText": "Get Started",
+
+      "ctaLink": "#"
+
+    }
+
+  ]
+
+},
+
+ 
  
       {
         "component": "text",
@@ -5570,26 +5655,26 @@
     "id": "about-section",
     "fields": [
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-     {
-        "component": "text",
-        "valueType": "string",
-        "name": "about-title",
-        "label": "About Title",
-        "value": ""
-      },
-      {
-        "component": "richtext",
-        "name": "about-description",
-        "value": "",
-        "label": "About Description",
-        "valueType": "string"
-      }
+          "component": "reference",
+          "valueType": "string",
+          "name": "img",
+          "label": "Img",
+          "multi": false
+        },
+       {
+          "component": "text",
+          "valueType": "string",
+          "name": "maintext",
+          "label": "MainText",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "subtext",
+          "label": "SubText",
+          "value": ""
+        }
     ]
   }
 ]

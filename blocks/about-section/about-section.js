@@ -1,47 +1,87 @@
+
 export default function decorate(block) {
-  const rows = [...block.children];
+  if (!(block instanceof HTMLElement)) return;
 
-  // Create structure containers
-  const textContainer = document.createElement('div');
-  textContainer.classList.add('text-content');
-
-  const imageContainer = document.createElement('div');
-  imageContainer.classList.add('image-container');
-
-  // Iterate through authored rows and cells
-  rows.forEach((row) => {
-    const cells = [...row.children];
-    cells.forEach((cell) => {
-      const imgRef = cell.querySelector('a[href]');
-      const text = cell.querySelector('.text');
-      const richtext = cell.querySelector('.richtext');
-
-      // Handle image reference (AEM Edge Delivery style)
-      if (imgRef && imgRef.href.match(/\.(jpg|jpeg|png|webp|gif)$/i)) {
-        const img = document.createElement('img');
-        img.src = imgRef.href;
-        img.alt = imgRef.title || 'About image';
-        imageContainer.append(img);
-      }
-      // Handle text (title)
-      else if (text) {
-        const textEl = document.createElement('div');
-        textEl.classList.add('text');
-        textEl.innerHTML = text.innerHTML;
-        textContainer.append(textEl);
-      }
-      // Handle rich text (description or flexible content)
-      else if (richtext) {
-        const richEl = document.createElement('div');
-        richEl.classList.add('richtext');
-        richEl.innerHTML = richtext.innerHTML;
-        textContainer.append(richEl);
-      }
-    });
-  });
-
-  // Build final block structure
-  block.textContent = '';
   block.classList.add('about-section');
-  block.append(textContainer, imageContainer);
+
+  // Step 1: Find headings and paragraphs
+  const heading = block.querySelector('h1, h2, h3, h4');
+  const paragraphs = Array.from(block.querySelectorAll('p'));
+
+  // Step 2: Create containers if missing
+  let textContent = block.querySelector('.text-content');
+  if (!textContent) {
+    textContent = document.createElement('div');
+    textContent.className = 'text-content';
+    block.append(textContent);
+  }
+
+  let main = textContent.querySelector('.maintext');
+  if (!main) {
+    main = document.createElement('div');
+    main.className = 'maintext';
+    textContent.append(main);
+  }
+
+  let sub = textContent.querySelector('.subtext');
+  if (!sub) {
+    sub = document.createElement('div');
+    sub.className = 'subtext';
+    textContent.append(sub);
+  }
+
+  // Step 3: Fill main text
+  if (heading && !main.innerHTML.trim()) {
+    main.appendChild(heading); // move heading into main
+  } else if (!heading && paragraphs.length && !main.innerHTML.trim()) {
+    // Move the first paragraph to main
+    main.appendChild(paragraphs[0]);
+  }
+
+  // Step 4: Fill subtext with remaining paragraphs
+  const remainingParas = paragraphs.filter(p => p.parentElement !== main);
+  remainingParas.forEach(p => sub.appendChild(p));
+
+  // Step 5: Handle image container
+  let imageContainer = block.querySelector('.image-container');
+  if (!imageContainer) {
+    imageContainer = document.createElement('div');
+    imageContainer.className = 'image-container';
+    block.append(imageContainer);
+  }
+
+  const img = block.querySelector('img');
+  if (img && !imageContainer.contains(img)) {
+    imageContainer.append(img);
+  }
+
+  // Step 6: Ensure order
+  const imageFirst = block.dataset.imageFirst === 'true' || block.classList.contains('image-first');
+  block.replaceChildren(imageFirst ? imageContainer : textContent, imageFirst ? textContent : imageContainer);
+
+  // Step 7: Accessibility
+  if (!block.hasAttribute('role')) block.setAttribute('role', 'region');
+  if (!block.hasAttribute('aria-labelledby')) {
+    const id = `about-${Math.random().toString(36).slice(2, 9)}`;
+    main.id = id;
+    block.setAttribute('aria-labelledby', id);
+  }
+
+  // Step 8: JS hook
+  block.classList.add('about-section--ready');
+
+  // Step 9: Live update API
+  block._update = (data = {}) => {
+    if (data.title) main.innerHTML = data.title;
+    if (data.body) sub.innerHTML = data.body;
+    if (data.image) {
+      let imgTag = imageContainer.querySelector('img') || document.createElement('img');
+      imgTag.loading = 'lazy';
+      imgTag.src = data.image;
+      if (data.alt) imgTag.alt = data.alt;
+      imageContainer.replaceChildren(imgTag);
+    }
+  };
+
+  return block;
 }

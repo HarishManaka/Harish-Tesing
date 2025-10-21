@@ -36,6 +36,7 @@
     {
       "id": "three-cards",
       "fields": [
+        
         {
           "component": "text",
           "valueType": "string",
