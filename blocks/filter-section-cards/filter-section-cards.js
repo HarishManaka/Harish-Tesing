@@ -1,56 +1,93 @@
-export default async function decorate(block) {
-  if (!(block instanceof HTMLElement)) return;
+function buildCard(data, cells = {}, sharedTagCell = null) {
+  const cardLink = document.createElement('a');
+  cardLink.href = data.ctaUrl || '#';
+  cardLink.className = 'filter-section-cards-item-link';
+  cardLink.target = '_blank';
+  cardLink.rel = 'noopener noreferrer';
 
-  block.classList.add('filter-section-cards');
+  const card = document.createElement('div');
+  card.className = 'filter-section-cards-item';
 
-  // Placeholder in Author mode
-  const isAuthor = window.CQ && window.CQ.WCM && window.CQ.WCM.isEditMode && window.CQ.WCM.isEditMode();
-  if (isAuthor) {
-    block.textContent = 'Filter Section Cards (Dynamic Preview)';
-    return;
+  // Add data attributes for filtering
+  if (data.tag) {
+    card.dataset.tags = data.tag;
+
+    // Add id at card level (instead of wrapper)
+    card.id = data.tag.toLowerCase().replace(/\s+/g, '-');
   }
 
-  // Fetch Edge Delivery JSON
-  const url = block.dataset.endpoint || '/content/delivery/filter-cards.json';
-  let data;
-  try {
-    const resp = await fetch(url);
-    data = await resp.json();
-  } catch (err) {
-    console.error('Failed to fetch cards JSON:', err);
-    return;
+  // Image container
+  const imageContainer = document.createElement('div');
+  imageContainer.className = 'filter-section-cards-item-img';
+  const img = document.createElement('img');
+  img.src = data.imageSrc || 'https://via.placeholder.com/400x200?text=Placeholder+Image';
+  img.alt = data.title || 'Card image';
+  imageContainer.appendChild(img);
+  card.appendChild(imageContainer);
+
+  // Content
+  const content = document.createElement('div');
+  content.className = 'filter-section-cards-item-content';
+
+  if (data.title) {
+    const h3 = document.createElement('h3');
+    h3.textContent = data.title;
+    content.appendChild(h3);
   }
 
-  // Create wrapper
+  if (data.description) {
+    const p = document.createElement('p');
+    p.textContent = data.description;
+    content.appendChild(p);
+  }
+
+  // Meta
+  const meta = document.createElement('div');
+  meta.className = 'filter-section-cards-item-meta';
+
+  if (data.ctaLabel) {
+    const ctaText = document.createElement('span');
+    ctaText.textContent = data.ctaLabel;
+    ctaText.className = 'filter-section-cards-link';
+    meta.appendChild(ctaText);
+  }
+
+  if (data.badgeOverride || data.tag) {
+    const badge = document.createElement('span');
+    badge.className = 'filter-section-cards-badge';
+    badge.textContent = data.badgeOverride || data.tag;
+    meta.appendChild(badge);
+  }
+
+  content.appendChild(meta);
+  card.appendChild(content);
+  cardLink.appendChild(card);
+
+  return cardLink;
+}
+
+function buildContainer(filterTitle, header, card1, card2, card3, originalCells = {}) {
   const wrapper = document.createElement('div');
   wrapper.className = 'filter-section-cards-wrapper';
 
-  // Create cards dynamically
-  data.cards.forEach(card => {
-    const link = document.createElement('a');
-    link.href = card.url;
-    link.className = 'filter-section-cards-item-link';
+  // Count number of cards
+  const cardCount = [card1.title, card2.title, card3 && card3.title].filter(Boolean).length;
+  if (cardCount === 3) wrapper.dataset.cardCount = '3';
 
-    const item = document.createElement('div');
-    item.className = 'filter-section-cards-item';
+  // Filter title (optional)
+  const filterTitleElement = buildFilterTitle(filterTitle);
+  if (filterTitleElement) wrapper.appendChild(filterTitleElement);
 
-    const img = document.createElement('div');
-    img.className = 'filter-section-cards-item-img';
-    const image = document.createElement('img');
-    image.src = card.image;
-    image.alt = card.title;
-    img.appendChild(image);
+  // Header
+  const headerSection = buildHeader(header, originalCells.header || {});
+  wrapper.appendChild(headerSection);
 
-    const content = document.createElement('div');
-    content.className = 'filter-section-cards-item-content';
-    content.innerHTML = `<h3>${card.title}</h3><p>${card.description}</p>`;
+  // Build cards (each card gets its id)
+  if (card1.title) wrapper.appendChild(buildCard(card1, originalCells.card1 || {}, originalCells.tagCell));
+  if (card2.title) wrapper.appendChild(buildCard(card2, originalCells.card2 || {}, originalCells.tagCell));
+  if (card3 && card3.title) wrapper.appendChild(buildCard(card3, originalCells.card3 || {}, originalCells.tagCell));
 
-    item.appendChild(img);
-    item.appendChild(content);
-    link.appendChild(item);
-    wrapper.appendChild(link);
-  });
-
-  block.appendChild(wrapper);
+  return wrapper;
 }
+
 
